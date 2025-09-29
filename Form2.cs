@@ -37,7 +37,9 @@ namespace MPHospitalRecordsSystem
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Form1 login = new Form1();  
+            login.Show();
+            this.Hide();
         }
         private void userValidation()
         {
@@ -117,7 +119,7 @@ namespace MPHospitalRecordsSystem
                     }
 
 
-                    Form2 frm =  new Form2();
+                    Form1 frm =  new Form1();
                     frm.Show();
                     this.Hide();
                 }
