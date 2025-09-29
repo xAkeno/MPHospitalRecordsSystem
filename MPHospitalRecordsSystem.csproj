@@ -149,6 +149,8 @@
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="passwordUtils.cs" />
+    <Compile Include="patient.cs" />
+    <Compile Include="patientDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
