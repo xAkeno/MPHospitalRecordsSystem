@@ -96,9 +96,8 @@ namespace MPHospitalRecordsSystem
                     {
                         MessageBox.Show(v.Message);
                         hasError = true;
-                        break;
-
                     }
+                    break;
                 }
                 string hashedPass = GetSha256Hash(pass);
 
