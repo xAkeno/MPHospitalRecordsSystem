@@ -49,7 +49,7 @@ namespace MPHospitalRecordsSystem
             {
                 conn.Open();
 
-                string see = "select * from accinfo where userName = @banana";
+                string see = "select * from accinfo where user_name = @banana";
                 using (var cmdd = new MySqlCommand(see, conn))
                 {
                     cmdd.Parameters.Add("@banana", MySqlDbType.VarChar).Value = user;
@@ -60,14 +60,48 @@ namespace MPHospitalRecordsSystem
                         user = reader["user_name"].ToString();
                         MessageBox.Show("Username already exists");
                     }
-                    //else
-                    //{
-                        
-                    //}
-
+                    else
+                    {
+                        passwordValidation();   
+                    }
+                    reader.Close();
+                    conn.Close();
                 }
             }
+        }
 
+        private void passwordValidation()
+        {
+            string pass = txtPass.Text;
+            connection con = new connection();
+            using (MySqlConnection conn = con.GetConnection())
+            {
+                conn.Open();
+
+                var validations = new List<(bool Passed, string Message)>
+                {
+                    (!pass.Any(Char.IsUpper), "This password has no uppercase letter"),
+                    (!pass.Any(Char.IsDigit), "This password has no digiy"),
+                    (pass.Length < 8, "passowrd is less than 8 characters"),
+                    (pass.Any(c => !char.IsLetterOrDigit(c)), "passowrd is less than 8 characters"),
+                };
+
+                bool hasError = false;
+                foreach (var v in validations)
+                {
+                    if (!v.Passed)
+                    {
+                        MessageBox.Show(v.Message);
+                        hasError = true;
+                        
+                    }
+                }
+
+                if (!hasError)
+                {
+                    //
+                }
+            }
         }
     }
 }
