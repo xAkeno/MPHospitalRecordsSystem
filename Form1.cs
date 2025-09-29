@@ -16,5 +16,29 @@ namespace MPHospitalRecordsSystem
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            juice();  
+        }
+
+
+        public void juice()
+        {
+            Form3 uhh = new Form3();
+            uhh.Show();
+        }
+
+        public void aur() { 
+        Form2 yesir = new Form2();
+
+            yesir.Show();
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            aur();
+        }
     }
 }
