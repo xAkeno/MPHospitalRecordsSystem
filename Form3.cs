@@ -22,7 +22,6 @@ namespace MPHospitalRecordsSystem
         {
             patient p = new patient();
             dgvPatients.DataSource = p.read_patient();
-            MessageBox.Show("Loaded patients");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +44,7 @@ namespace MPHospitalRecordsSystem
                 patient p = new patient();
                 p.add_patient(name, date_of_birth, contact_number);
             }
+            loadPatients();
         }
 
         private void button3_Click(object sender, EventArgs e)

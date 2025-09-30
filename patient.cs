@@ -108,7 +108,6 @@ namespace MPHospitalRecordsSystem
                                 ContactNumber = contact_number
                             });
                         }
-                        MessageBox.Show("Rows read: " + list.Count);
                         return list;
                     }
 
