@@ -237,26 +237,29 @@ namespace MPHospitalRecordsSystem
         }
 
         
-        public void delete_patient(String patient_id)
+        public void delete_patient(int patient_id)
         {
-            String sqlDeletePatient = "DELETE FROM patient WHERE patient_id=@patient_id";
-            MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, con.GetConnection());
-            cmd.Parameters.AddWithValue("patient_id", patient_id);
-            try
-            {
-                con.GetConnection().Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                int row = 0;
-                row = cmd.ExecuteNonQuery();
-                if (row > 0)
+            String sqlDeletePatient = "DELETE FROM patients WHERE patient_id=@patient_id";
+            using (MySqlConnection c = con.GetConnection()) {
+                using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
-                    MessageBox.Show("Successfully deleted!");
+                    cmd.Parameters.AddWithValue("@patient_id", patient_id);
+                    try
+                    {
+                        c.Open();
+                        int row = 0;
+                        row = cmd.ExecuteNonQuery();
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully deleted!");
+                        }
+                        else MessageBox.Show("Patient is already taken");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                else MessageBox.Show("Patient is already taken");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
     }

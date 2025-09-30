@@ -259,5 +259,20 @@ namespace MPHospitalRecordsSystem
             else
                 label5.Text = "Id:";
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (!idlbl.Text.Equals(""))
+            {
+                int id = Convert.ToInt32(idlbl.Text);
+                patient p = new patient();
+                p.delete_patient(id);
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient first");
+            }
+            loadPatients();
+        }
     }
 }
