@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MPHospitalRecordsSystem
 {
@@ -30,35 +31,24 @@ namespace MPHospitalRecordsSystem
         }
         private void button1_Click(object sender, EventArgs e)
         {
+           validations();
             int id = Convert.ToInt32(idlbl.Text);
             String name = nameIn.Text;
-            //String date_of_birth = datebirthIn.Text;
             String dtps = dtp1.Value.ToString("yyyy-MM-dd");
             String contact_number = contactnumberIn.Text;
 
-            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
-            {
-                MessageBox.Show("Please complete all the list that say here?\n"
-                    + (name.Equals("") ? "Fill the name\n" : "")
-                    + (dtps.Equals("") ? "Fill the date of birth\n" : "")
-                    + (contact_number.Equals("") ? "Fill the contact number" : "")
-                );
+            patient p = new patient();
 
+            if (!p.check_if_info_is_already_registred(id, name))
+            {
+                p.add_patient(name, dtps, contact_number);                  
             }
             else
             {
-                patient p = new patient();
-
-                if (!p.check_if_info_is_already_registred(id, name))
-                {
-                    p.add_patient(name, dtps, contact_number);
-                }
-                else
-                {
-                    MessageBox.Show("Patient is already taken");
-                }
+                MessageBox.Show("Patient is already taken");
             }
             loadPatients();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -119,6 +109,7 @@ namespace MPHospitalRecordsSystem
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
 
+
                 idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
@@ -137,24 +128,15 @@ namespace MPHospitalRecordsSystem
         private void button2_Click(object sender, EventArgs e)
         {
             String name = nameIn.Text;
-            //String date_of_birth = datebirthIn.Text;
             int id = Convert.ToInt32(idlbl.Text);
             String dtps = dtp1.Value.ToString("yyyy-MM-dd");
             String contact_number = contactnumberIn.Text;
+           
+            validations();
 
-            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
-            {
-                MessageBox.Show("Please complete all the list that say here?\n"
-                    + (name.Equals("") ? "Fill the name\n" : "")
-                    + (dtps.Equals("") ? "Fill the date of birth\n" : "")
-                    + (contact_number.Equals("") ? "Fill the contact number" : "")
-                );
-            }
-            else
-            {
-                patient p = new patient();
-                p.update_patient(name, dtps, contact_number, id);
-            }
+            patient p = new patient();
+            p.update_patient(name, dtps, contact_number, id);
+            
             loadPatients();
         }
 
@@ -188,8 +170,56 @@ namespace MPHospitalRecordsSystem
         {
 
         }
-
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+        private void validations()
+        {
+            int id = Convert.ToInt32(idlbl.Text);
+            String name = nameIn.Text;
+            String dtps = dtp1.Value.ToString("d");
+            String contact_number = contactnumberIn.Text;
+            DateTime dt1 = DateTime.Parse(dtps);
+            DateTime dt2 = DateTime.Parse("01/01/1920");
+
+
+
+            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
+            {
+                MessageBox.Show("please answer all the required fields lister here?\n"
+                    + (name.Equals("") ? "enter in a name\n" : "")
+                    + (dtps.Equals("") ? "enter in a birthday \n" : "")
+                    + (contact_number.Equals("") ? "enter in a valid contact number" : "")
+                );
+
+            }
+            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || contact_number.Length != 11 || contact_number[0] != '0' || contact_number[1] != '9' || dt1 == null)
+            {
+                MessageBox.Show("please answer all the required fields listed here?\n"
+                     + (name.Any(Char.IsDigit) ? "enter in a name\n" : " ")
+                     + (dt1 < dt2 ? "please enter a valid date \n" : " ")
+                     + (dt1 == null ? "please enter a valid date \n" : " ")
+                     + (!contact_number.Any(Char.IsDigit) ? "enter in a valid contact number \n" : " ")
+                     + (contact_number[0] != '0' || contact_number[1] != '9' ? " contact number must begin with 09 \n" : " ")
+                     + (contact_number.Length != 11 ? "numbers length must be exacty 11 digits" : "")
+                 );
+            }
+           
+           
+        }
+
+        private void tabControl1_Selected_1(object sender, TabControlEventArgs e)
         {
             MessageBox.Show(e.TabPage.Text);
             bool showPatients = e.TabPage.Text.Equals("patient");
@@ -228,16 +258,6 @@ namespace MPHospitalRecordsSystem
                 label5.Text = "Visitor Id:";
             else
                 label5.Text = "Id:";
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
