@@ -188,5 +188,56 @@ namespace MPHospitalRecordsSystem
         {
 
         }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            MessageBox.Show(e.TabPage.Text);
+            bool showPatients = e.TabPage.Text.Equals("patient");
+            label1.Visible = showPatients;
+            idlbl.Visible = showPatients;
+            label2.Visible = showPatients;
+            nameIn.Visible = showPatients;
+            label3.Visible = showPatients;
+            dtp1.Visible = showPatients;
+            label4.Visible = showPatients;
+            contactnumberIn.Visible = showPatients;
+
+            bool showDoctors = e.TabPage.Text.Equals("doctor");
+            cbspecial.Visible = showDoctors;
+            doctorNameIn.Visible = showDoctors;
+            label7.Visible = showDoctors;
+            label6.Visible = showDoctors;
+
+            bool showVisits = e.TabPage.Text.Equals("visitors");
+            label8.Visible = showVisits;
+            label9.Visible = showVisits;
+            label10.Visible = showVisits;
+            label11.Visible = showVisits;
+            label12.Visible = showVisits;
+            tb10.Visible = showVisits;
+            textBox1.Visible = showVisits;
+            textBox3.Visible = showVisits;
+            textBox4.Visible = showVisits;
+            textBox5.Visible = showVisits;
+
+            if (showPatients)
+                label5.Text = "Patient Id:";
+            else if (showDoctors)
+                label5.Text = "Doctor Id:";
+            else if (showVisits)
+                label5.Text = "Visitor Id:";
+            else
+                label5.Text = "Id:";
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
