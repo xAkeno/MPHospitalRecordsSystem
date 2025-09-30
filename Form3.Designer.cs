@@ -32,7 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchbox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
@@ -48,6 +48,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nameIn = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.idlbl = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -80,8 +83,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.searchbox);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.dgvPatients);
@@ -104,13 +108,13 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox1
+            // searchbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(298, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(334, 29);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.searchbox.Location = new System.Drawing.Point(298, 9);
+            this.searchbox.Name = "searchbox";
+            this.searchbox.Size = new System.Drawing.Size(334, 29);
+            this.searchbox.TabIndex = 3;
+            this.searchbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
@@ -120,6 +124,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -181,6 +186,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.idlbl);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.dtp1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -196,7 +203,7 @@
             // dtp1
             // 
             this.dtp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtp1.Location = new System.Drawing.Point(8, 104);
+            this.dtp1.Location = new System.Drawing.Point(8, 129);
             this.dtp1.MinDate = new System.DateTime(1895, 1, 1, 0, 0, 0, 0);
             this.dtp1.Name = "dtp1";
             this.dtp1.Size = new System.Drawing.Size(273, 20);
@@ -216,7 +223,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 144);
+            this.label3.Location = new System.Drawing.Point(5, 169);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 18);
             this.label3.TabIndex = 5;
@@ -224,7 +231,7 @@
             // 
             // contactnumberIn
             // 
-            this.contactnumberIn.Location = new System.Drawing.Point(8, 163);
+            this.contactnumberIn.Location = new System.Drawing.Point(8, 188);
             this.contactnumberIn.Multiline = true;
             this.contactnumberIn.Name = "contactnumberIn";
             this.contactnumberIn.Size = new System.Drawing.Size(273, 33);
@@ -234,7 +241,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 83);
+            this.label2.Location = new System.Drawing.Point(5, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 18);
             this.label2.TabIndex = 3;
@@ -244,7 +251,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 19);
+            this.label1.Location = new System.Drawing.Point(5, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 18);
             this.label1.TabIndex = 1;
@@ -252,12 +259,42 @@
             // 
             // nameIn
             // 
-            this.nameIn.Location = new System.Drawing.Point(8, 38);
+            this.nameIn.Location = new System.Drawing.Point(8, 63);
             this.nameIn.Multiline = true;
             this.nameIn.Name = "nameIn";
             this.nameIn.Size = new System.Drawing.Size(273, 33);
             this.nameIn.TabIndex = 0;
             this.nameIn.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(5, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 18);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Patient Id :";
+            // 
+            // idlbl
+            // 
+            this.idlbl.AutoSize = true;
+            this.idlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idlbl.Location = new System.Drawing.Point(94, 14);
+            this.idlbl.Name = "idlbl";
+            this.idlbl.Size = new System.Drawing.Size(17, 18);
+            this.idlbl.TabIndex = 9;
+            this.idlbl.Text = "0";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(180, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(91, 35);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Unselect";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form3
             // 
@@ -296,7 +333,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchbox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox nameIn;
         private System.Windows.Forms.Label label3;
@@ -305,5 +342,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp1;
+        private System.Windows.Forms.Label idlbl;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button4;
     }
 }

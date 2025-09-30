@@ -23,15 +23,15 @@ namespace MPHospitalRecordsSystem
             patient p = new patient();
             dgvPatients.DataSource = p.read_patient();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(idlbl.Text);
             String name = nameIn.Text;
             //String date_of_birth = datebirthIn.Text;
             String dtps = dtp1.Value.ToString("yyyy-MM-dd");
             String contact_number = contactnumberIn.Text;
 
-            if(name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
+            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
             {
                 MessageBox.Show("Please complete all the list that say here?\n"
                     + (name.Equals("") ? "Fill the name\n" : "")
@@ -43,14 +43,33 @@ namespace MPHospitalRecordsSystem
             else
             {
                 patient p = new patient();
-                p.add_patient(name, dtps, contact_number);
+
+                if (!p.check_if_info_is_already_registred(id, name))
+                {
+                    p.add_patient(name, dtps, contact_number);
+                }
+                else
+                {
+                    MessageBox.Show("Patient is already taken");
+                }
             }
             loadPatients();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            String search = searchbox.Text;
 
+            if(search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadPatients();
+            }
+            else
+            {
+                patient p = new patient();
+                dgvPatients.DataSource = p.search_patient(search);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -89,11 +108,13 @@ namespace MPHospitalRecordsSystem
             {
                 DataGridViewRow row = dgvPatients.SelectedRows[0];
 
+
                 string id = row.Cells["PatientId"].Value.ToString();
                 string name = row.Cells["Name"].Value.ToString();
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
 
+                idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
                 contactnumberIn.Text = contact;
@@ -106,6 +127,35 @@ namespace MPHospitalRecordsSystem
             {
                 MessageBox.Show("⚠ Please select a row first.");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String name = nameIn.Text;
+            //String date_of_birth = datebirthIn.Text;
+            int id = Convert.ToInt32(idlbl.Text);
+            String dtps = dtp1.Value.ToString("yyyy-MM-dd");
+            String contact_number = contactnumberIn.Text;
+
+            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
+            {
+                MessageBox.Show("Please complete all the list that say here?\n"
+                    + (name.Equals("") ? "Fill the name\n" : "")
+                    + (dtps.Equals("") ? "Fill the date of birth\n" : "")
+                    + (contact_number.Equals("") ? "Fill the contact number" : "")
+                );
+            }
+            else
+            {
+                patient p = new patient();
+                p.update_patient(name, dtps, contact_number, id);
+            }
+            loadPatients();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
