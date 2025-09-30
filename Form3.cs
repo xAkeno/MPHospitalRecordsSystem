@@ -37,23 +37,28 @@ namespace MPHospitalRecordsSystem
             String contact_number = contactnumberIn.Text;
             DateTime dt1 = DateTime.Parse(dtps);
             DateTime dt2 = DateTime.Parse("01/01/1920");
+            
+           
 
-            if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
+            if (name.Equals("") || dtps.Equals("") || contact_number.Equals("") )
             {
                 MessageBox.Show("please answer all the required fields lister here?\n"
                     + (name.Equals("") ? "enter in a name\n" : "")
                     + (dtps.Equals("") ? "enter in a birthday \n" : "")
-                    + (contact_number.Equals("") ? "enter in a valid contact number" : "")
+                    + (contact_number.Equals("") ? "enter in a valid contact number" : "")              
                 );
 
             }
 
-            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1< dt2)
+            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1< dt2 || contact_number.Length != 11 || contact_number[0] != '0'|| contact_number[1]!='9'|| dt1 == null )
             {
-                MessageBox.Show("please answer all the required fields lister here?\n"
-                     + (name.Any(Char.IsDigit) ? "enter in a name\n" : "")
-                     + (dt1 <dt2? "please enter a valid date \n" : "")
-                     + (!contact_number.Any(Char.IsDigit)? "enter in a valid contact number" : "")
+                MessageBox.Show("please answer all the required fields listed here?\n"
+                     + (name.Any(Char.IsDigit) ? "enter in a name\n" : " ")
+                     + (dt1 <dt2? "please enter a valid date \n" : " ")
+                     + (dt1 == null?"please enter a valid date \n" : " ")
+                     + (!contact_number.Any(Char.IsDigit)? "enter in a valid contact number \n" : " ")
+                     + (contact_number[0] !='0' ||contact_number[1] != '9'? " contact number must begin with 09 \n" : " ")
+                     + (contact_number.Length != 11  ? "numbers length must be exacty 11 digits" : "")
                  );
             }
             else
@@ -130,6 +135,7 @@ namespace MPHospitalRecordsSystem
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
 
+
                 idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
@@ -150,16 +156,29 @@ namespace MPHospitalRecordsSystem
             String name = nameIn.Text;
             //String date_of_birth = datebirthIn.Text;
             int id = Convert.ToInt32(idlbl.Text);
-            String dtps = dtp1.Value.ToString("yyyy-MM-dd");
+            String dtps = dtp1.Value.ToString("d");
             String contact_number = contactnumberIn.Text;
+            DateTime dt1 = DateTime.Parse(dtps);
+            DateTime dt2 = DateTime.Parse("01/01/1920");
+           
 
             if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
             {
-                MessageBox.Show("Please complete all the fields lister here n"
+                MessageBox.Show("Please complete all the fields listed here "
                     + (name.Equals("") ? "enter a name \n" : "")
                     + (dtps.Equals("") ? "enter a birthday \n" : "")
                     + (contact_number.Equals("") ? "enter a contact number" : "")
                 );
+            }
+            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || contact_number.Length != 11 || contact_number[0] != '0' && contact_number[1] != '9')
+            {
+                MessageBox.Show("please answer all the required fields lister here?\n"
+                     + (name.Any(Char.IsDigit) ? "enter in a name\n" : "")
+                     + (dt1 < dt2 ? "please enter a valid date \n" : "")
+                     + (!contact_number.Any(Char.IsDigit) ? "enter in a valid contact number" : "                       ")
+                     + (contact_number[0]!= '0' && contact_number[1] !='9'? " contact number must begin with 09" : "              ")
+                     + (contact_number.Length != 11 ? "contact number must be exactly 11 digits" : "")
+                 );
             }
             else
             {
