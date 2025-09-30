@@ -23,20 +23,21 @@ namespace MPHospitalRecordsSystem
         public void add_patient(String name,String date_of_birth,String contact_number)
         {
             bool check = true;
-            if (name.Equals("") && date_of_birth.Equals("") && contact_number.Equals("")) {
-                MessageBox.Show("Please answer all the forms");
-                check = false;
-            }
+            //if (name.Equals("") && date_of_birth.Equals("") && contact_number.Equals(""))
+            //{
+            //    MessageBox.Show("Please answer all the forms");
+            //    check = false;
+            //}
 
-            if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals("")) {
-                MessageBox.Show(
-                    "Please answer all the required forms?\n"
-                    + (string.IsNullOrWhiteSpace(name) ? "Fill the name\n" : "")
-                    + (string.IsNullOrWhiteSpace(date_of_birth) ? "Fill the date of birth\n" : "")
-                    + (string.IsNullOrWhiteSpace(contact_number) ? "Fill the contact number\n" : "")
-                );
-                check = false;
-            }
+            //if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals(""))
+            //{
+            //    MessageBox.Show(
+            //        "Please answer all the required form listed here ?\n"
+            //        + (string.IsNullOrWhiteSpace(name) ? "enter a name\n" : "")
+            //        + (string.IsNullOrWhiteSpace(date_of_birth) ? "enter a birthday\n" : "")
+            //    );
+            //    check = false;
+            //}
 
             if (check)
             {
@@ -121,31 +122,117 @@ namespace MPHospitalRecordsSystem
             }
             return null;
         }
-        public void update_patient(String name, String address, String date_of_birth, String contact_number)
+        public List<patientDTO> search_patient(String search)
         {
-            String sqlUpdatePatient = "UPDATE patient SET name=@name, address=@address, date_of_birth=@date_of_birth, contact_number=@contact_number WHERE patient_id=@patient_id";
-            MySqlCommand cmd = new MySqlCommand(sqlUpdatePatient, con.GetConnection());
-            cmd.Parameters.AddWithValue("Name", name);
-            cmd.Parameters.AddWithValue("address", address);
-            cmd.Parameters.AddWithValue("date_of_birth", date_of_birth);
-            cmd.Parameters.AddWithValue("contact_number", contact_number);
-
+            String sqlSearchPatient = "SELECT * FROM patients WHERE Name LIKE @search OR patient_id LIKE @search";
             try
             {
-                con.GetConnection().Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                int row = 0;
-                row = cmd.ExecuteNonQuery();
-
-                if (row > 0)
-                {
-                    MessageBox.Show("Successfully updated!");
+                using (MySqlConnection c = con.GetConnection()) {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlSearchPatient, c))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+                        c.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        List<patientDTO> list = new List<patientDTO>();
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("patient_id");
+                            String name = reader.GetString("Name");
+                            DateTime date_of_birth = reader.GetDateTime("date_of_birth");
+                            String contact_number = reader.GetString("contact_number");
+                            list.Add(new patientDTO
+                            {
+                                PatientId = id.ToString()
+                                ,
+                                Name = name
+                                ,
+                                DateOfBirth = date_of_birth
+                                ,
+                                ContactNumber = contact_number
+                            });
+                        }
+                        return list;
+                    }
                 }
-                else MessageBox.Show("Patient is already taken");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+        public bool check_if_info_is_already_registred(int id,String name) {
+            String sqlCheck = "SELECT * FROM patients WHERE patient_id=@id OR Name=@Name";
+            if (id == 0 && name.Equals(""))
+            {
+                return false;
+            }
+            else {
+                using (MySqlConnection c = con.GetConnection()) {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlCheck, c)) {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@Name", name);
+
+                        c.Open();
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows) {
+                            return true;
+                        }
+                    }
+                
+                }
+            }
+
+            return false;
+        }
+
+        public String get_next_id() {
+
+            String sqlNextId = "SELECT MAX(patient_id) from patients ";
+            using (MySqlConnection c = con.GetConnection()) {
+                using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c)) {
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    int nextId = (result != DBNull.Value) ? Convert.ToInt32(result) + 1 : 0;
+
+                    return Convert.ToString(nextId);
+                }
+            }
+
+            return null;
+        }
+        public void update_patient(String name, String date_of_birth, String contact_number, int id)
+        {
+            String sqlUpdatePatient = "UPDATE patients SET Name=@Name, date_of_birth=@date_of_birth, contact_number=@contact_number WHERE patient_id=@patient_id";
+            try
+            {
+                using (MySqlConnection c = con.GetConnection()) {
+
+                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdatePatient, c))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@date_of_birth", date_of_birth);
+                        cmd.Parameters.AddWithValue("@patient_id", id);
+                        cmd.Parameters.AddWithValue("@contact_number", contact_number);
+
+                        c.Open();
+                        int row = cmd.ExecuteNonQuery();
+
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully updated!");
+                        }
+                        else MessageBox.Show("Patient is already taken");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 

@@ -10,7 +10,7 @@ namespace MPHospitalRecordsSystem
 {
     internal class connection
     {
-        protected static String connect = "Server=localhost; Database=hospital_records_db; Uid=root; Pwd=;";
+        protected static String connect = "Server=localhost; Database=hospital_records_db; Uid=root; Pwd=; Convert Zero Datetime=True;";
         public   MySqlConnection GetConnection()
         {
             return new MySqlConnection(connect);

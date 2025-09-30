@@ -118,23 +118,16 @@ namespace MPHospitalRecordsSystem
                         if (rows > 0)
                         {
                             MessageBox.Show("Successfully registered!");
-                            Form1 frm =  new Form1();
-                            frm.Show();
-                            this.Hide();
-
                         }
                         else
                         {
                             MessageBox.Show("Insert failed.");
                         }
-
-                    }
-
-
-                    
-                }
-
-                
+                        Form1 frm =  new Form1();
+                        frm.Show();
+                        this.Hide();
+                    }                   
+                }  
             }
         }
         static string GetSha256Hash(string input)
