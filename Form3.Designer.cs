@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,6 +52,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.idlbl = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -78,11 +86,12 @@
             this.tabControl1.Location = new System.Drawing.Point(303, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(740, 507);
+            this.tabControl1.Size = new System.Drawing.Size(886, 550);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button13);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.searchbox);
@@ -92,25 +101,26 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(732, 470);
+            this.tabPage1.Size = new System.Drawing.Size(878, 513);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "patient";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(638, 6);
+            this.button3.Location = new System.Drawing.Point(825, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 35);
+            this.button3.Size = new System.Drawing.Size(44, 35);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Search";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // searchbox
             // 
-            this.searchbox.Location = new System.Drawing.Point(298, 9);
+            this.searchbox.Location = new System.Drawing.Point(485, 8);
             this.searchbox.Name = "searchbox";
             this.searchbox.Size = new System.Drawing.Size(334, 29);
             this.searchbox.TabIndex = 3;
@@ -118,21 +128,23 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(86, 6);
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(55, 6);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 35);
+            this.button2.Size = new System.Drawing.Size(44, 35);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Location = new System.Drawing.Point(5, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 35);
+            this.button1.Size = new System.Drawing.Size(44, 35);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -142,7 +154,7 @@
             this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPatients.Location = new System.Drawing.Point(6, 47);
             this.dgvPatients.Name = "dgvPatients";
-            this.dgvPatients.Size = new System.Drawing.Size(720, 417);
+            this.dgvPatients.Size = new System.Drawing.Size(864, 463);
             this.dgvPatients.TabIndex = 0;
             this.dgvPatients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellClick);
             this.dgvPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellContentClick);
@@ -153,25 +165,33 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(732, 470);
+            this.tabPage2.Size = new System.Drawing.Size(878, 513);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "doctor";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 146);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 47);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(720, 318);
+            this.dataGridView2.Size = new System.Drawing.Size(864, 463);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button15);
+            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.button10);
+            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.button11);
+            this.tabPage3.Controls.Add(this.button12);
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(732, 470);
+            this.tabPage3.Size = new System.Drawing.Size(878, 513);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "visitors";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -179,9 +199,9 @@
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(9, 149);
+            this.dataGridView3.Location = new System.Drawing.Point(6, 47);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(720, 318);
+            this.dataGridView3.Size = new System.Drawing.Size(864, 463);
             this.dataGridView3.TabIndex = 1;
             // 
             // panel1
@@ -197,7 +217,7 @@
             this.panel1.Controls.Add(this.nameIn);
             this.panel1.Location = new System.Drawing.Point(4, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(293, 423);
+            this.panel1.Size = new System.Drawing.Size(293, 469);
             this.panel1.TabIndex = 5;
             // 
             // dtp1
@@ -213,7 +233,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(117, 397);
+            this.label4.Location = new System.Drawing.Point(104, 447);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 20);
             this.label4.TabIndex = 6;
@@ -288,19 +308,90 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(180, 6);
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Location = new System.Drawing.Point(105, 6);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(91, 35);
+            this.button4.Size = new System.Drawing.Size(44, 35);
             this.button4.TabIndex = 5;
-            this.button4.Text = "Unselect";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.Location = new System.Drawing.Point(107, 9);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(44, 35);
+            this.button9.TabIndex = 10;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button10.Location = new System.Drawing.Point(826, 8);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(44, 35);
+            this.button10.TabIndex = 9;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(486, 11);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(334, 29);
+            this.textBox2.TabIndex = 8;
+            // 
+            // button11
+            // 
+            this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.Location = new System.Drawing.Point(57, 9);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(44, 35);
+            this.button11.TabIndex = 7;
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.Location = new System.Drawing.Point(7, 9);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(44, 35);
+            this.button12.TabIndex = 6;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.Location = new System.Drawing.Point(155, 5);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(44, 35);
+            this.button13.TabIndex = 6;
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.Location = new System.Drawing.Point(157, 9);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(44, 35);
+            this.button15.TabIndex = 11;
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 524);
+            this.ClientSize = new System.Drawing.Size(1192, 568);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl1);
@@ -314,6 +405,7 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -345,5 +437,12 @@
         private System.Windows.Forms.Label idlbl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
