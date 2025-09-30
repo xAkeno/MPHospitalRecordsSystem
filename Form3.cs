@@ -160,6 +160,12 @@ namespace MPHospitalRecordsSystem
 
         private void button4_Click(object sender, EventArgs e)
         {
+            patient p = new patient();
+            idlbl.Text = p.get_next_id();
+            nameIn.Text = "";
+            dtp1.Value = DateTime.Now;
+            contactnumberIn.Text = "";
+            dgvPatients.ClearSelection();
 
         }
     }
