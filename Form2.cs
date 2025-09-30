@@ -115,13 +115,23 @@ namespace MPHospitalRecordsSystem
                         cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = hashedPass;
                      
                         int rows = cmd.ExecuteNonQuery();
-                      
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Successfully registered!");
+                            Form1 frm =  new Form1();
+                            frm.Show();
+                            this.Hide();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insert failed.");
+                        }
+
                     }
 
 
-                    Form1 frm =  new Form1();
-                    frm.Show();
-                    this.Hide();
+                    
                 }
 
                 

@@ -76,5 +76,10 @@ namespace MPHospitalRecordsSystem
         {
 
         }
+
+        private void contactnumberIn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,17 +18,19 @@ namespace MPHospitalRecordsSystem
         public String sqlInsertPatient = "INSERT INTO patients (Name,date_of_birth,contact_number) VALUES (@Name,@date_of_birth,@contact_number)";
         public String sqlSearchIfAlready = "SELECT * FROM patients WHERE Name=@Name";
         connection con = new connection();
+
+
         public void add_patient(String name,String date_of_birth,String contact_number)
         {
             bool check = true;
             if (name.Equals("") && date_of_birth.Equals("") && contact_number.Equals("")) {
-                MessageBox.Show("Please complete all the form");
+                MessageBox.Show("Please answer all the forms");
                 check = false;
             }
 
             if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals("")) {
                 MessageBox.Show(
-                    "Please complete all the list that say here?\n"
+                    "Please answer all the required forms?\n"
                     + (string.IsNullOrWhiteSpace(name) ? "Fill the name\n" : "")
                     + (string.IsNullOrWhiteSpace(date_of_birth) ? "Fill the date of birth\n" : "")
                     + (string.IsNullOrWhiteSpace(contact_number) ? "Fill the contact number\n" : "")
