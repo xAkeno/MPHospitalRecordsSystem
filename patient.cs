@@ -83,25 +83,36 @@ namespace MPHospitalRecordsSystem
         public List<patientDTO> read_patient()
         {
             String sqlSelectPatient = "SELECT * FROM patients";
-            MySqlCommand cmd = new MySqlCommand(sqlSelectPatient, con.GetConnection());
             try
             {
-                con.GetConnection().Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                List<patientDTO> list = new List<patientDTO>();
-                while (reader.Read())
-                {
-                    String name = reader.GetString("Name");
-                    String date_of_birth = reader.GetString("date_of_birth");
-                    String contact_number = reader.GetString("contact_numbers");
-                    list.Add(new patientDTO { 
-                        Name = name
-                        , DateOfBirth = Convert.ToDateTime(date_of_birth)
-                        , ContactNumber = contact_number 
-                    });
+                using (MySqlConnection c = con.GetConnection()) {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlSelectPatient, c))
+                    {
+                        c.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        List<patientDTO> list = new List<patientDTO>();
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("patient_id");
+                            String name = reader.GetString("Name");
+                            DateTime date_of_birth = reader.GetDateTime("date_of_birth");
+                            String contact_number = reader.GetString("contact_number");
+                            list.Add(new patientDTO
+                            {   
+                                PatientId = id.ToString()
+                                ,
+                                Name = name
+                                ,
+                                DateOfBirth = date_of_birth
+                                ,
+                                ContactNumber = contact_number
+                            });
+                        }
+                        MessageBox.Show("Rows read: " + list.Count);
+                        return list;
+                    }
+
                 }
-                MessageBox.Show("Rows read: " + list.Count);
-                return list;
             }
             catch (Exception ex)
             {
