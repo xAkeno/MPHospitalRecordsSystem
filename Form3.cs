@@ -27,14 +27,15 @@ namespace MPHospitalRecordsSystem
         private void button1_Click(object sender, EventArgs e)
         {
             String name = nameIn.Text;
-            String date_of_birth = datebirthIn.Text;
+            //String date_of_birth = datebirthIn.Text;
+            String dtps = dtp1.Value.ToString("yyyy-MM-dd");
             String contact_number = contactnumberIn.Text;
 
-            if(name.Equals("") || date_of_birth.Equals("") || contact_number.Equals(""))
+            if(name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
             {
                 MessageBox.Show("Please complete all the list that say here?\n"
                     + (name.Equals("") ? "Fill the name\n" : "")
-                    + (date_of_birth.Equals("") ? "Fill the date of birth\n" : "")
+                    + (dtps.Equals("") ? "Fill the date of birth\n" : "")
                     + (contact_number.Equals("") ? "Fill the contact number" : "")
                 );
 
@@ -42,7 +43,7 @@ namespace MPHospitalRecordsSystem
             else
             {
                 patient p = new patient();
-                p.add_patient(name, date_of_birth, contact_number);
+                p.add_patient(name, dtps, contact_number);
             }
             loadPatients();
         }
@@ -75,6 +76,36 @@ namespace MPHospitalRecordsSystem
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPatients.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvPatients.SelectedRows[0];
+
+                string id = row.Cells["PatientId"].Value.ToString();
+                string name = row.Cells["Name"].Value.ToString();
+                string dob = row.Cells["DateOfBirth"].Value.ToString();
+                string contact = row.Cells["ContactNumber"].Value.ToString();
+
+                nameIn.Text = name;
+                dtp1.Value = DateTime.Parse(dob);
+                contactnumberIn.Text = contact;
+
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
+            }
         }
     }
 }
