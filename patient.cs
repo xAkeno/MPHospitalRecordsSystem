@@ -184,6 +184,23 @@ namespace MPHospitalRecordsSystem
 
             return false;
         }
+
+        public String get_next_id() {
+
+            String sqlNextId = "SELECT MAX(patient_id) from patients ";
+            using (MySqlConnection c = con.GetConnection()) {
+                using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c)) {
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    int nextId = (result != DBNull.Value) ? Convert.ToInt32(result) + 1 : 0;
+
+                    return Convert.ToString(nextId);
+                }
+            }
+
+            return null;
+        }
         public void update_patient(String name, String date_of_birth, String contact_number, int id)
         {
             String sqlUpdatePatient = "UPDATE patients SET Name=@Name, date_of_birth=@date_of_birth, contact_number=@contact_number WHERE patient_id=@patient_id";

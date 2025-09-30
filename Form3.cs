@@ -16,12 +16,17 @@ namespace MPHospitalRecordsSystem
         {
             InitializeComponent();
             loadPatients();
+            getNextId();
         }
 
         public void loadPatients()
         {
             patient p = new patient();
             dgvPatients.DataSource = p.read_patient();
+        }
+        public void getNextId() {
+            patient p = new patient();
+            idlbl.Text = p.get_next_id();
         }
         private void button1_Click(object sender, EventArgs e)
         {
