@@ -125,6 +125,7 @@ namespace MPHospitalRecordsSystem
             this.txtpword.Margin = new System.Windows.Forms.Padding(2);
             this.txtpword.Multiline = true;
             this.txtpword.Name = "txtpword";
+            this.txtpword.PasswordChar = '*';
             this.txtpword.Size = new System.Drawing.Size(284, 33);
             this.txtpword.TabIndex = 6;
             this.txtpword.TextChanged += new System.EventHandler(this.txtpword_TextChanged);
