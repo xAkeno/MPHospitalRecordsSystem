@@ -191,7 +191,29 @@ namespace MPHospitalRecordsSystem
 
         private void button9_Click(object sender, EventArgs e)
         {
+            bool onSelect = false;
+            label13.Visible = onSelect;
+            label14.Visible = onSelect;
+            label14.Visible = onSelect;
+            label15.Visible = onSelect;
+            label16.Visible = onSelect;
+            label17.Visible = onSelect;
+            label18.Visible = onSelect;
+            label19.Visible = onSelect;
+            label20.Visible = onSelect;
+            label21.Visible = onSelect;
+            label22.Visible = onSelect;
 
+            textBox4.Visible = onSelect;
+            textBox5.Visible = onSelect;
+            textBox6.Visible = onSelect;
+            textBox7.Visible = onSelect;
+            textBox8.Visible = onSelect;
+            textBox9.Visible = onSelect;
+            textBox10.Visible = onSelect;
+            textBox11.Visible = onSelect;
+            textBox12.Visible = onSelect;
+            textBox13.Visible = onSelect;
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
@@ -478,6 +500,31 @@ namespace MPHospitalRecordsSystem
 
         private void dgvVisits_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            bool onSelect = true;
+            label13.Visible = onSelect;
+            label14.Visible = onSelect;
+            label14.Visible = onSelect;
+            label15.Visible = onSelect;
+            label16.Visible = onSelect;
+            label17.Visible = onSelect;
+            label18.Visible = onSelect;
+            label19.Visible = onSelect;
+            label20.Visible = onSelect;
+            label21.Visible = onSelect;
+            label22.Visible = onSelect;
+
+            textBox4.Visible = onSelect;
+            textBox5.Visible = onSelect;
+            textBox6.Visible = onSelect;
+            textBox7.Visible = onSelect;
+            textBox8.Visible = onSelect;
+            textBox9.Visible = onSelect;
+            textBox10.Visible = onSelect;
+            textBox11.Visible = onSelect;
+            textBox12.Visible = onSelect;
+            textBox13.Visible = onSelect;
+
+
             if (dgvDoctors.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvDoctors.SelectedRows[0];
@@ -500,6 +547,11 @@ namespace MPHospitalRecordsSystem
             {
                 MessageBox.Show("⚠ Please select a row first.");
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

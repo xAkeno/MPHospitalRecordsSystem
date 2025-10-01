@@ -80,6 +80,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.contactnumberIn = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -107,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(303, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(667, 447);
+            this.tabControl1.Size = new System.Drawing.Size(1001, 595);
             this.tabControl1.TabIndex = 3;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected_1);
             // 
@@ -123,7 +143,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(659, 410);
+            this.tabPage1.Size = new System.Drawing.Size(993, 558);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "patient";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -157,7 +177,7 @@
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(619, 4);
+            this.button3.Location = new System.Drawing.Point(954, 5);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(33, 28);
@@ -167,7 +187,7 @@
             // 
             // searchbox
             // 
-            this.searchbox.Location = new System.Drawing.Point(364, 6);
+            this.searchbox.Location = new System.Drawing.Point(699, 5);
             this.searchbox.Margin = new System.Windows.Forms.Padding(2);
             this.searchbox.Name = "searchbox";
             this.searchbox.Size = new System.Drawing.Size(252, 29);
@@ -202,9 +222,9 @@
             // 
             this.dgvPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatients.Location = new System.Drawing.Point(6, 47);
+            this.dgvPatients.Location = new System.Drawing.Point(3, 40);
             this.dgvPatients.Name = "dgvPatients";
-            this.dgvPatients.Size = new System.Drawing.Size(648, 376);
+            this.dgvPatients.Size = new System.Drawing.Size(985, 513);
             this.dgvPatients.TabIndex = 0;
             this.dgvPatients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellClick);
             this.dgvPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellContentClick);
@@ -221,7 +241,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(659, 410);
+            this.tabPage2.Size = new System.Drawing.Size(993, 558);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "doctor";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -256,7 +276,7 @@
             this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.Location = new System.Drawing.Point(622, 3);
+            this.button7.Location = new System.Drawing.Point(955, 5);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(33, 28);
@@ -266,7 +286,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(367, 5);
+            this.textBox6.Location = new System.Drawing.Point(700, 5);
             this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(252, 29);
@@ -300,10 +320,10 @@
             // 
             this.dgvDoctors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctors.Location = new System.Drawing.Point(4, 38);
+            this.dgvDoctors.Location = new System.Drawing.Point(7, 38);
             this.dgvDoctors.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDoctors.Name = "dgvDoctors";
-            this.dgvDoctors.Size = new System.Drawing.Size(648, 376);
+            this.dgvDoctors.Size = new System.Drawing.Size(982, 515);
             this.dgvDoctors.TabIndex = 1;
             this.dgvDoctors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDoctors_CellClick);
             this.dgvDoctors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -319,7 +339,7 @@
             this.tabPage3.Controls.Add(this.dgvVisits);
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(659, 410);
+            this.tabPage3.Size = new System.Drawing.Size(993, 558);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "visitors";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -352,7 +372,7 @@
             this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button10.Location = new System.Drawing.Point(620, 6);
+            this.button10.Location = new System.Drawing.Point(957, 8);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(33, 28);
@@ -362,7 +382,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(364, 9);
+            this.textBox2.Location = new System.Drawing.Point(701, 7);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(252, 29);
@@ -397,12 +417,32 @@
             this.dgvVisits.Location = new System.Drawing.Point(4, 38);
             this.dgvVisits.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVisits.Name = "dgvVisits";
-            this.dgvVisits.Size = new System.Drawing.Size(648, 376);
+            this.dgvVisits.Size = new System.Drawing.Size(986, 515);
             this.dgvVisits.TabIndex = 1;
             this.dgvVisits.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVisits_CellClick);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.textBox13);
+            this.panel1.Controls.Add(this.textBox12);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.textBox11);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.cbPatients);
             this.panel1.Controls.Add(this.cbDoctors);
             this.panel1.Controls.Add(this.dtpvisit);
@@ -429,24 +469,25 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(4, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(293, 363);
+            this.panel1.Size = new System.Drawing.Size(293, 589);
             this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // cbPatients
             // 
             this.cbPatients.FormattingEnabled = true;
-            this.cbPatients.Location = new System.Drawing.Point(9, 55);
+            this.cbPatients.Location = new System.Drawing.Point(8, 55);
             this.cbPatients.Name = "cbPatients";
-            this.cbPatients.Size = new System.Drawing.Size(202, 21);
+            this.cbPatients.Size = new System.Drawing.Size(282, 21);
             this.cbPatients.TabIndex = 27;
             this.cbPatients.Visible = false;
             // 
             // cbDoctors
             // 
             this.cbDoctors.FormattingEnabled = true;
-            this.cbDoctors.Location = new System.Drawing.Point(9, 105);
+            this.cbDoctors.Location = new System.Drawing.Point(7, 106);
             this.cbDoctors.Name = "cbDoctors";
-            this.cbDoctors.Size = new System.Drawing.Size(203, 21);
+            this.cbDoctors.Size = new System.Drawing.Size(281, 21);
             this.cbDoctors.TabIndex = 26;
             this.cbDoctors.Visible = false;
             // 
@@ -454,7 +495,7 @@
             // 
             this.dtpvisit.Location = new System.Drawing.Point(8, 156);
             this.dtpvisit.Name = "dtpvisit";
-            this.dtpvisit.Size = new System.Drawing.Size(200, 20);
+            this.dtpvisit.Size = new System.Drawing.Size(280, 20);
             this.dtpvisit.TabIndex = 25;
             this.dtpvisit.Visible = false;
             // 
@@ -487,7 +528,7 @@
             this.cbspecial.Location = new System.Drawing.Point(8, 105);
             this.cbspecial.Margin = new System.Windows.Forms.Padding(2);
             this.cbspecial.Name = "cbspecial";
-            this.cbspecial.Size = new System.Drawing.Size(205, 21);
+            this.cbspecial.Size = new System.Drawing.Size(282, 21);
             this.cbspecial.TabIndex = 14;
             this.cbspecial.Tag = "";
             this.cbspecial.Text = "Cardiology";
@@ -510,7 +551,7 @@
             this.tb13.Margin = new System.Windows.Forms.Padding(2);
             this.tb13.Multiline = true;
             this.tb13.Name = "tb13";
-            this.tb13.Size = new System.Drawing.Size(206, 28);
+            this.tb13.Size = new System.Drawing.Size(281, 28);
             this.tb13.TabIndex = 23;
             this.tb13.Visible = false;
             // 
@@ -556,14 +597,14 @@
             this.dtp1.Margin = new System.Windows.Forms.Padding(2);
             this.dtp1.MinDate = new System.DateTime(1895, 1, 1, 0, 0, 0, 0);
             this.dtp1.Name = "dtp1";
-            this.dtp1.Size = new System.Drawing.Size(206, 20);
+            this.dtp1.Size = new System.Drawing.Size(284, 20);
             this.dtp1.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(78, 363);
+            this.label4.Location = new System.Drawing.Point(96, 565);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 20);
@@ -576,7 +617,7 @@
             this.tb12.Margin = new System.Windows.Forms.Padding(2);
             this.tb12.Multiline = true;
             this.tb12.Name = "tb12";
-            this.tb12.Size = new System.Drawing.Size(206, 28);
+            this.tb12.Size = new System.Drawing.Size(283, 28);
             this.tb12.TabIndex = 21;
             this.tb12.Visible = false;
             // 
@@ -640,11 +681,11 @@
             // 
             // doctorNameIn
             // 
-            this.doctorNameIn.Location = new System.Drawing.Point(8, 51);
+            this.doctorNameIn.Location = new System.Drawing.Point(9, 51);
             this.doctorNameIn.Margin = new System.Windows.Forms.Padding(2);
             this.doctorNameIn.Multiline = true;
             this.doctorNameIn.Name = "doctorNameIn";
-            this.doctorNameIn.Size = new System.Drawing.Size(206, 28);
+            this.doctorNameIn.Size = new System.Drawing.Size(282, 28);
             this.doctorNameIn.TabIndex = 10;
             this.doctorNameIn.Visible = false;
             // 
@@ -664,7 +705,7 @@
             this.nameIn.Margin = new System.Windows.Forms.Padding(2);
             this.nameIn.Multiline = true;
             this.nameIn.Name = "nameIn";
-            this.nameIn.Size = new System.Drawing.Size(206, 28);
+            this.nameIn.Size = new System.Drawing.Size(285, 28);
             this.nameIn.TabIndex = 0;
             this.nameIn.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -686,7 +727,7 @@
             this.contactnumberIn.Margin = new System.Windows.Forms.Padding(2);
             this.contactnumberIn.Multiline = true;
             this.contactnumberIn.Name = "contactnumberIn";
-            this.contactnumberIn.Size = new System.Drawing.Size(206, 28);
+            this.contactnumberIn.Size = new System.Drawing.Size(284, 28);
             this.contactnumberIn.TabIndex = 4;
             // 
             // label3
@@ -700,11 +741,231 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Patient contact number";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(4, 32);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 18);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Patient Id";
+            this.label13.Visible = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(7, 48);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(281, 28);
+            this.textBox3.TabIndex = 28;
+            this.textBox3.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 86);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 18);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Patient Name";
+            this.label14.Visible = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(6, 102);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(281, 28);
+            this.textBox4.TabIndex = 30;
+            this.textBox4.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 135);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(155, 18);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Patient date of birth";
+            this.label15.Visible = false;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(6, 151);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(281, 28);
+            this.textBox5.TabIndex = 32;
+            this.textBox5.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(5, 187);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(182, 18);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "Patient contact number";
+            this.label16.Visible = false;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(8, 203);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(281, 28);
+            this.textBox7.TabIndex = 34;
+            this.textBox7.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 239);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 18);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "Doctor Id";
+            this.label17.Visible = false;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(6, 255);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(281, 28);
+            this.textBox8.TabIndex = 36;
+            this.textBox8.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 287);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(106, 18);
+            this.label18.TabIndex = 39;
+            this.label18.Text = "Doctor name";
+            this.label18.Visible = false;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(6, 303);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox9.Multiline = true;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(281, 28);
+            this.textBox9.TabIndex = 38;
+            this.textBox9.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 335);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(133, 18);
+            this.label19.TabIndex = 41;
+            this.label19.Text = "Doctor Specialty";
+            this.label19.Visible = false;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(6, 351);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(281, 28);
+            this.textBox10.TabIndex = 40;
+            this.textBox10.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(5, 385);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(84, 18);
+            this.label20.TabIndex = 43;
+            this.label20.Text = "Treatment";
+            this.label20.Visible = false;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(8, 401);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox11.Multiline = true;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(281, 28);
+            this.textBox11.TabIndex = 42;
+            this.textBox11.Visible = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(4, 440);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(70, 18);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "Diagnos";
+            this.label21.Visible = false;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(7, 456);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(281, 28);
+            this.textBox12.TabIndex = 44;
+            this.textBox12.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(6, 486);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(84, 18);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "Treatment";
+            this.label22.Visible = false;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(7, 506);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(281, 28);
+            this.textBox13.TabIndex = 46;
+            this.textBox13.Visible = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 459);
+            this.ClientSize = new System.Drawing.Size(1308, 686);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl1);
@@ -780,5 +1041,25 @@
         private System.Windows.Forms.DateTimePicker dtpvisit;
         private System.Windows.Forms.ComboBox cbPatients;
         private System.Windows.Forms.ComboBox cbDoctors;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

@@ -8,11 +8,16 @@ namespace MPHospitalRecordsSystem
 {
     internal class visitsDTO
     {
-        public int VisitId { get; set; }           // Primary key, auto-increment
-        public int? PatientId { get; set; }        // Nullable, indexed
-        public int? DoctorId { get; set; }         // Nullable, indexed
-        public DateTime DateOfVisit { get; set; }  // Not nullable
-        public string Diagnosis { get; set; }      // Not nullable
+        public int VisitId { get; set; }           
+        public int? PatientId { get; set; }        
+        public String PatientName { get; set; }
+        public String dateOfBirth { get; set; }
+        public String ContactNumber { get; set; }
+        public int? DoctorId { get; set; }    
+        public String DoctorName { get; set; }
+        public String Specialty { get; set; }
+        public DateTime DateOfVisit { get; set; }  
+        public string Diagnosis { get; set; }      
         public string Treatment { get; set; }
     }
 }

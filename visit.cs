@@ -200,20 +200,58 @@ namespace MPHospitalRecordsSystem
                             String Diagnosis = reader.GetString("Diagnosis");
                             String Treatment = reader.GetString("Treatment");
 
-                            list.Add(new visitsDTO
+                            visitsDTO dto = new visitsDTO();
+
+                            // Get patient details
+                            using (MySqlConnection c2 = con.GetConnection())
                             {
-                                VisitId = id
-                                ,
-                                PatientId = patient_id
-                                ,
-                                DoctorId = doctor_id
-                                ,
-                                DateOfVisit = date_of_visit
-                                ,
-                                Diagnosis = Diagnosis
-                                ,
-                                Treatment = Treatment
-                            });
+                                String sqlGetPatientName = "SELECT * FROM patients WHERE patient_id=@patient_id";
+                                c2.Open();
+                                using (MySqlCommand cmd2 = new MySqlCommand(sqlGetPatientName, c2))
+                                {
+                                    cmd2.Parameters.AddWithValue("@patient_id", patient_id);
+                                    MySqlDataReader patientReader = cmd2.ExecuteReader();
+
+                                    while (patientReader.Read())
+                                    {
+
+                                        if (patientReader.HasRows)
+                                        {
+                                            dto.PatientName = patientReader.GetString("Name");
+                                            dto.dateOfBirth = patientReader.GetDateTime("Date_of_Birth").ToString("yyyy-MM-dd");
+                                            dto.ContactNumber = patientReader.GetString("Contact_Number");
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Get doctor details
+                            using (MySqlConnection c3 = con.GetConnection()) {
+                                c3.Open();
+                                String sqlGetDoctorName = "SELECT * FROM doctors WHERE doctor_id=@doctor_id";
+                                using (MySqlCommand cmd3 = new MySqlCommand(sqlGetDoctorName, c3))
+                                {
+                                    cmd3.Parameters.AddWithValue("@doctor_id", doctor_id);
+                                    MySqlDataReader doctorReader = cmd3.ExecuteReader();
+                                    while (doctorReader.Read())
+                                    {
+                                        if (doctorReader.HasRows)
+                                        {
+                                            dto.DoctorName = doctorReader.GetString("Name");
+                                            dto.Specialty = doctorReader.GetString("Specialty");
+                                        }
+                                    }
+                                }
+                            }
+
+                            dto.DoctorId = doctor_id;
+                            dto.PatientId = patient_id;
+                            dto.VisitId = id;
+                            dto.DateOfVisit = date_of_visit;
+                            dto.Diagnosis = Diagnosis;
+                            dto.Treatment = Treatment;
+
+                            list.Add(dto);
                         }
                         return list;
                     }
