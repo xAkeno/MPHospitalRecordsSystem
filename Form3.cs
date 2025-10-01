@@ -536,7 +536,6 @@ namespace MPHospitalRecordsSystem
             textBox3.Visible = onSelect;
             textBox4.Visible = onSelect;
             textBox5.Visible = onSelect;
-            textBox6.Visible = onSelect;
             textBox7.Visible = onSelect;
             textBox8.Visible = onSelect;
             textBox9.Visible = onSelect;
@@ -650,6 +649,18 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show("Please select a visit first");
             }
             loadVisits();
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            this.Hide();
         }
     }
 }
