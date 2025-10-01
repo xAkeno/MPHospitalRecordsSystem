@@ -266,11 +266,31 @@ namespace MPHospitalRecordsSystem
             label10.Visible = showVisits;
             label11.Visible = showVisits;
             label12.Visible = showVisits;
-            tb10.Visible = showVisits;
-            textBox1.Visible = showVisits;
-            textBox3.Visible = showVisits;
-            textBox4.Visible = showVisits;
-            textBox5.Visible = showVisits;
+            dtpvisit.Visible = showVisits;
+            tb12.Visible = showVisits;
+            tb13.Visible = showVisits;
+            cbDoctors.Visible = showVisits;
+            cbPatients.Visible = showVisits;
+            if (showVisits)
+            {
+                visit v = new visit();
+                List<patientDTO> patients = v.getAllPatient();
+                List<doctorDTO> doctors = v.getAllDoctors();
+
+                foreach( patientDTO p in patients)
+                {
+                    String data = p.PatientId + " - " + p.Name;
+                    cbPatients.Items.Add(data);
+                }
+                foreach (doctorDTO d in doctors)
+                {
+                    String data = d.DoctorId + " - " + d.DoctorName;
+                    cbDoctors.Items.Add(data);
+                }
+                //loadVisits();
+                //getNextIdVisit();
+            }
+
 
             if (showPatients)
                 label5.Text = "Patient Id:";
@@ -395,7 +415,7 @@ namespace MPHospitalRecordsSystem
 
         private void button7_Click(object sender, EventArgs e)
         {
-            String search = searchbox2.Text;
+            String search = textBox6.Text;
             
 
             if (search.Equals(""))
@@ -408,6 +428,28 @@ namespace MPHospitalRecordsSystem
                 doctor d = new doctor();
                 dgvDoctors.DataSource = d.search_doctor(search);
             }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            String DoctorName = cbDoctors.SelectedItem.ToString();
+            String PatientName = cbPatients.SelectedItem.ToString();
+            String visitDate = dtpvisit.Value.ToString("yyyy-MM-dd");
+            String diagnosis = tb12.Text;
+            String treatment = tb13.Text;
+
+            if (DoctorName == null || PatientName == null || diagnosis.Equals("") || treatment.Equals(""))
+            {
+                MessageBox.Show("Please answer all the required fields listed here\n"
+                    + (DoctorName == null ? "- Select a doctor\n" : "")
+                    + (PatientName == null ? "- Select a patient \n" : "")
+                    + (diagnosis.Equals("") ? "- Enter in a diagnosis\n" : "")
+                    + (treatment.Equals("") ? "- Enter in a treatment\n" : "")
+                );
+                return;
+            }
+            visit v = new visit();
+
         }
     }
 }
