@@ -8,7 +8,7 @@ namespace MPHospitalRecordsSystem
 {
     internal class doctorDTO
     {
-        public string DoctorId { get; set; }
+        public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string Specialty { get; set; }
     }

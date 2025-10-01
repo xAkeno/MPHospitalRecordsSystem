@@ -135,7 +135,7 @@ namespace MPHospitalRecordsSystem
                             String specialty = reader.GetString("Specialty");
                             list.Add(new doctorDTO
                             {
-                                DoctorId = id.ToString()
+                                DoctorId = id
                                 ,
                                 DoctorName = name
                                 ,
@@ -275,7 +275,7 @@ namespace MPHospitalRecordsSystem
                             String specialty = reader.GetString("Specialty");
                             list.Add(new doctorDTO
                             {
-                                DoctorId = id.ToString()
+                                DoctorId = id
                                 ,
                                 DoctorName = name
                                 ,

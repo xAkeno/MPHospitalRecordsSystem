@@ -102,7 +102,7 @@ namespace MPHospitalRecordsSystem
                             String contact_number = reader.GetString("contact_number");
                             list.Add(new patientDTO
                             {   
-                                PatientId = id.ToString()
+                                PatientId = id
                                 ,
                                 Name = name
                                 ,
@@ -142,7 +142,7 @@ namespace MPHospitalRecordsSystem
                             String contact_number = reader.GetString("contact_number");
                             list.Add(new patientDTO
                             {
-                                PatientId = id.ToString()
+                                PatientId = id
                                 ,
                                 Name = name
                                 ,

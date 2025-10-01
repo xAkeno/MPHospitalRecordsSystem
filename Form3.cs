@@ -40,6 +40,18 @@ namespace MPHospitalRecordsSystem
             doctor d = new doctor();
             idlbl.Text = d.get_next_id();
         }
+
+        public void loadVisits()
+        {
+            visit v = new visit();
+            dgvVisits.DataSource = v.read_visits();
+        }
+        
+        public void getNextIdVisit()
+        {
+            visit v = new visit();
+            idlbl.Text = v.get_next_id();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(idlbl.Text);
@@ -277,18 +289,30 @@ namespace MPHospitalRecordsSystem
                 List<patientDTO> patients = v.getAllPatient();
                 List<doctorDTO> doctors = v.getAllDoctors();
 
-                foreach( patientDTO p in patients)
+                foreach (patientDTO p in patients)
                 {
-                    String data = p.PatientId + " - " + p.Name;
-                    cbPatients.Items.Add(data);
+                    string display = string.Format("{0,-30} | {1}", "Name: " + p.Name, "ID: " + p.PatientId);
+                    cbPatients.Items.Add(new KeyValuePair<int, string>(p.PatientId, display));
                 }
+                cbPatients.DisplayMember = "Value"; // what user sees
+                cbPatients.ValueMember = "Key";     // actual PatientId
+                if (cbPatients.Items.Count > 0)
+                    cbPatients.SelectedIndex = 0;
+
+                // Populate Doctors ComboBox
                 foreach (doctorDTO d in doctors)
                 {
-                    String data = d.DoctorId + " - " + d.DoctorName;
-                    cbDoctors.Items.Add(data);
+                    string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
+                    cbDoctors.Items.Add(new KeyValuePair<int, string>(d.DoctorId, display));
                 }
-                //loadVisits();
-                //getNextIdVisit();
+                cbDoctors.DisplayMember = "Value"; // what user sees
+                cbDoctors.ValueMember = "Key";
+
+                if (cbDoctors.Items.Count > 0) 
+                    cbDoctors.SelectedIndex = 0;
+                
+                loadVisits();
+                getNextIdVisit();
             }
 
 
@@ -432,24 +456,50 @@ namespace MPHospitalRecordsSystem
 
         private void button12_Click(object sender, EventArgs e)
         {
-            String DoctorName = cbDoctors.SelectedItem.ToString();
-            String PatientName = cbPatients.SelectedItem.ToString();
+            int selectedDoctorId = ((KeyValuePair<int, string>)cbDoctors.SelectedItem).Key;
+            int selectedPatientId = ((KeyValuePair<int, string>)cbPatients.SelectedItem).Key;
             String visitDate = dtpvisit.Value.ToString("yyyy-MM-dd");
             String diagnosis = tb12.Text;
             String treatment = tb13.Text;
 
-            if (DoctorName == null || PatientName == null || diagnosis.Equals("") || treatment.Equals(""))
+            if (selectedDoctorId == 0 || selectedPatientId == 0 || diagnosis.Equals("") || treatment.Equals(""))
             {
                 MessageBox.Show("Please answer all the required fields listed here\n"
-                    + (DoctorName == null ? "- Select a doctor\n" : "")
-                    + (PatientName == null ? "- Select a patient \n" : "")
+                    + (selectedPatientId == 0 ? "- Select a doctor\n" : "")
+                    + (selectedDoctorId == 0 ? "- Select a patient \n" : "")
                     + (diagnosis.Equals("") ? "- Enter in a diagnosis\n" : "")
                     + (treatment.Equals("") ? "- Enter in a treatment\n" : "")
                 );
                 return;
             }
             visit v = new visit();
+            v.AddVisit(selectedPatientId, selectedDoctorId, visitDate, diagnosis, treatment);
+        }
 
+        private void dgvVisits_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDoctors.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvDoctors.SelectedRows[0];
+
+
+                string id = row.Cells["DoctorId"].Value.ToString();
+                string name = row.Cells["DoctorName"].Value.ToString();
+                string special = row.Cells["Specialty"].Value.ToString();
+
+
+                idlbl.Text = id;
+                doctorNameIn.Text = name;
+                cbspecial.SelectedItem = special;
+
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
+            }
         }
     }
 }

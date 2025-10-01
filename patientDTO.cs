@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MPHospitalRecordsSystem
 {
     internal class patientDTO{   
-        public string PatientId { get; set; }     
+        public int PatientId { get; set; }     
         public string Name { get; set; }         
         public DateTime DateOfBirth { get; set; }
         public string ContactNumber { get; set; }

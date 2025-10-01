@@ -399,6 +399,7 @@
             this.dgvVisits.Name = "dgvVisits";
             this.dgvVisits.Size = new System.Drawing.Size(648, 376);
             this.dgvVisits.TabIndex = 1;
+            this.dgvVisits.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVisits_CellClick);
             // 
             // panel1
             // 

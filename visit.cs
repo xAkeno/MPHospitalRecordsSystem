@@ -93,7 +93,7 @@ namespace MPHospitalRecordsSystem
                             String contact = reader.GetString("Contact_Number");
                             list.Add(new patientDTO
                             {
-                                PatientId = id.ToString()
+                                PatientId = id
                                 ,
                                 Name = name
                                 ,
@@ -131,7 +131,7 @@ namespace MPHospitalRecordsSystem
                             String specialty = reader.GetString("Specialty");
                             list.Add(new doctorDTO
                             {
-                                DoctorId = id.ToString()
+                                DoctorId = id
                                 ,
                                 DoctorName = name
                                 ,
@@ -179,9 +179,9 @@ namespace MPHospitalRecordsSystem
 
             return false;
         }
-        public List<doctorDTO> read_doctors()
+        public List<visitsDTO> read_visits()
         {
-            String sqlSelectPatient = "SELECT * FROM doctors";
+            String sqlSelectPatient = "SELECT * FROM visits";
             try
             {
                 using (MySqlConnection c = con.GetConnection())
@@ -190,19 +190,29 @@ namespace MPHospitalRecordsSystem
                     {
                         c.Open();
                         MySqlDataReader reader = cmd.ExecuteReader();
-                        List<doctorDTO> list = new List<doctorDTO>();
+                        List<visitsDTO> list = new List<visitsDTO>();
                         while (reader.Read())
                         {
-                            int id = reader.GetInt32("doctor_id");
-                            String name = reader.GetString("Name");
-                            String specialty = reader.GetString("Specialty");
-                            list.Add(new doctorDTO
+                            int id = reader.GetInt32("visit_id");
+                            int patient_id = reader.GetInt32("patient_id");
+                            int doctor_id = reader.GetInt32("doctor_id");
+                            DateTime date_of_visit = reader.GetDateTime("date_of_visit");
+                            String Diagnosis = reader.GetString("Diagnosis");
+                            String Treatment = reader.GetString("Treatment");
+
+                            list.Add(new visitsDTO
                             {
-                                DoctorId = id.ToString()
+                                VisitId = id
                                 ,
-                                DoctorName = name
+                                PatientId = patient_id
                                 ,
-                                Specialty = specialty
+                                DoctorId = doctor_id
+                                ,
+                                DateOfVisit = date_of_visit
+                                ,
+                                Diagnosis = Diagnosis
+                                ,
+                                Treatment = Treatment
                             });
                         }
                         return list;
@@ -250,8 +260,8 @@ namespace MPHospitalRecordsSystem
         public String get_next_id()
         {
 
-            String sqlNextId = "SELECT MAX(doctor_id) from doctors ";
-            using (MySqlConnection c = con.GetConnection())
+            String sqlNextId = "SELECT MAX(visit_id) from visits ";
+            using (MySqlConnection c = con.GetConnection()) 
             {
                 using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c))
                 {
@@ -338,7 +348,7 @@ namespace MPHospitalRecordsSystem
                             String specialty = reader.GetString("Specialty");
                             list.Add(new doctorDTO
                             {
-                                DoctorId = id.ToString()
+                                DoctorId = id
                                 ,
                                 DoctorName = name
                                 ,
