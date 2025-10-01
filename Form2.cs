@@ -151,5 +151,9 @@ namespace MPHospitalRecordsSystem
             }
         }
 
+        private void topbanner_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
