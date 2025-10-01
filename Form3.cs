@@ -31,7 +31,6 @@ namespace MPHospitalRecordsSystem
         }
         private void button1_Click(object sender, EventArgs e)
         {
-           validations();
             int id = Convert.ToInt32(idlbl.Text);
             String name = nameIn.Text;
             String dtps = dtp1.Value.ToString("yyyy-MM-dd");
@@ -39,7 +38,7 @@ namespace MPHospitalRecordsSystem
 
             patient p = new patient();
 
-            if (!p.check_if_info_is_already_registred(id, name))
+            if (!p.check_if_info_is_already_registred(id, name) && validations())
             {
                 p.add_patient(name, dtps, contact_number);                  
             }
@@ -131,11 +130,11 @@ namespace MPHospitalRecordsSystem
             int id = Convert.ToInt32(idlbl.Text);
             String dtps = dtp1.Value.ToString("yyyy-MM-dd");
             String contact_number = contactnumberIn.Text;
-           
-            validations();
 
             patient p = new patient();
-            p.update_patient(name, dtps, contact_number, id);
+            if (!validations()) {
+                p.update_patient(name, dtps, contact_number, id);
+            }
             
             loadPatients();
         }
@@ -184,7 +183,7 @@ namespace MPHospitalRecordsSystem
         {
 
         }
-        private void validations()
+        private bool validations()
         {
             int id = Convert.ToInt32(idlbl.Text);
             String name = nameIn.Text;
@@ -197,26 +196,26 @@ namespace MPHospitalRecordsSystem
 
             if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
             {
-                MessageBox.Show("please answer all the required fields lister here?\n"
-                    + (name.Equals("") ? "enter in a name\n" : "")
-                    + (dtps.Equals("") ? "enter in a birthday \n" : "")
-                    + (contact_number.Equals("") ? "enter in a valid contact number" : "")
+                MessageBox.Show("Please answer all the required fields listed here\n"
+                    + (name.Equals("") ? "- Enter in a name\n" : "")
+                    + (dtps.Equals("") ? "- Enter in a birthday \n" : "")
+                    + (contact_number.Equals("") ? "- Enter in a valid contact number" : "")
                 );
-
+                return true;
             }
             else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || contact_number.Length != 11 || contact_number[0] != '0' || contact_number[1] != '9' || dt1 == null)
             {
-                MessageBox.Show("please answer all the required fields listed here?\n"
-                     + (name.Any(Char.IsDigit) ? "enter in a name\n" : " ")
-                     + (dt1 < dt2 ? "please enter a valid date \n" : " ")
-                     + (dt1 == null ? "please enter a valid date \n" : " ")
-                     + (!contact_number.Any(Char.IsDigit) ? "enter in a valid contact number \n" : " ")
-                     + (contact_number[0] != '0' || contact_number[1] != '9' ? " contact number must begin with 09 \n" : " ")
-                     + (contact_number.Length != 11 ? "numbers length must be exacty 11 digits" : "")
+                MessageBox.Show("Please answer all the required fields listed here\n"
+                     + (name.Any(Char.IsDigit) ? "- Enter in a name\n" : " ")
+                     + (dt1 < dt2 ? "- Please enter a valid date \n" : " ")
+                     + (dt1 == null ? "- Please enter a valid date \n" : " ")
+                     + (!contact_number.Any(Char.IsDigit) ? "- Enter in a valid contact number \n" : " ")
+                     + (contact_number[0] != '0' || contact_number[1] != '9' ? "- Contact number must begin with 09 \n" : " ")
+                     + (contact_number.Length != 11 ? "- Numbers length must be exacty 11 digits" : "")
                  );
+                return true;
             }
-           
-           
+            return false;
         }
 
         private void tabControl1_Selected_1(object sender, TabControlEventArgs e)

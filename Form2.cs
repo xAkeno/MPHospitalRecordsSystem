@@ -45,6 +45,12 @@ namespace MPHospitalRecordsSystem
         {
             string user = txtUname.Text;
             connection con = new connection();
+
+            if(user.Length < 5)
+            {
+                MessageBox.Show("Username must be at least 5 characters long");
+                return;
+            }
             using (MySqlConnection conn = con.GetConnection())
             {
                 conn.Open();
@@ -77,6 +83,11 @@ namespace MPHospitalRecordsSystem
         {
             string pass = txtpword.Text;
             string user = txtUname.Text;
+            if (user.Length < 5)
+            {
+                MessageBox.Show("Username must be at least 5 characters long");
+                return;
+            }
             connection con = new connection();
             using (MySqlConnection conn = con.GetConnection())
             {

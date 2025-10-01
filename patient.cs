@@ -31,11 +31,11 @@ namespace MPHospitalRecordsSystem
 
             if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals(""))
             {
-                MessageBox.Show(
-                    "Please answer all the required form listed here ?\n"
-                    + (string.IsNullOrWhiteSpace(name) ? "enter a name\n" : "")
-                    + (string.IsNullOrWhiteSpace(date_of_birth) ? "enter a birthday\n" : "")
-                );
+                //MessageBox.Show(
+                //    "Please answer all the required form listed here ?\n"
+                //    + (string.IsNullOrWhiteSpace(name) ? "enter a name\n" : "")
+                //    + (string.IsNullOrWhiteSpace(date_of_birth) ? "enter a birthday\n" : "")
+                //);
                 check = false;
             }
 
