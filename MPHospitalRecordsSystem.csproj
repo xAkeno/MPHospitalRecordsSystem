@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="connection.cs" />
     <Compile Include="doctor.cs" />
+    <Compile Include="doctorDTO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

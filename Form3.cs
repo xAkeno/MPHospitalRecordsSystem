@@ -25,7 +25,8 @@ namespace MPHospitalRecordsSystem
             patient p = new patient();
             dgvPatients.DataSource = p.read_patient();
         }
-        public void getNextId() {
+        public void getNextId()
+        {
             patient p = new patient();
             idlbl.Text = p.get_next_id();
         }
@@ -40,7 +41,7 @@ namespace MPHospitalRecordsSystem
 
             if (!p.check_if_info_is_already_registred(id, name) && validations())
             {
-                p.add_patient(name, dtps, contact_number);                  
+                p.add_patient(name, dtps, contact_number);
             }
             else
             {
@@ -54,7 +55,7 @@ namespace MPHospitalRecordsSystem
         {
             String search = searchbox.Text;
 
-            if(search.Equals(""))
+            if (search.Equals(""))
             {
                 MessageBox.Show("Please enter a name or id to search.");
                 loadPatients();
@@ -132,10 +133,11 @@ namespace MPHospitalRecordsSystem
             String contact_number = contactnumberIn.Text;
 
             patient p = new patient();
-            if (!validations()) {
+            if (!validations())
+            {
                 p.update_patient(name, dtps, contact_number, id);
             }
-            
+
             loadPatients();
         }
 
@@ -171,7 +173,7 @@ namespace MPHospitalRecordsSystem
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            
+
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -272,6 +274,31 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show("Please select a patient first");
             }
             loadPatients();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            String name = doctorNameIn.Text;
+            String specialty = cbspecial.SelectedItem.ToString();
+            if (specialty == null)
+            {
+                MessageBox.Show("Please select a specialty");
+                return;
+            }
+            if (name == null)
+            {
+                MessageBox.Show("Please enter a name");
+                return;
+            }
+            doctor d = new doctor();
+            if (d.check_if_info_is_already_registred(0,name))
+            {
+                d.AddDoctor(name, specialty);
+            }
+            else
+            {
+                MessageBox.Show("Doctor is already taken");
+            }
         }
     }
 }
