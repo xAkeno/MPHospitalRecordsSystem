@@ -76,7 +76,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.searchbox2 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -213,7 +213,7 @@
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.button7);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.searchbox2);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.button14);
             this.tabPage2.Controls.Add(this.dgvDoctors);
@@ -631,6 +631,7 @@
             this.button5.Size = new System.Drawing.Size(33, 28);
             this.button5.TabIndex = 12;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -642,6 +643,7 @@
             this.button6.Size = new System.Drawing.Size(33, 28);
             this.button6.TabIndex = 11;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -654,14 +656,15 @@
             this.button7.Size = new System.Drawing.Size(33, 28);
             this.button7.TabIndex = 10;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // textBox6
+            // searchbox2
             // 
-            this.textBox6.Location = new System.Drawing.Point(367, 5);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(252, 29);
-            this.textBox6.TabIndex = 9;
+            this.searchbox2.Location = new System.Drawing.Point(367, 5);
+            this.searchbox2.Margin = new System.Windows.Forms.Padding(2);
+            this.searchbox2.Name = "searchbox2";
+            this.searchbox2.Size = new System.Drawing.Size(252, 29);
+            this.searchbox2.TabIndex = 9;
             // 
             // button8
             // 
@@ -763,7 +766,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox searchbox2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button14;
     }

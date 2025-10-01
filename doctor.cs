@@ -184,29 +184,25 @@ namespace MPHospitalRecordsSystem
                 Console.WriteLine(ex.Message);
             }
         }
-        /*public static DataTable GetAllDoctors()
+        public String get_next_id()
         {
-            try
+
+            String sqlNextId = "SELECT MAX(doctor_id) from doctors ";
+            using (MySqlConnection c = con.GetConnection())
             {
-                connection db = new connection();
-                using (MySqlConnection conn = db.GetConnection())
+                using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c))
                 {
-                    conn.Open();
-                    string query = "SELECT * FROM doctors";
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        return dt;
-                    }
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    int nextId = (result != DBNull.Value) ? Convert.ToInt32(result) + 1 : 0;
+
+                    return Convert.ToString(nextId);
                 }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error while fetching doctors: " + ex.Message);
-            }
-        }*/
 
+            return null;
+        }
         public void UpdateDoctor()
         {
             try
@@ -231,27 +227,70 @@ namespace MPHospitalRecordsSystem
             }
         }
 
-        public void DeleteDoctor()
+        public void DeleteDoctor(int doctor_id)
         {
+            String sqlDeletePatient = "DELETE FROM doctors WHERE doctor_id=@doctor_id";
+            using (MySqlConnection c = con.GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
+                {
+                    cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+                    try
+                    {
+                        c.Open();
+                        int row = 0;
+                        row = cmd.ExecuteNonQuery();
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully deleted!");
+                        }
+                        else MessageBox.Show("Patient is already taken");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+        public List<doctorDTO> search_doctor(String search)
+        {
+            String sqlSearchPatient = "SELECT * FROM doctors WHERE Name LIKE @Name OR Specialty LIKE @Special OR doctor_id LIKE @id";
             try
             {
-                connection db = new connection();
-                using (MySqlConnection conn = db.GetConnection())
+                using (MySqlConnection c = con.GetConnection())
                 {
-                    conn.Open();
-                    string query = "DELETE FROM doctors WHERE doctor_id=@id";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    using (MySqlCommand cmd = new MySqlCommand(sqlSearchPatient, c))
                     {
-                        cmd.Parameters.AddWithValue("@id", DoctorId);
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Name", "%" + search + "%");
+                        cmd.Parameters.AddWithValue("@Special", "%" + search + "%");
+                        cmd.Parameters.AddWithValue("@id", "%" + search + "%");
+                        c.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        List<doctorDTO> list = new List<doctorDTO>();
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32("doctor_id");
+                            String name = reader.GetString("Name");
+                            String specialty = reader.GetString("Specialty");
+                            list.Add(new doctorDTO
+                            {
+                                DoctorId = id.ToString()
+                                ,
+                                DoctorName = name
+                                ,
+                                Specialty = specialty
+                            });
+                        }
+                        return list;
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error while deleting doctor: " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
+            return null;
         }
-
     }
 }

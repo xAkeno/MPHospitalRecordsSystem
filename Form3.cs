@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,10 @@ namespace MPHospitalRecordsSystem
         {
             patient p = new patient();
             idlbl.Text = p.get_next_id();
+        }
+        public void getNextIdDoctor() {
+            doctor d = new doctor();
+            idlbl.Text = d.get_next_id();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -199,6 +204,10 @@ namespace MPHospitalRecordsSystem
             DateTime dt1 = DateTime.Parse(dtps);
             DateTime dt2 = DateTime.Parse("01/01/1920");
 
+            String nameD = doctorNameIn.Text;
+            int idD = Convert.ToInt32(idlbl.Text);
+            String specialD = cbspecial.SelectedItem.ToString();
+
 
 
             if (name.Equals("") || dtps.Equals("") || contact_number.Equals(""))
@@ -248,6 +257,7 @@ namespace MPHospitalRecordsSystem
             label6.Visible = showDoctors;
             if (showDoctors) {
                 loadDoctors();
+                getNextIdDoctor();
             }
 
             bool showVisits = e.TabPage.Text.Equals("visitors");
@@ -291,6 +301,7 @@ namespace MPHospitalRecordsSystem
         {
             String name = doctorNameIn.Text;
             String specialty = cbspecial.SelectedItem.ToString();
+            int id = Convert.ToInt32(idlbl.Text);
             if (specialty == null)
             {
                 MessageBox.Show("Please select a specialty");
@@ -302,7 +313,7 @@ namespace MPHospitalRecordsSystem
                 return;
             }
             doctor d = new doctor();
-            if (d.check_if_info_is_already_registred(0,name))
+            if (!d.check_if_info_is_already_registred(id,name))
             {
                 d.AddDoctor(name, specialty);
             }
@@ -310,11 +321,25 @@ namespace MPHospitalRecordsSystem
             {
                 MessageBox.Show("Doctor is already taken");
             }
+            loadDoctors();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            String name = doctorNameIn.Text;
+            int id = Convert.ToInt32(idlbl.Text);
+            String special = cbspecial.Text;
 
+            doctor d = new doctor();
+            if (name.Equals(""))
+            {
+                MessageBox.Show("Please answer all the required fields listed here\n"
+                    + (name.Equals("") ? "- Enter a name\n" : "")
+                );
+                return;
+            }
+            d.update_doctor(name, id,special);
+            loadDoctors();
         }
 
         private void dgvDoctors_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -340,6 +365,48 @@ namespace MPHospitalRecordsSystem
             else
             {
                 MessageBox.Show("⚠ Please select a row first.");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (!idlbl.Text.Equals(""))
+            {
+                int id = Convert.ToInt32(idlbl.Text);
+                doctor d = new doctor();
+                d.DeleteDoctor(id);
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient first");
+            }
+            loadDoctors();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            doctor d = new doctor();
+            doctorNameIn.Text = "";
+            idlbl.Text = d.get_next_id();
+            cbspecial.Items.Clear();
+            dgvPatients.ClearSelection();
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            String search = searchbox2.Text;
+            
+
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadDoctors();
+            }
+            else
+            {
+                doctor d = new doctor();
+                dgvDoctors.DataSource = d.search_doctor(search);
             }
         }
     }
