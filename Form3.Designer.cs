@@ -755,6 +755,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(7, 48);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
@@ -777,6 +778,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(6, 102);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Multiline = true;
@@ -799,6 +801,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(6, 151);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Multiline = true;
@@ -806,6 +809,7 @@
             this.textBox5.Size = new System.Drawing.Size(281, 28);
             this.textBox5.TabIndex = 32;
             this.textBox5.Visible = false;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label16
             // 
@@ -821,6 +825,7 @@
             // 
             // textBox7
             // 
+            this.textBox7.Enabled = false;
             this.textBox7.Location = new System.Drawing.Point(8, 203);
             this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Multiline = true;
@@ -843,6 +848,7 @@
             // 
             // textBox8
             // 
+            this.textBox8.Enabled = false;
             this.textBox8.Location = new System.Drawing.Point(6, 255);
             this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Multiline = true;
@@ -865,6 +871,7 @@
             // 
             // textBox9
             // 
+            this.textBox9.Enabled = false;
             this.textBox9.Location = new System.Drawing.Point(6, 303);
             this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Multiline = true;
@@ -887,6 +894,7 @@
             // 
             // textBox10
             // 
+            this.textBox10.Enabled = false;
             this.textBox10.Location = new System.Drawing.Point(6, 351);
             this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Multiline = true;
@@ -902,13 +910,14 @@
             this.label20.Location = new System.Drawing.Point(5, 385);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(84, 18);
+            this.label20.Size = new System.Drawing.Size(98, 18);
             this.label20.TabIndex = 43;
-            this.label20.Text = "Treatment";
+            this.label20.Text = "Date of visit";
             this.label20.Visible = false;
             // 
             // textBox11
             // 
+            this.textBox11.Enabled = false;
             this.textBox11.Location = new System.Drawing.Point(8, 401);
             this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Multiline = true;

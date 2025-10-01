@@ -214,6 +214,19 @@ namespace MPHospitalRecordsSystem
             textBox11.Visible = onSelect;
             textBox12.Visible = onSelect;
             textBox13.Visible = onSelect;
+
+            label8.Visible = !onSelect;
+            label9.Visible = !onSelect;
+            label10.Visible = !onSelect;
+            label11.Visible = !onSelect;
+            label12.Visible = !onSelect;
+            dtpvisit.Visible = !onSelect;
+            tb12.Visible = !onSelect;
+            tb13.Visible =  !onSelect;
+            cbDoctors.Visible = !onSelect;
+            cbPatients.Visible = !onSelect;
+
+
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
@@ -282,6 +295,7 @@ namespace MPHospitalRecordsSystem
             if (showPatients) {
                 loadPatients();
                 getNextId();
+                showFill(false);
             }
 
             bool showDoctors = e.TabPage.Text.Equals("doctor");
@@ -292,21 +306,15 @@ namespace MPHospitalRecordsSystem
             if (showDoctors) {
                 loadDoctors();
                 getNextIdDoctor();
+                showFill(false);
             }
 
             bool showVisits = e.TabPage.Text.Equals("visitors");
-            label8.Visible = showVisits;
-            label9.Visible = showVisits;
-            label10.Visible = showVisits;
-            label11.Visible = showVisits;
-            label12.Visible = showVisits;
-            dtpvisit.Visible = showVisits;
-            tb12.Visible = showVisits;
-            tb13.Visible = showVisits;
-            cbDoctors.Visible = showVisits;
-            cbPatients.Visible = showVisits;
+            
             if (showVisits)
             {
+                showFill(false);
+                showFill2(true);
                 visit v = new visit();
                 List<patientDTO> patients = v.getAllPatient();
                 List<doctorDTO> doctors = v.getAllDoctors();
@@ -498,9 +506,8 @@ namespace MPHospitalRecordsSystem
             v.AddVisit(selectedPatientId, selectedDoctorId, visitDate, diagnosis, treatment);
         }
 
-        private void dgvVisits_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            bool onSelect = true;
+        public void showFill(bool x) {
+            bool onSelect = x;
             label13.Visible = onSelect;
             label14.Visible = onSelect;
             label14.Visible = onSelect;
@@ -513,6 +520,7 @@ namespace MPHospitalRecordsSystem
             label21.Visible = onSelect;
             label22.Visible = onSelect;
 
+            textBox3.Visible = onSelect;
             textBox4.Visible = onSelect;
             textBox5.Visible = onSelect;
             textBox6.Visible = onSelect;
@@ -524,32 +532,70 @@ namespace MPHospitalRecordsSystem
             textBox12.Visible = onSelect;
             textBox13.Visible = onSelect;
 
+        }
+        public void showFill2(bool onSelect) {
+            label8.Visible = onSelect;
+            label9.Visible = onSelect;
+            label10.Visible = onSelect;
+            label11.Visible = onSelect;
+            label12.Visible = onSelect;
+            dtpvisit.Visible = onSelect;
+            tb12.Visible = onSelect;
+            tb13.Visible = onSelect;
+            cbDoctors.Visible = onSelect;
+            cbPatients.Visible = onSelect;
 
-            if (dgvDoctors.SelectedRows.Count > 0)
+
+            cbDoctors.Visible = onSelect;
+            cbPatients.Visible = onSelect;
+            dtpvisit.Visible = onSelect;
+            label11.Visible = onSelect;
+            tb13.Visible = onSelect;
+            cbDoctors.Visible = onSelect;
+            cbPatients.Visible = onSelect;
+            dtpvisit.Visible = onSelect;
+        }
+
+        private void dgvVisits_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            showFill(true);
+            showFill2(false);
+            if (dgvVisits.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dgvDoctors.SelectedRows[0];
+                DataGridViewRow row = dgvVisits.SelectedRows[0];
+                string visitId = row.Cells["VisitId"].Value.ToString();
+                string patientId = row.Cells["PatientId"].Value.ToString();
+                string patientName = row.Cells["PatientName"].Value.ToString();
+                string dateOfBirth = row.Cells["DateOfBirth"].Value.ToString();
+                string contactNo = row.Cells["ContactNumber"].Value.ToString();
+                string doctorId = row.Cells["DoctorId"].Value.ToString();
+                string doctorName = row.Cells["DoctorName"].Value.ToString();
+                string specialty = row.Cells["Specialty"].Value.ToString();
+                string dateOfVisit = row.Cells["DateOfVisit"].Value.ToString();
+                string diagnosis = row.Cells["Diagnosis"].Value.ToString();
+                string treatment = row.Cells["Treatment"].Value.ToString();
 
 
-                string id = row.Cells["DoctorId"].Value.ToString();
-                string name = row.Cells["DoctorName"].Value.ToString();
-                string special = row.Cells["Specialty"].Value.ToString();
-
-
-                idlbl.Text = id;
-                doctorNameIn.Text = name;
-                cbspecial.SelectedItem = special;
-
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
-            }
-            else
-            {
-                MessageBox.Show("⚠ Please select a row first.");
+                idlbl.Text = visitId;
+                textBox3.Text = patientId;
+                textBox4.Text = patientName;
+                textBox5.Text = dateOfBirth;
+                textBox7.Text = contactNo;
+                textBox8.Text = doctorId;
+                textBox9.Text = doctorName;
+                textBox10.Text = specialty;
+                textBox11.Text = dateOfVisit;
+                textBox12.Text = diagnosis;
+                textBox13.Text = treatment;
             }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
