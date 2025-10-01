@@ -127,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(303, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1001, 595);
+            this.tabControl1.Size = new System.Drawing.Size(1001, 669);
             this.tabControl1.TabIndex = 3;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected_1);
             // 
@@ -339,7 +339,7 @@
             this.tabPage3.Controls.Add(this.dgvVisits);
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(993, 558);
+            this.tabPage3.Size = new System.Drawing.Size(993, 632);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "visitors";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -354,6 +354,7 @@
             this.button15.Size = new System.Drawing.Size(33, 28);
             this.button15.TabIndex = 11;
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button9
             // 
@@ -398,6 +399,7 @@
             this.button11.Size = new System.Drawing.Size(33, 28);
             this.button11.TabIndex = 7;
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -417,7 +419,7 @@
             this.dgvVisits.Location = new System.Drawing.Point(4, 38);
             this.dgvVisits.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVisits.Name = "dgvVisits";
-            this.dgvVisits.Size = new System.Drawing.Size(986, 515);
+            this.dgvVisits.Size = new System.Drawing.Size(986, 592);
             this.dgvVisits.TabIndex = 1;
             this.dgvVisits.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVisits_CellClick);
             // 
@@ -573,9 +575,9 @@
             this.label7.Location = new System.Drawing.Point(5, 87);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 18);
+            this.label7.Size = new System.Drawing.Size(80, 18);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Doctors";
+            this.label7.Text = "Speciality";
             this.label7.Visible = false;
             // 
             // label10
@@ -604,7 +606,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(96, 565);
+            this.label4.Location = new System.Drawing.Point(96, 550);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 20);
@@ -625,13 +627,14 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 35);
+            this.label6.Location = new System.Drawing.Point(7, 35);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 18);
+            this.label6.Size = new System.Drawing.Size(106, 18);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Patients";
+            this.label6.Text = "Doctor name";
             this.label6.Visible = false;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label9
             // 
@@ -745,7 +748,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(4, 32);
+            this.label13.Location = new System.Drawing.Point(10, 34);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 18);
@@ -768,7 +771,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(3, 86);
+            this.label14.Location = new System.Drawing.Point(10, 87);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(109, 18);

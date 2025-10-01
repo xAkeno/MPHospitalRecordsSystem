@@ -186,7 +186,17 @@ namespace MPHospitalRecordsSystem
 
         private void button10_Click(object sender, EventArgs e)
         {
-
+            String search = textBox2.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadVisits();
+            }
+            else
+            {
+                visit v = new visit();
+                dgvVisits.DataSource = v.search_visit(search);
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -226,7 +236,7 @@ namespace MPHospitalRecordsSystem
             cbDoctors.Visible = !onSelect;
             cbPatients.Visible = !onSelect;
 
-
+            loadVisits();
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
@@ -296,6 +306,7 @@ namespace MPHospitalRecordsSystem
                 loadPatients();
                 getNextId();
                 showFill(false);
+                showFill2(false);
             }
 
             bool showDoctors = e.TabPage.Text.Equals("doctor");
@@ -307,6 +318,7 @@ namespace MPHospitalRecordsSystem
                 loadDoctors();
                 getNextIdDoctor();
                 showFill(false);
+                showFill2(false);
             }
 
             bool showVisits = e.TabPage.Text.Equals("visitors");
@@ -504,6 +516,7 @@ namespace MPHospitalRecordsSystem
             }
             visit v = new visit();
             v.AddVisit(selectedPatientId, selectedDoctorId, visitDate, diagnosis, treatment);
+            loadVisits();
         }
 
         public void showFill(bool x) {
@@ -598,6 +611,45 @@ namespace MPHospitalRecordsSystem
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            String diagnosis = textBox12.Text;
+            String treatment = textBox13.Text;
+            String id = idlbl.Text;
+
+            if (diagnosis.Equals("") || treatment.Equals(""))
+            {
+                MessageBox.Show("Please answer all the required fields listed here\n"
+                    + (diagnosis.Equals("") ? "- Enter in a diagnosis\n" : "")
+                    + (treatment.Equals("") ? "- Enter in a treatment\n" : "")
+                );
+                return;
+            }
+            visit v = new visit();
+            v.update_visits(diagnosis, treatment, Convert.ToInt32(id));
+            loadVisits();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            String id = idlbl.Text;
+            if (!id.Equals(""))
+            {
+                visit v = new visit();
+                v.DeleteVisit(Convert.ToInt32(id));
+            }
+            else
+            {
+                MessageBox.Show("Please select a visit first");
+            }
+            loadVisits();
         }
     }
 }

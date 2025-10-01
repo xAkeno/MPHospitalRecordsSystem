@@ -148,10 +148,10 @@ namespace MPHospitalRecordsSystem
             }
             return null;
         }
-        public bool check_if_info_is_already_registred(int id, String name)
+        public bool check_if_info_is_already_registred(String treatment, String diagnosis)
         {
-            String sqlCheck = "SELECT * FROM doctors WHERE doctor_id=@id OR Name=@Name";
-            if (id == 0 && name.Equals(""))
+            String sqlCheck = "SELECT * FROM visits WHERE Treatment=@treatment OR Diagnosis=@diagnosis";
+            if (treatment.Equals("") && diagnosis.Equals(""))
             {
                 return false;
             }
@@ -161,8 +161,8 @@ namespace MPHospitalRecordsSystem
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sqlCheck, c))
                     {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@treament", treatment);
+                        cmd.Parameters.AddWithValue("@diagnosis", diagnosis);
 
                         c.Open();
 
@@ -264,19 +264,19 @@ namespace MPHospitalRecordsSystem
             }
             return null;
         }
-        public void update_doctor(String name, int id, String special)
+        public void update_visits(String treatment,String diagnosis,int id)
         {
-            String sqlUpdatePatient = "UPDATE doctors SET Name=@Name, Specialty=@Specialty WHERE doctor_id=@doctor_id";
+            String sqlUpdateVisit = "UPDATE visits SET Treatment=@Treatment, Diagnosis=@diagnosis WHERE visit_id=@visit_id";
             try
             {
                 using (MySqlConnection c = con.GetConnection())
                 {
 
-                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdatePatient, c))
+                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdateVisit, c))
                     {
-                        cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@doctor_id", id);
-                        cmd.Parameters.AddWithValue("@Specialty", special);
+                        cmd.Parameters.AddWithValue("@Treatment", treatment);
+                        cmd.Parameters.AddWithValue("@diagnosis", diagnosis);
+                        cmd.Parameters.AddWithValue("@visit_id", id);
 
                         c.Open();
                         int row = cmd.ExecuteNonQuery();
@@ -285,7 +285,7 @@ namespace MPHospitalRecordsSystem
                         {
                             MessageBox.Show("Successfully updated!");
                         }
-                        else MessageBox.Show("Patient is already taken");
+                        else MessageBox.Show("visit is already taken");
                     }
                 }
             }
@@ -338,14 +338,14 @@ namespace MPHospitalRecordsSystem
         //    }
         //}
 
-        public void DeleteDoctor(int doctor_id)
+        public void DeleteVisit(int visit_id)
         {
-            String sqlDeletePatient = "DELETE FROM doctors WHERE doctor_id=@doctor_id";
+            String sqlDeleteVisit = "DELETE FROM visits WHERE visit_id=@visit_id";
             using (MySqlConnection c = con.GetConnection())
             {
-                using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
+                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteVisit, c))
                 {
-                    cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+                    cmd.Parameters.AddWithValue("@visit_id", visit_id);
                     try
                     {
                         c.Open();
@@ -364,34 +364,54 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
-        public List<doctorDTO> search_doctor(String search)
+        public List<visitsDTO> search_visit(String search)
         {
-            String sqlSearchPatient = "SELECT * FROM doctors WHERE Name LIKE @Name OR Specialty LIKE @Special OR doctor_id LIKE @id";
+            string sql = @"
+                SELECT v.visit_id, v.patient_id, v.doctor_id, v.date_of_visit, 
+                       v.Diagnosis, v.Treatment,
+                       p.Name AS PatientName, p.Date_of_Birth, p.Contact_Number,
+                       d.Name AS DoctorName, d.Specialty
+                FROM visits v
+                JOIN patients p ON v.patient_id = p.patient_id
+                JOIN doctors d ON v.doctor_id = d.doctor_id
+                WHERE v.visit_id LIKE @keyword
+                   OR v.patient_id LIKE @keyword
+                   OR v.doctor_id LIKE @keyword
+                   OR v.Diagnosis LIKE @keyword
+                   OR v.Treatment LIKE @keyword
+                   OR p.Name LIKE @keyword
+                   OR d.Name LIKE @keyword
+                   OR d.Specialty LIKE @keyword";
+
             try
             {
                 using (MySqlConnection c = con.GetConnection())
                 {
-                    using (MySqlCommand cmd = new MySqlCommand(sqlSearchPatient, c))
+                    using (MySqlCommand cmd = new MySqlCommand(sql, c))
                     {
-                        cmd.Parameters.AddWithValue("@Name", "%" + search + "%");
-                        cmd.Parameters.AddWithValue("@Special", "%" + search + "%");
-                        cmd.Parameters.AddWithValue("@id", "%" + search + "%");
+                        string keyword = "%" + search + "%";
+                        cmd.Parameters.AddWithValue("@keyword", keyword);
                         c.Open();
                         MySqlDataReader reader = cmd.ExecuteReader();
-                        List<doctorDTO> list = new List<doctorDTO>();
+                        List<visitsDTO> list = new List<visitsDTO>();
                         while (reader.Read())
                         {
-                            int id = reader.GetInt32("doctor_id");
-                            String name = reader.GetString("Name");
-                            String specialty = reader.GetString("Specialty");
-                            list.Add(new doctorDTO
+                            visitsDTO dto = new visitsDTO
                             {
-                                DoctorId = id
-                                ,
-                                DoctorName = name
-                                ,
-                                Specialty = specialty
-                            });
+                                VisitId = reader.GetInt32("visit_id"),
+                                PatientId = reader.GetInt32("patient_id"),
+                                DoctorId = reader.GetInt32("doctor_id"),
+                                DateOfVisit = reader.GetDateTime("date_of_visit"),
+                                Diagnosis = reader.GetString("Diagnosis"),
+                                Treatment = reader.GetString("Treatment"),
+                                PatientName = reader.GetString("PatientName"),
+                                dateOfBirth = reader.GetDateTime("Date_of_Birth").ToString("yyyy-MM-dd"),
+                                ContactNumber = reader.GetString("Contact_Number"),
+                                DoctorName = reader.GetString("DoctorName"),
+                                Specialty = reader.GetString("Specialty")
+                            };
+
+                            list.Add(dto);
                         }
                         return list;
                     }
