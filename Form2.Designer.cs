@@ -188,7 +188,7 @@ namespace MPHospitalRecordsSystem
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "SignIn form";
             this.ResumeLayout(false);
             this.PerformLayout();
 

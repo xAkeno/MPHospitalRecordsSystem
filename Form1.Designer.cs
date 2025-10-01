@@ -169,7 +169,7 @@ namespace MPHospitalRecordsSystem
             this.Controls.Add(this.txtUName);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login form";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -388,12 +388,12 @@ namespace MPHospitalRecordsSystem
             String name = doctorNameIn.Text;
             String specialty = cbspecial.SelectedItem.ToString();
             int id = Convert.ToInt32(idlbl.Text);
-            if (specialty == null)
+            if (specialty.Equals(""))
             {
                 MessageBox.Show("Please select a specialty");
                 return;
             }
-            if (name == null)
+            if (name.Equals(""))
             {
                 MessageBox.Show("Please enter a name");
                 return;
