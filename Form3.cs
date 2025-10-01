@@ -229,7 +229,7 @@ namespace MPHospitalRecordsSystem
                     + (dtps.Equals("") ? "- Enter in a birthday \n" : "")
                     + (contact_number.Equals("") ? "- Enter in a valid contact number" : "")
                 );
-                return true;
+                return false;
             }
             else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || contact_number.Length != 11 || contact_number[0] != '0' || contact_number[1] != '9' || dt1 == null)
             {
@@ -241,9 +241,9 @@ namespace MPHospitalRecordsSystem
                      + (contact_number[0] != '0' || contact_number[1] != '9' ? "- Contact number must begin with 09 \n" : " ")
                      + (contact_number.Length != 11 ? "- Numbers length must be exacty 11 digits" : "")
                  );
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         private void tabControl1_Selected_1(object sender, TabControlEventArgs e)
