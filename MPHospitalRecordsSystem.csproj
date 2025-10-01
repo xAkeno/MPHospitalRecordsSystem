@@ -158,6 +158,12 @@
     <Compile Include="patientDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RoundedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="visit.cs" />
     <Compile Include="visitsDTO.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -194,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\add.png" />
+    <Content Include="assets\baccf562-8f23-46bb-bfeb-7b8197abfb8e.jpg" />
     <Content Include="assets\delete.png" />
     <Content Include="assets\edit-text.png" />
     <Content Include="assets\editing.png" />
