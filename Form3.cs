@@ -25,6 +25,11 @@ namespace MPHospitalRecordsSystem
             patient p = new patient();
             dgvPatients.DataSource = p.read_patient();
         }
+        public void loadDoctors()
+        {
+            doctor d = new doctor();
+            dgvDoctors.DataSource = d.read_doctors();
+        }   
         public void getNextId()
         {
             patient p = new patient();
@@ -222,22 +227,28 @@ namespace MPHospitalRecordsSystem
 
         private void tabControl1_Selected_1(object sender, TabControlEventArgs e)
         {
-            MessageBox.Show(e.TabPage.Text);
+            //MessageBox.Show(e.TabPage.Text);
             bool showPatients = e.TabPage.Text.Equals("patient");
             label1.Visible = showPatients;
-            idlbl.Visible = showPatients;
             label2.Visible = showPatients;
             nameIn.Visible = showPatients;
             label3.Visible = showPatients;
             dtp1.Visible = showPatients;
             label4.Visible = showPatients;
             contactnumberIn.Visible = showPatients;
+            if (showPatients) {
+                loadPatients();
+                getNextId();
+            }
 
             bool showDoctors = e.TabPage.Text.Equals("doctor");
             cbspecial.Visible = showDoctors;
             doctorNameIn.Visible = showDoctors;
             label7.Visible = showDoctors;
             label6.Visible = showDoctors;
+            if (showDoctors) {
+                loadDoctors();
+            }
 
             bool showVisits = e.TabPage.Text.Equals("visitors");
             label8.Visible = showVisits;
@@ -298,6 +309,37 @@ namespace MPHospitalRecordsSystem
             else
             {
                 MessageBox.Show("Doctor is already taken");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvDoctors_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDoctors.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvDoctors.SelectedRows[0];
+
+
+                string id = row.Cells["DoctorId"].Value.ToString();
+                string name = row.Cells["DoctorName"].Value.ToString();
+                string special = row.Cells["Specialty"].Value.ToString();
+
+
+                idlbl.Text = id;
+                doctorNameIn.Text = name;
+                cbspecial.SelectedItem = special;
+
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
             }
         }
     }

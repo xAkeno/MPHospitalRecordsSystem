@@ -87,7 +87,7 @@ namespace MPHospitalRecordsSystem
         }
         public bool check_if_info_is_already_registred(int id, String name)
         {
-            String sqlCheck = "SELECT * FROM doctors WHERE patient_id=@id OR Name=@Name";
+            String sqlCheck = "SELECT * FROM doctors WHERE doctor_id=@id OR Name=@Name";
             if (id == 0 && name.Equals(""))
             {
                 return false;
@@ -116,7 +116,7 @@ namespace MPHospitalRecordsSystem
 
             return false;
         }
-        public List<doctorDTO> read_patient()
+        public List<doctorDTO> read_doctors()
         {
             String sqlSelectPatient = "SELECT * FROM doctors";
             try
@@ -130,7 +130,7 @@ namespace MPHospitalRecordsSystem
                         List<doctorDTO> list = new List<doctorDTO>();
                         while (reader.Read())
                         {
-                            int id = reader.GetInt32("patient_id");
+                            int id = reader.GetInt32("doctor_id");
                             String name = reader.GetString("Name");
                             String specialty = reader.GetString("Specialty");
                             list.Add(new doctorDTO
@@ -152,6 +152,37 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show(ex.Message);
             }
             return null;
+        }
+        public void update_doctor(String name, int id,String special)
+        {
+            String sqlUpdatePatient = "UPDATE doctors SET Name=@Name, Specialty=@Specialty WHERE doctor_id=@doctor_id";
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+
+                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdatePatient, c))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@doctor_id", id);
+                        cmd.Parameters.AddWithValue("@Specialty", special);
+
+                        c.Open();
+                        int row = cmd.ExecuteNonQuery();
+
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully updated!");
+                        }
+                        else MessageBox.Show("Patient is already taken");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
         }
         /*public static DataTable GetAllDoctors()
         {
