@@ -355,7 +355,6 @@ namespace MPHospitalRecordsSystem
                         {
                             MessageBox.Show("Successfully deleted!");
                         }
-                        else MessageBox.Show("Patient is already taken");
                     }
                     catch (Exception ex)
                     {
