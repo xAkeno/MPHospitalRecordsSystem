@@ -225,7 +225,7 @@ namespace MPHospitalRecordsSystem
                         {
                             MessageBox.Show("Successfully updated!");
                         }
-                        else MessageBox.Show("Patient is already taken");
+                       // else MessageBox.Show("Patient is already taken");
                     }
                 }
             }

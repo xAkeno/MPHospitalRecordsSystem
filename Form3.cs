@@ -155,7 +155,7 @@ namespace MPHospitalRecordsSystem
             String contact_number = contactnumberIn.Text;
 
             patient p = new patient();
-            if (!validations())
+            if (validations())
             {
                 p.update_patient(name, dtps, contact_number, id);
             }
@@ -260,6 +260,8 @@ namespace MPHospitalRecordsSystem
             String contact_number = contactnumberIn.Text;
             DateTime dt1 = DateTime.Parse(dtps);
             DateTime dt2 = DateTime.Parse("01/01/1920");
+            DateTime dt3 = DateTime.Now;
+
 
             String nameD = doctorNameIn.Text;
             int idD = Convert.ToInt32(idlbl.Text);
@@ -276,12 +278,13 @@ namespace MPHospitalRecordsSystem
                 );
                 return false;
             }
-            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || contact_number.Length != 11 || contact_number[0] != '0' || contact_number[1] != '9' || dt1 == null)
+            else if (!contact_number.Any(Char.IsDigit) || name.Any(Char.IsDigit) || dt1 < dt2 || dt1 > dt3|| contact_number.Length != 11 || contact_number[0] != '0' || contact_number[1] != '9' || dt1 == null)
             {
                 MessageBox.Show("Please answer all the required fields listed here\n"
                      + (name.Any(Char.IsDigit) ? "- Enter in a name\n" : " ")
                      + (dt1 < dt2 ? "- Please enter a valid date \n" : " ")
                      + (dt1 == null ? "- Please enter a valid date \n" : " ")
+                     + (dt1 > dt3 ? "- Please enter a valid date \n" : " ")
                      + (!contact_number.Any(Char.IsDigit) ? "- Enter in a valid contact number \n" : " ")
                      + (contact_number[0] != '0' || contact_number[1] != '9' ? "- Contact number must begin with 09 \n" : " ")
                      + (contact_number.Length != 11 ? "- Numbers length must be exacty 11 digits" : "")
