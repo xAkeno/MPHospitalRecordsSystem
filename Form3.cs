@@ -727,7 +727,7 @@ namespace MPHospitalRecordsSystem
         private void button20_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Feature coming soon!"); 
-            MessageBox.Show("Feature coming soon!");    
+            MessageBox.Show("Feature coming soons!");    
         }
     }
 }
