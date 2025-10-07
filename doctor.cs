@@ -21,7 +21,7 @@ namespace MPHospitalRecordsSystem
         
         }
 
-       
+
         public doctor(string doctorId, string name, string specialty)
         {
             DoctorId = doctorId;
@@ -75,6 +75,7 @@ namespace MPHospitalRecordsSystem
                             {
                                 MessageBox.Show("Insert failed.");
                             }
+                            
                         }
                     }
                     catch (Exception ex)
@@ -230,10 +231,25 @@ namespace MPHospitalRecordsSystem
         public void DeleteDoctor(int doctor_id)
         {
             String sqlDeletePatient = "DELETE FROM doctors WHERE doctor_id=@doctor_id";
+            String checkVisits = "SELECT * FROM vISITS where doctor_id = @doctor_id";
             using (MySqlConnection c = con.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
+                    using (MySqlCommand visitCheck = new MySqlCommand(checkVisits, c))
+                    {
+                        visitCheck.Parameters.AddWithValue("@doctor_id", doctor_id);
+                        c.Open();
+                        MySqlDataReader reader = visitCheck.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("Doctor has existing records and cannot be deleted");
+                            return;
+                        }
+                        reader.Close();
+                        c.Close();
+                    }
+
                     cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     try
                     {
@@ -251,6 +267,7 @@ namespace MPHospitalRecordsSystem
                         MessageBox.Show(ex.Message);
                     }
                 }
+               
             }
         }
         public List<doctorDTO> search_doctor(String search)

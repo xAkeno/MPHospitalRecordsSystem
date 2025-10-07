@@ -23,21 +23,21 @@ namespace MPHospitalRecordsSystem
         public void add_patient(String name,String date_of_birth,String contact_number)
         {
             bool check = true;
-            if (name.Equals("") && date_of_birth.Equals("") && contact_number.Equals(""))
-            {
-                MessageBox.Show("Please answer all the forms");
-                check = false;
-            }
+            //if (name.Equals("") && date_of_birth.Equals("") && contact_number.Equals(""))
+            //{
+            //    MessageBox.Show("Please answer all the forms");
+            //    check = false;
+            //}
 
-            if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals(""))
-            {
-                //MessageBox.Show(
-                //    "Please answer all the required form listed here ?\n"
-                //    + (string.IsNullOrWhiteSpace(name) ? "enter a name\n" : "")
-                //    + (string.IsNullOrWhiteSpace(date_of_birth) ? "enter a birthday\n" : "")
-                //);
-                check = false;
-            }
+            //if (name.Equals("") || date_of_birth.Equals("") || contact_number.Equals(""))
+            //{
+            //    //MessageBox.Show(
+            //    //    "Please answer all the required form listed here ?\n"
+            //    //    + (string.IsNullOrWhiteSpace(name) ? "enter a name\n" : "")
+            //    //    + (string.IsNullOrWhiteSpace(date_of_birth) ? "enter a birthday\n" : "")
+            //    //);
+            //    check = false;
+            //}
 
             if (check)
             {
@@ -240,9 +240,23 @@ namespace MPHospitalRecordsSystem
         public void delete_patient(int patient_id)
         {
             String sqlDeletePatient = "DELETE FROM patients WHERE patient_id=@patient_id";
+            String findVisits = "SELECT * FROM visits WHERE patient_id=@patient_id";
             using (MySqlConnection c = con.GetConnection()) {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
+                    using (MySqlCommand checkVisits = new MySqlCommand(findVisits, c))
+                    {
+                        checkVisits.Parameters.AddWithValue("@patient_id", patient_id);
+                        c.Open();
+                        MySqlDataReader reader = checkVisits.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("Cannot delete patient with existing visits.");
+                            return;
+                        }
+                        reader.Close();
+                        c.Close();
+                    }
                     cmd.Parameters.AddWithValue("@patient_id", patient_id);
                     try
                     {
@@ -260,6 +274,8 @@ namespace MPHospitalRecordsSystem
                         MessageBox.Show(ex.Message);
                     }
                 }
+
+                
             }
         }
     }
