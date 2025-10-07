@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace MPHospitalRecordsSystem
             InitializeComponent();
             loadPatients();
             getNextId();
+            panel1.Visible = true;
         }
 
         public void loadPatients()
@@ -201,46 +203,43 @@ namespace MPHospitalRecordsSystem
 
         private void button9_Click(object sender, EventArgs e)
         {
-            bool onSelect = false;
-            label13.Visible = onSelect;
-            label14.Visible = onSelect;
-            label14.Visible = onSelect;
-            label15.Visible = onSelect;
-            label16.Visible = onSelect;
-            label17.Visible = onSelect;
-            label18.Visible = onSelect;
-            label19.Visible = onSelect;
-            label20.Visible = onSelect;
-            label21.Visible = onSelect;
-            label22.Visible = onSelect;
+            //bool onSelect = false;
+            //label13.Visible = onSelect;
+            //label14.Visible = onSelect;
+            //label14.Visible = onSelect;
+            //label15.Visible = onSelect;
+            //label16.Visible = onSelect;
+            //label17.Visible = onSelect;
+            //label18.Visible = onSelect;
+            //label19.Visible = onSelect;
+            //label20.Visible = onSelect;
+            //label21.Visible = onSelect;
+            //label22.Visible = onSelect;
 
-            textBox4.Visible = onSelect;
-            textBox5.Visible = onSelect;
-            textBox6.Visible = onSelect;
-            textBox7.Visible = onSelect;
-            textBox8.Visible = onSelect;
-            textBox9.Visible = onSelect;
-            textBox10.Visible = onSelect;
-            textBox11.Visible = onSelect;
-            textBox12.Visible = onSelect;
-            textBox13.Visible = onSelect;
+            //textBox4.Visible = onSelect;
+            //textBox5.Visible = onSelect;
+            //textBox6.Visible = onSelect;
+            //textBox7.Visible = onSelect;
+            //textBox8.Visible = onSelect;
+            //textBox9.Visible = onSelect;
+            //textBox10.Visible = onSelect;
+            //textBox11.Visible = onSelect;
+            //textBox12.Visible = onSelect;
+            //textBox13.Visible = onSelect;
 
-            label8.Visible = !onSelect;
-            label9.Visible = !onSelect;
-            label10.Visible = !onSelect;
-            label11.Visible = !onSelect;
-            label12.Visible = !onSelect;
-            dtpvisit.Visible = !onSelect;
-            tb12.Visible = !onSelect;
-            tb13.Visible =  !onSelect;
-            cbDoctors.Visible = !onSelect;
-            cbPatients.Visible = !onSelect;
-
+            //label8.Visible = !onSelect;
+            //label9.Visible = !onSelect;
+            //label10.Visible = !onSelect;
+            //label11.Visible = !onSelect;
+            //label12.Visible = !onSelect;
+            //dtpvisit.Visible = !onSelect;
+            //tb12.Visible = !onSelect;
+            //tb13.Visible =  !onSelect;
+            //cbDoctors.Visible = !onSelect;
+            //cbPatients.Visible = !onSelect;
+            panel3.Visible = false;
+            panel4.Visible = true;
             loadVisits();
-        }
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
-        {
-
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -298,38 +297,51 @@ namespace MPHospitalRecordsSystem
         {
             //MessageBox.Show(e.TabPage.Text);
             bool showPatients = e.TabPage.Text.Equals("patient");
-            label1.Visible = showPatients;
-            label2.Visible = showPatients;
-            nameIn.Visible = showPatients;
-            label3.Visible = showPatients;
-            dtp1.Visible = showPatients;
-            label4.Visible = showPatients;
-            contactnumberIn.Visible = showPatients;
-            if (showPatients) {
+            //label1.Visible = showPatients;
+            //label2.Visible = showPatients;
+            //nameIn.Visible = showPatients;
+            //label3.Visible = showPatients;
+            //dtp1.Visible = showPatients;
+            //label4.Visible = showPatients;
+            //contactnumberIn.Visible = showPatients;
+            if (showPatients)
+            {
                 loadPatients();
                 getNextId();
-                showFill(false);
-                showFill2(false);
+                //showFill(false);
+                //showFill2(false);
+                panel1.Visible = true;
+
+                panel1.Location = new Point(4, 112);
+            }
+            else {
+                panel1.Visible = false;
             }
 
             bool showDoctors = e.TabPage.Text.Equals("doctor");
-            cbspecial.Visible = showDoctors;
-            doctorNameIn.Visible = showDoctors;
-            label7.Visible = showDoctors;
-            label6.Visible = showDoctors;
-            if (showDoctors) {
+            //cbspecial.Visible = showDoctors;
+            //doctorNameIn.Visible = showDoctors;
+            //label7.Visible = showDoctors;
+            //label6.Visible = showDoctors;
+            if (showDoctors)
+            {
                 loadDoctors();
                 getNextIdDoctor();
-                showFill(false);
-                showFill2(false);
+                //showFill(false);
+                //showFill2(false); 4, 112
+                panel5.Visible = true;
+                panel5.Location = new Point(4, 112);
+            }
+            else {
+                panel5.Visible = false;
             }
 
-            bool showVisits = e.TabPage.Text.Equals("visitors");
-            
+             bool showVisits = e.TabPage.Text.Equals("visitors");
+
             if (showVisits)
             {
-                showFill(false);
-                showFill2(true);
+                //showFill(false);
+                //showFill2(true);
                 visit v = new visit();
                 List<patientDTO> patients = v.getAllPatient();
                 List<doctorDTO> doctors = v.getAllDoctors();
@@ -353,12 +365,29 @@ namespace MPHospitalRecordsSystem
                 cbDoctors.DisplayMember = "Value"; // what user sees
                 cbDoctors.ValueMember = "Key";
 
-                if (cbDoctors.Items.Count > 0) 
+                if (cbDoctors.Items.Count > 0)
                     cbDoctors.SelectedIndex = 0;
-                
+                panel4.Visible = true;
+                panel4.Location = new Point(4, 112);
                 loadVisits();
                 getNextIdVisit();
             }
+            else { 
+                panel4.Visible = false;
+                panel3.Visible = false;
+            }
+
+            bool showSched = e.TabPage.Text.Equals("Doctor schedule");
+
+            if (showSched)
+            {
+                panel6.Visible = true;
+                panel6.Location = new Point(4, 112);
+            }
+            else { 
+                panel6.Visible = false;
+            }
+
 
 
             if (showPatients)
@@ -573,10 +602,13 @@ namespace MPHospitalRecordsSystem
 
         private void dgvVisits_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            showFill(true);
-            showFill2(false);
+            //showFill(true);
+            //showFill2(false);
             if (dgvVisits.SelectedRows.Count > 0)
             {
+                panel4.Visible = false;
+                panel3.Visible = true;
+                panel3.Location = new Point(4, 112);
                 DataGridViewRow row = dgvVisits.SelectedRows[0];
                 string visitId = row.Cells["VisitId"].Value.ToString();
                 string patientId = row.Cells["PatientId"].Value.ToString();
@@ -664,6 +696,36 @@ namespace MPHospitalRecordsSystem
             Form1 f = new Form1();
             f.Show();
             this.Hide();
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
