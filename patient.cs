@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -240,9 +241,33 @@ namespace MPHospitalRecordsSystem
         public void delete_patient(int patient_id)
         {
             String sqlDeletePatient = "DELETE FROM patients WHERE patient_id=@patient_id";
+            String checkVisit = "SELECT * FROM visits WHERE patient_id = @patient_id";
+
             using (MySqlConnection c = con.GetConnection()) {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
+                    using(MySqlCommand cd =  new MySqlCommand(checkVisit, c))
+                    {
+                        try
+                        {
+                            cd.Parameters.AddWithValue("@patient_id", patient_id);
+                            c.Open();
+                            MySqlDataReader reader = cd.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("cannot delete patient with visit record");
+                                return;
+                            }
+                            reader.Close();
+                            c.Close();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+
+
                     cmd.Parameters.AddWithValue("@patient_id", patient_id);
                     try
                     {

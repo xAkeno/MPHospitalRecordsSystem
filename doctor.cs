@@ -230,10 +230,30 @@ namespace MPHospitalRecordsSystem
         public void DeleteDoctor(int doctor_id)
         {
             String sqlDeletePatient = "DELETE FROM doctors WHERE doctor_id=@doctor_id";
+            String checkVisit = "SELECT * FROM visit WHERE doctor_id=@doctor_id";
             using (MySqlConnection c = con.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
+                    using(MySqlCommand cd = new MySqlCommand(checkVisit, c))
+                    {
+                        try
+                        {
+                            c.Open();
+                            MySqlDataReader reader = cd.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("cannot delete doctor with existing visit reocrd");                               
+                                return;     
+                            }
+                            reader.Close();  
+                            c.Close();  
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }                   
+                    }
                     cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     try
                     {
