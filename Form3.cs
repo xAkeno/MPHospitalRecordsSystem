@@ -362,7 +362,7 @@ namespace MPHospitalRecordsSystem
                     string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
                     cbDoctors.Items.Add(new KeyValuePair<int, string>(d.DoctorId, display));
                 }
-                cbDoctors.DisplayMember = "Value"; // what user sees
+                cbDoctors.DisplayMember = "Value"; 
                 cbDoctors.ValueMember = "Key";
 
                 if (cbDoctors.Items.Count > 0)
