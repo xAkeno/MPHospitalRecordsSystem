@@ -243,7 +243,20 @@ namespace MPHospitalRecordsSystem
             String findVisits = "SELECT * FROM visits WHERE patient_id=@patient_id";
             using (MySqlConnection c = con.GetConnection()) {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
-                {                   
+                {
+                    using (MySqlCommand checkVisits = new MySqlCommand(findVisits, c))
+                    {
+                        checkVisits.Parameters.AddWithValue("@patient_id", patient_id);
+                        c.Open();
+                        MySqlDataReader reader = checkVisits.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("Cannot delete patient with existing visits.");
+                            return;
+                        }
+                        reader.Close();
+                        c.Close();
+                    }
                     cmd.Parameters.AddWithValue("@patient_id", patient_id);
                     try
                     {
@@ -262,18 +275,7 @@ namespace MPHospitalRecordsSystem
                     }
                 }
 
-                using (MySqlCommand checkVisits = new MySqlCommand(findVisits, c))
-                {
-                    checkVisits.Parameters.AddWithValue("@patient_id", patient_id);
-                  
-                    MySqlDataReader reader = checkVisits.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        MessageBox.Show("Cannot delete patient with existing visits.");
-                        return;
-                    }
-                    reader.Close();
-                }
+                
             }
         }
     }

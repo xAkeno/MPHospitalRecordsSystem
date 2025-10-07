@@ -236,7 +236,20 @@ namespace MPHospitalRecordsSystem
             {
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeletePatient, c))
                 {
-                    
+                    using (MySqlCommand visitCheck = new MySqlCommand(checkVisits, c))
+                    {
+                        visitCheck.Parameters.AddWithValue("@doctor_id", doctor_id);
+                        c.Open();
+                        MySqlDataReader reader = visitCheck.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("Doctor has existing records and cannot be deleted");
+                            return;
+                        }
+                        reader.Close();
+                        c.Close();
+                    }
+
                     cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
                     try
                     {
@@ -254,18 +267,7 @@ namespace MPHospitalRecordsSystem
                         MessageBox.Show(ex.Message);
                     }
                 }
-                using (MySqlCommand visitCheck = new MySqlCommand(checkVisits, c))
-                {
-                    visitCheck.Parameters.AddWithValue("@doctor_id", doctor_id);
-                    c.Open();   
-                    MySqlDataReader reader = visitCheck.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        MessageBox.Show("Doctor has existing records and cannot be deleted");
-                        return;
-                    }
-                    reader.Close();
-                }
+               
             }
         }
         public List<doctorDTO> search_doctor(String search)
