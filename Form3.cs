@@ -125,21 +125,15 @@ namespace MPHospitalRecordsSystem
             {
                 DataGridViewRow row = dgvPatients.SelectedRows[0];
 
-
                 string id = row.Cells["PatientId"].Value.ToString();
                 string name = row.Cells["Name"].Value.ToString();
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
 
-
                 idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
                 contactnumberIn.Text = contact;
-
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
             }
             else
             {
@@ -198,7 +192,6 @@ namespace MPHospitalRecordsSystem
                 dgvVisits.DataSource = v.search_visit(search);
             }
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             bool onSelect = false;
@@ -261,6 +254,7 @@ namespace MPHospitalRecordsSystem
             DateTime dt1 = DateTime.Parse(dtps);
             DateTime dt2 = DateTime.Parse("01/01/1920");
             DateTime dt3 = DateTime.Now;
+            
 
 
             String nameD = doctorNameIn.Text;
@@ -284,7 +278,7 @@ namespace MPHospitalRecordsSystem
                      + (name.Any(Char.IsDigit) ? "- Enter in a name\n" : " ")
                      + (dt1 < dt2 ? "- Please enter a valid date \n" : " ")
                      + (dt1 == null ? "- Please enter a valid date \n" : " ")
-                     + (dt1 > dt3 ? "- Please enter a valid date \n" : " ")
+                     + (dt1 > dt3 ? "- Patient can't be from the future \n" : " ")
                      + (!contact_number.Any(Char.IsDigit) ? "- Enter in a valid contact number \n" : " ")
                      + (contact_number[0] != '0' || contact_number[1] != '9' ? "- Contact number must begin with 09 \n" : " ")
                      + (contact_number.Length != 11 ? "- Numbers length must be exacty 11 digits" : "")
@@ -373,16 +367,17 @@ namespace MPHospitalRecordsSystem
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (!idlbl.Text.Equals(""))
-            {
-                int id = Convert.ToInt32(idlbl.Text);
-                patient p = new patient();
-                p.delete_patient(id);
-            }
-            else
-            {
-                MessageBox.Show("Please select a patient first");
-            }
+            
+                if (!idlbl.Text.Equals(""))
+                {
+                    int id = Convert.ToInt32(idlbl.Text);
+                    patient p = new patient();
+                    p.delete_patient(id);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a patient first");
+                }
             loadPatients();
         }
 
@@ -405,6 +400,7 @@ namespace MPHospitalRecordsSystem
             if (!d.check_if_info_is_already_registred(id,name))
             {
                 d.AddDoctor(name, specialty);
+                
             }
             else
             {
