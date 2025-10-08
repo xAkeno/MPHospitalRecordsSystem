@@ -58,7 +58,7 @@ namespace MPHospitalRecordsSystem
         } 
         public void updateAcc(string username, string password, string role)
         {
-            String updAcc = " UPDATE accinfo set user_name = @uname, password= @pass, role = @role ";
+            String updAcc = " UPDATE accinfo SET user_name = @uname, password= @pass, role = @role ";
             using(MySqlConnection c = con.GetConnection())
             {
                 using (var cd = new MySqlCommand(updAcc, c))
@@ -82,17 +82,21 @@ namespace MPHospitalRecordsSystem
         {
             String read = "SELECT * from accinfo";
             List<UserInfoDTO> list = new List<UserInfoDTO>();
-            using(MySqlConnection c = con.GetConnection())
+            using (MySqlConnection c = con.GetConnection())
             {
                 using (var cmdd = new MySqlCommand(read, c))
                 {
                     c.Open();
                     MySqlDataReader reader = cmdd.ExecuteReader();
-                    while (reader.Read()) {
-                         String name = reader.GetString("user_name");
+                    while (reader.Read())
+                    {
+                        String name = reader.GetString("user_name");
                         String role = reader.GetString("role");
-                        list.Add(new UserInfoDTO { username = username, 
-                        role = role });
+                        list.Add(new UserInfoDTO
+                        {
+                            username = username,
+                            role = role
+                        });
                     }
                     return list;
                 }
@@ -101,9 +105,9 @@ namespace MPHospitalRecordsSystem
         public List<UserInfoDTO> search_Acc(string search)
         {
             String see = " SELECT FROM accinfo WHERE user_name LIKE @search OR user_name  Like @search ";
-            
-            using(MySqlConnection c = con.GetConnection())
-            {               
+
+            using (MySqlConnection c = con.GetConnection())
+            {
                 using (var cmdd = new MySqlCommand(see, c))
                 {
                     c.Open();
@@ -114,7 +118,7 @@ namespace MPHospitalRecordsSystem
                     {
                         String name = reader.GetString("user_name");
                         String role = reader.GetString("role");
-                        lists.Add(new UserInfoDTO { username = name, role = role });                      
+                        lists.Add(new UserInfoDTO { username = name, role = role });
                     }
                     return lists;
                 }
