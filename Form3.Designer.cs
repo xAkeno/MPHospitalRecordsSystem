@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -147,8 +148,10 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -167,6 +170,7 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -185,6 +189,16 @@
             this.tabControl1.TabIndex = 3;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected_1);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage6.Controls.Add(this.dataGridView1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 33);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(978, 625);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "roles";
+            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -200,7 +214,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(978, 625);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Patient";
+            this.tabPage1.Text = "patient";
             // 
             // button13
             // 
@@ -300,7 +314,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(978, 625);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Doctor";
+            this.tabPage2.Text = "doctor";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // button5
@@ -400,7 +414,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(978, 625);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Visitors";
+            this.tabPage3.Text = "visitors";
             // 
             // button15
             // 
@@ -497,7 +511,7 @@
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(978, 625);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Doctor Schedule";
+            this.tabPage4.Text = "Doctor schedule";
             // 
             // dgvSchedule
             // 
@@ -1281,7 +1295,7 @@
             this.panel6.Controls.Add(this.cbDoctorSched);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Controls.Add(this.label26);
-            this.panel6.Location = new System.Drawing.Point(1227, 676);
+            this.panel6.Location = new System.Drawing.Point(1216, 676);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(297, 597);
             this.panel6.TabIndex = 34;
@@ -1541,21 +1555,30 @@
             this.textBox18.Size = new System.Drawing.Size(284, 28);
             this.textBox18.TabIndex = 4;
             // 
-            // tabPage6
+            // dataGridView1
             // 
-            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tabPage6.Location = new System.Drawing.Point(4, 33);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(978, 625);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Roles";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(950, 583);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellClick);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel8.Location = new System.Drawing.Point(1519, 676);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(297, 583);
+            this.panel8.TabIndex = 35;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1545, 705);
+            this.ClientSize = new System.Drawing.Size(1840, 855);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -1572,6 +1595,7 @@
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
@@ -1603,6 +1627,7 @@
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1729,5 +1754,7 @@
         private System.Windows.Forms.ComboBox hideExCb;
         private System.Windows.Forms.Label hideExLbl;
         private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel8;
     }
 }

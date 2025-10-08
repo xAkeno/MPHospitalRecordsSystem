@@ -451,6 +451,17 @@ namespace MPHospitalRecordsSystem
                 panel7.Visible = false;
             }
 
+            bool showroles = e.TabPage.Text.Equals("roles");
+            if(showroles)
+            {
+                panel8.Visible = true;
+                panel8.Location = new Point(4, 112);
+            }
+            else
+            {
+                panel8.Visible = false;
+            }
+
             if (showPatients)
                 label5.Text = "Patient Id:";
             else if (showDoctors)
@@ -1048,6 +1059,11 @@ namespace MPHospitalRecordsSystem
 
 
             }
+        }
+
+        private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
