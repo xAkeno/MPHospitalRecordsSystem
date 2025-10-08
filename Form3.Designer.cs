@@ -131,15 +131,15 @@
             this.dtpScheduleDate = new System.Windows.Forms.DateTimePicker();
             this.cbDoctorSched = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cbAvailable = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.statusCb = new System.Windows.Forms.ComboBox();
             this.hideExCb = new System.Windows.Forms.ComboBox();
             this.hideExLbl = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbAppointment = new System.Windows.Forms.RadioButton();
             this.rbAppointment2 = new System.Windows.Forms.RadioButton();
-            this.label32 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label31 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.hideExCbDoc = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -150,8 +150,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.statusCb = new System.Windows.Forms.ComboBox();
-            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1352,15 +1350,13 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.cbAvailable);
+            this.panel7.Controls.Add(this.label34);
             this.panel7.Controls.Add(this.label33);
             this.panel7.Controls.Add(this.statusCb);
             this.panel7.Controls.Add(this.hideExCb);
             this.panel7.Controls.Add(this.hideExLbl);
             this.panel7.Controls.Add(this.groupBox1);
-            this.panel7.Controls.Add(this.label32);
-            this.panel7.Controls.Add(this.dateTimePicker4);
-            this.panel7.Controls.Add(this.label31);
-            this.panel7.Controls.Add(this.dateTimePicker3);
             this.panel7.Controls.Add(this.hideExCbDoc);
             this.panel7.Controls.Add(this.label30);
             this.panel7.Controls.Add(this.dateTimePicker2);
@@ -1376,15 +1372,56 @@
             this.panel7.TabIndex = 8;
             this.panel7.Visible = false;
             // 
-            // hideExCb
+            // cbAvailable
             // 
-            this.hideExCb.FormattingEnabled = true;
-            this.hideExCb.Items.AddRange(new object[] {
+            this.cbAvailable.FormattingEnabled = true;
+            this.cbAvailable.Location = new System.Drawing.Point(11, 350);
+            this.cbAvailable.Name = "cbAvailable";
+            this.cbAvailable.Size = new System.Drawing.Size(280, 21);
+            this.cbAvailable.TabIndex = 44;
+            this.cbAvailable.SelectedIndexChanged += new System.EventHandler(this.cbAvailable_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(11, 329);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(146, 18);
+            this.label34.TabIndex = 43;
+            this.label34.Text = "Available schedule";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(11, 536);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(60, 18);
+            this.label33.TabIndex = 42;
+            this.label33.Text = "Patient";
+            this.label33.Visible = false;
+            // 
+            // statusCb
+            // 
+            this.statusCb.FormattingEnabled = true;
+            this.statusCb.Items.AddRange(new object[] {
             "PENDING",
             "COMPLETED",
             "UNATTENDED",
             "CANCELED"});
-            this.hideExCb.Location = new System.Drawing.Point(8, 534);
+            this.statusCb.Location = new System.Drawing.Point(8, 466);
+            this.statusCb.Name = "statusCb";
+            this.statusCb.Size = new System.Drawing.Size(281, 21);
+            this.statusCb.TabIndex = 41;
+            this.statusCb.Text = "PENDING";
+            // 
+            // hideExCb
+            // 
+            this.hideExCb.FormattingEnabled = true;
+            this.hideExCb.Location = new System.Drawing.Point(8, 557);
             this.hideExCb.Name = "hideExCb";
             this.hideExCb.Size = new System.Drawing.Size(280, 21);
             this.hideExCb.TabIndex = 40;
@@ -1394,7 +1431,7 @@
             // 
             this.hideExLbl.AutoSize = true;
             this.hideExLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideExLbl.Location = new System.Drawing.Point(10, 454);
+            this.hideExLbl.Location = new System.Drawing.Point(11, 445);
             this.hideExLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hideExLbl.Name = "hideExLbl";
             this.hideExLbl.Size = new System.Drawing.Size(56, 18);
@@ -1440,48 +1477,6 @@
             this.rbAppointment2.UseVisualStyleBackColor = true;
             this.rbAppointment2.CheckedChanged += new System.EventHandler(this.rbAppointment2_CheckedChanged);
             // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(11, 401);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(138, 18);
-            this.label32.TabIndex = 35;
-            this.label32.Text = "Appointment time";
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker4.Location = new System.Drawing.Point(7, 422);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.ShowUpDown = true;
-            this.dateTimePicker4.Size = new System.Drawing.Size(280, 20);
-            this.dateTimePicker4.TabIndex = 34;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(11, 336);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(138, 18);
-            this.label31.TabIndex = 12;
-            this.label31.Text = "Appointment date";
-            this.label31.Click += new System.EventHandler(this.label31_Click);
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePicker3.Location = new System.Drawing.Point(8, 356);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker3.MinDate = new System.DateTime(1895, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(284, 20);
-            this.dateTimePicker3.TabIndex = 11;
-            // 
             // hideExCbDoc
             // 
             this.hideExCbDoc.FormattingEnabled = true;
@@ -1489,6 +1484,7 @@
             this.hideExCbDoc.Name = "hideExCbDoc";
             this.hideExCbDoc.Size = new System.Drawing.Size(284, 21);
             this.hideExCbDoc.TabIndex = 10;
+            this.hideExCbDoc.SelectedIndexChanged += new System.EventHandler(this.hideExCbDoc_SelectedIndexChanged);
             // 
             // label30
             // 
@@ -1580,31 +1576,6 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
-            // 
-            // statusCb
-            // 
-            this.statusCb.FormattingEnabled = true;
-            this.statusCb.Items.AddRange(new object[] {
-            "PENDING",
-            "COMPLETED",
-            "UNATTENDED",
-            "CANCELED"});
-            this.statusCb.Location = new System.Drawing.Point(7, 475);
-            this.statusCb.Name = "statusCb";
-            this.statusCb.Size = new System.Drawing.Size(281, 21);
-            this.statusCb.TabIndex = 41;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(11, 513);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(60, 18);
-            this.label33.TabIndex = 42;
-            this.label33.Text = "Patient";
-            this.label33.Visible = false;
             // 
             // Form3
             // 
@@ -1776,10 +1747,6 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.DataGridView dgvAppointments;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.ComboBox hideExCbDoc;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.RadioButton rbAppointment2;
@@ -1792,5 +1759,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox statusCb;
+        private System.Windows.Forms.ComboBox cbAvailable;
+        private System.Windows.Forms.Label label34;
     }
 }

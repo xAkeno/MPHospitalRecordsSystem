@@ -414,8 +414,8 @@ namespace MPHospitalRecordsSystem
             }
 
             bool showAppointments = e.TabPage.Text.Equals("Appointment");
-            if (showAppointments) { 
-            
+            if (showAppointments)
+            {
                 panel7.Visible = true;
                 panel7.Location = new Point(4, 112);
 
@@ -423,6 +423,8 @@ namespace MPHospitalRecordsSystem
                 List<patientDTO> patients = v.getAllPatient();
                 List<doctorDTO> doctors = v.getAllDoctors();
 
+                // Populate Patients ComboBox
+                hideExCb.Items.Clear();
                 foreach (patientDTO p in patients)
                 {
                     string display = string.Format("{0,-30} | {1}", "Name: " + p.Name, "ID: " + p.PatientId);
@@ -434,6 +436,7 @@ namespace MPHospitalRecordsSystem
                     hideExCb.SelectedIndex = 0;
 
                 // Populate Doctors ComboBox
+                hideExCbDoc.Items.Clear();
                 foreach (doctorDTO d in doctors)
                 {
                     string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
@@ -444,8 +447,29 @@ namespace MPHospitalRecordsSystem
 
                 if (hideExCbDoc.Items.Count > 0)
                     hideExCbDoc.SelectedIndex = 0;
+
+                // Get selected doctor ID
+                var selectedDoctor = (KeyValuePair<int, string>)hideExCbDoc.SelectedItem;
+                int selectedDoctorId = selectedDoctor.Key;
+
+                // Populate Available Schedule for selected doctor
+                cbAvailable.Items.Clear();
+                DocSchedule ds = new DocSchedule();
+                List<DocScheduleDTO> schedules = ds.get_doctor_all_schedule(selectedDoctorId);
+
+                foreach (DocScheduleDTO sched in schedules)
+                {
+                    string scheduleDisplay = $"{sched.AvailableDate:yyyy-MM-dd} at {sched.AvailableTime:hh\\:mm}";
+                    cbAvailable.Items.Add(new KeyValuePair<int, string>(sched.ScheduleId, scheduleDisplay));
+                }
+
+                cbAvailable.DisplayMember = "Value";
+                cbAvailable.ValueMember = "Key";
+                if (cbAvailable.Items.Count > 0)
+                    cbAvailable.SelectedIndex = 0;
                 loadAppointments();
             }
+
             else
             {
                 panel7.Visible = false;
@@ -929,10 +953,10 @@ namespace MPHospitalRecordsSystem
                 label27.Visible = false;    
                 dateTimePicker2.Visible = false;
 
-                label31.Location = new Point(10, 132);
-                label32.Location = new Point(11, 201);
-                dateTimePicker3.Location = new Point(8, 158);
-                dateTimePicker4.Location = new Point(8, 224);
+                //label31.Location = new Point(10, 132);
+                //label32.Location = new Point(11, 201);
+                //dateTimePicker3.Location = new Point(8, 158);
+                //dateTimePicker4.Location = new Point(8, 224);
             }
         }
 
@@ -949,18 +973,18 @@ namespace MPHospitalRecordsSystem
                 label27.Visible = true;
                 dateTimePicker2.Visible = true;
 
-                label31.Location = new Point(11, 336);
-                label32.Location = new Point(11, 401);
-                dateTimePicker3.Location = new Point(8,356);
-                dateTimePicker4.Location = new Point(7,422);
+                //label31.Location = new Point(11, 336);
+                //label32.Location = new Point(11, 401);
+                //dateTimePicker3.Location = new Point(8,356);
+                //dateTimePicker4.Location = new Point(7,422);
             }
         }
 
         private void button20_Click(object sender, EventArgs e)
         {
 
-            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
-            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            //String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            //String startTime = dateTimePicker4.Value.ToString("HH:mm");
             if (rbAppointment.Checked)
             {
                 String name = textBox17.Text;
@@ -970,13 +994,13 @@ namespace MPHospitalRecordsSystem
                 patient p = new patient();
                 p.add_patient(name, dateOfBirth, contact);
 
-                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
+                //a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
             }
             else if (rbAppointment2.Checked)
-            { 
+            {
                 String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
                 appointment a = new appointment();
-                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
+                //a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
             }
             loadAppointments();
 
@@ -984,26 +1008,26 @@ namespace MPHospitalRecordsSystem
 
         private void button19_Click(object sender, EventArgs e)
         {
-            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
-            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            //String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            //String startTime = dateTimePicker4.Value.ToString("HH:mm");
             int App_id = Convert.ToInt32(idlbl.Text);
-            //if (rbAppointment.Checked)
-            //{
-            String name = textBox17.Text;
+            if (rbAppointment.Checked)
+            {
+                String name = textBox17.Text;
             String contact = textBox18.Text;
             String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
 
             appointment a = new appointment();
             patient p = new patient();
 
-            a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, statusCb.Text.ToString());
-            //}
-            //else if (rbAppointment2.Checked)
-            //{
-            //    String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
-            //    appointment a = new appointment();
-            //    a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
-            //}
+            //a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, statusCb.Text.ToString());
+            }
+            else if (rbAppointment2.Checked)
+            {
+                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+                appointment a = new appointment();
+                //a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
+            }
             loadAppointments();
         }
 
@@ -1035,12 +1059,12 @@ namespace MPHospitalRecordsSystem
                 label27.Visible = true;
                 dateTimePicker2.Visible = true;
 
-                label31.Location = new Point(11, 336);
-                label32.Location = new Point(11, 401);
-                dateTimePicker3.Location = new Point(8, 356);
-                dateTimePicker4.Location = new Point(7, 422);
+                //label31.Location = new Point(11, 336);
+                //label32.Location = new Point(11, 401);
+                //dateTimePicker3.Location = new Point(8, 356);
+                //dateTimePicker4.Location = new Point(7, 422);
 
-                
+                groupBox1.Enabled = false;
 
 
                 DataGridViewRow row = dgvAppointments.SelectedRows[0];
@@ -1051,8 +1075,12 @@ namespace MPHospitalRecordsSystem
                 DateTime dateOfBirth = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
                 int doctorId = Convert.ToInt32(row.Cells["DoctorId"].Value);
                 DateTime appointmentDate = Convert.ToDateTime(row.Cells["AppointmentDate"].Value);
-                DateTime appointmentTime = Convert.ToDateTime(row.Cells["AppointmentTime"].Value);
-                string status = row.Cells["Status"].Value.ToString();
+
+                TimeSpan appointmentTime = TimeSpan.Parse(row.Cells["AppointmentTime"].Value.ToString());
+                DateTime timeOnly = DateTime.Today.Add(appointmentTime);
+                //dateTimePicker4.Format = DateTimePickerFormat.Custom;
+                //dateTimePicker4.CustomFormat = "HH:mm";
+
 
                 idlbl.Text = Convert.ToString(appointmentId);
 
@@ -1060,10 +1088,20 @@ namespace MPHospitalRecordsSystem
                 textBox17.ReadOnly = true;
                 textBox18.Text = contactNumber;
                 textBox18.ReadOnly = true;
-                dateTimePicker2.Value = dateOfBirth;
-                dateTimePicker2.Enabled = false;
-                dateTimePicker3.Value = appointmentDate;
-                dateTimePicker4.Value = appointmentTime;
+                if (dateOfBirth >= dateTimePicker2.MinDate && dateOfBirth <= dateTimePicker2.MaxDate)
+                {
+                    dateTimePicker2.Value = dateOfBirth;
+                    MessageBox.Show(dateOfBirth + "<===");
+                }
+                else
+                {
+                    dateTimePicker2.Value = DateTime.Today;
+                    MessageBox.Show(dateOfBirth + "<===>>>");
+                }
+
+                //dateTimePicker2.Enabled = false;
+                //dateTimePicker3.Value = appointmentDate;
+                //dateTimePicker4.Value = timeOnly;
                 hideExCbDoc.SelectedItem = hideExCbDoc.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == doctorId);
                 hideExCbDoc.Enabled = false;
 
@@ -1077,7 +1115,73 @@ namespace MPHospitalRecordsSystem
 
         private void button17_Click(object sender, EventArgs e)
         {
+            textBox17.Text = "";
+            textBox18.Text = ""; 
 
+            dateTimePicker2.Value = DateTime.Now; 
+            //dateTimePicker3.Value = DateTime.Now; 
+            //dateTimePicker4.Value = DateTime.Now;
+
+            textBox17.ReadOnly = false;
+            textBox18.ReadOnly = false;
+
+            hideExCbDoc.SelectedIndex = -1;
+            hideExCbDoc.Enabled = true;
+            dateTimePicker2.Enabled = true;
+            groupBox1.Enabled = true;
+        }
+
+        private void cbAvailable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbAvailable.SelectedItem is KeyValuePair<int, string> selectedSchedule)
+            {
+                string[] parts = cbAvailable.SelectedItem.ToString().Split(new string[] { " at " }, StringSplitOptions.None);
+
+                if (parts.Length == 2)
+                {
+                    string dateAppoint = parts[0]; // "2025-10-15"
+                    string startTime = parts[1];   // "15:45"
+
+                    // Now you can use dateAppoint and startTime as needed
+                    MessageBox.Show("Date: " + dateAppoint);
+                    MessageBox.Show("Time: " + startTime);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid format");
+                }
+            }
+
+        }
+
+        private void hideExCbDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hideExCbDoc.SelectedItem is KeyValuePair<int, string> selectedDoctor)
+            {
+                int doctorId = selectedDoctor.Key;
+
+                // Clear old items
+                cbAvailable.Items.Clear();
+
+                // Get schedule for selected doctor
+                DocSchedule ds = new DocSchedule();
+                List<DocScheduleDTO> schedules = ds.get_doctor_all_schedule(doctorId);
+
+                // Add schedule entries to cbAvailable
+                foreach (DocScheduleDTO sched in schedules)
+                {
+                    string display = $"{sched.AvailableDate:yyyy-MM-dd} at {sched.AvailableTime:hh\\:mm}";
+                    cbAvailable.Items.Add(new KeyValuePair<int, string>(sched.ScheduleId, display));
+                }
+
+                cbAvailable.DisplayMember = "Value";
+                cbAvailable.ValueMember = "Key";
+
+                if (cbAvailable.Items.Count > 0)
+                {
+                    cbAvailable.SelectedIndex = 0;
+                }
+            }
         }
     }
 }

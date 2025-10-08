@@ -176,7 +176,7 @@ namespace MPHospitalRecordsSystem
                                     DateOfBirth = patientInfo.DateOfBirth,
                                     DoctorId = reader.GetInt32("doctor_id"),
                                     AppointmentDate = reader.GetDateTime("date"),
-                                    AppointmentTime = DateTime.Today.Add(reader.GetTimeSpan("time")),
+                                    AppointmentTime = reader.GetTimeSpan("time"),
                                     Status = reader.GetString("status")
                                 };
                                 list.Add(dto);
