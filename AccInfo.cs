@@ -75,7 +75,7 @@ namespace MPHospitalRecordsSystem
 
                     if (row > 0)
                     {
-                        MessageBox.Show("Successfully updated!");
+                        MessageBox.Show("Successfully updated!!");
                     }
                     else
                     {
