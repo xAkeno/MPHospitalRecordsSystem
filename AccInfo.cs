@@ -101,7 +101,7 @@ namespace MPHospitalRecordsSystem
                         String role = reader.GetString("role");
                         list.Add(new UserInfoDTO
                         {
-                            username = username,
+                            username = name,
                             role = role
                         });
                     }

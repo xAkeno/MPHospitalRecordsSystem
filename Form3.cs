@@ -481,13 +481,9 @@ namespace MPHospitalRecordsSystem
             if(showroles)
             {
                 panel8.Visible = true;
-                panel8.Location = new Point(4, 112);
-                //AccInfo t = new AccInfo();
-                //dgvRoles.DataSource = t.read_roles();
-                //List<UserInfoDTO> roles = t.getAll();
+                panel8.Location = new Point(4, 112);             
                 AccInfo a = new AccInfo();
                 dgvRoles.DataSource = a.Read_acc();
-
             }
             else
             {
@@ -1112,12 +1108,8 @@ namespace MPHospitalRecordsSystem
             if (dgvRoles.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvRoles.SelectedRows[0];            
-                string name = row.Cells["user_name"].Value.ToString();
-                string password = row.Cells["password"].Value.ToString();
-                string role = row.Cells["role"].Value.ToString();
-
-            
-
+                string name = row.Cells["username"].Value.ToString();              
+                string role = row.Cells["role"].Value.ToString();        
             }
             else
             {
@@ -1125,7 +1117,7 @@ namespace MPHospitalRecordsSystem
             }
         }
 
-        }
+        
 
         private void button17_Click(object sender, EventArgs e)
         {
@@ -1225,13 +1217,13 @@ namespace MPHospitalRecordsSystem
 
         private void btnUpdateRoles_Click(object sender, EventArgs e)
         {
-            string user_name = textBox22.Text;
-            string role = comboBox2.Text;
-            string password = textBox23.Text;
-            int id = Convert.ToInt32(idlbl.Text);
-            AccInfo a = new AccInfo();
-            a.updateAcc(id,user_name, password, role);
-            loadAcc();
+            //string user_name = textBox22.Text;
+            //string role = comboBox2.Text;
+            //string password = textBox23.Text;
+            //int id = Convert.ToInt32(idlbl.Text);
+            //AccInfo a = new AccInfo();
+            //a.updateAcc(id,user_name, password, role);
+            //loadAcc();
 
             
         }
@@ -1240,11 +1232,7 @@ namespace MPHospitalRecordsSystem
         {
             
 
-            //AccInfo d = new AccInfo();
-            //textBox19.Text = "";
-            //textBox20.Text = "";
-            //comboBox1.Items.Clear();
-            //dgvRoles.ClearSelection();
+          
         }
 
         private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1254,17 +1242,7 @@ namespace MPHospitalRecordsSystem
 
         private void dgvRoles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            { 
-
-
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
-            }
-            else
-            {
-                MessageBox.Show("⚠ Please select a row first.");
-            }
+            
         }
 
         private void btnScheduleSearch_Click(object sender, EventArgs e)

@@ -156,12 +156,12 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label38 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            //this.label38 = new System.Windows.Forms.Label();
+            //this.comboBox2 = new System.Windows.Forms.ComboBox();
+            //this.label37 = new System.Windows.Forms.Label();
+            //this.textBox23 = new System.Windows.Forms.TextBox();
+            //this.label36 = new System.Windows.Forms.Label();
+            //this.textBox22 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -1683,12 +1683,12 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel8.Controls.Add(this.label38);
-            this.panel8.Controls.Add(this.comboBox2);
-            this.panel8.Controls.Add(this.label37);
-            this.panel8.Controls.Add(this.textBox23);
-            this.panel8.Controls.Add(this.label36);
-            this.panel8.Controls.Add(this.textBox22);
+            //this.panel8.Controls.Add(this.label38);
+            //this.panel8.Controls.Add(this.comboBox2);
+            //this.panel8.Controls.Add(this.label37);
+            //this.panel8.Controls.Add(this.textBox23);
+            //this.panel8.Controls.Add(this.label36);
+            //this.panel8.Controls.Add(this.textBox22);
             this.panel8.Location = new System.Drawing.Point(1519, 676);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
@@ -1697,66 +1697,66 @@
             // 
             // label38
             // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(14, 174);
-            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(52, 18);
-            this.label38.TabIndex = 7;
-            this.label38.Text = "Roles";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Admin",
-            "Recepetionist"});
-            this.comboBox2.Location = new System.Drawing.Point(15, 194);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(258, 21);
-            this.comboBox2.TabIndex = 6;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(5, 96);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(83, 18);
-            this.label37.TabIndex = 5;
-            this.label37.Text = "Password";
+            //this.label38.AutoSize = true;
+            //this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.label38.Location = new System.Drawing.Point(14, 174);
+            //this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            //this.label38.Name = "label38";
+            //this.label38.Size = new System.Drawing.Size(52, 18);
+            //this.label38.TabIndex = 7;
+            //this.label38.Text = "Roles";
+            //// 
+            //// comboBox2
+            //// 
+            //this.comboBox2.FormattingEnabled = true;
+            //this.comboBox2.Items.AddRange(new object[] {
+            //"Admin",
+            //"Recepetionist"});
+            //this.comboBox2.Location = new System.Drawing.Point(15, 194);
+            //this.comboBox2.Name = "comboBox2";
+            //this.comboBox2.Size = new System.Drawing.Size(258, 21);
+            //this.comboBox2.TabIndex = 6;
+            //// 
+            //// label37
+            //// 
+            //this.label37.AutoSize = true;
+            //this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.label37.Location = new System.Drawing.Point(5, 96);
+            //this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            //this.label37.Name = "label37";
+            //this.label37.Size = new System.Drawing.Size(83, 18);
+            //this.label37.TabIndex = 5;
+            //this.label37.Text = "Password";
             // 
             // textBox23
             // 
-            this.textBox23.Location = new System.Drawing.Point(2, 116);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox23.Multiline = true;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(285, 28);
-            this.textBox23.TabIndex = 4;
-            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(5, 18);
-            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(85, 18);
-            this.label36.TabIndex = 3;
-            this.label36.Text = "Username";
-            // 
-            // textBox22
-            // 
-            this.textBox22.Location = new System.Drawing.Point(2, 38);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox22.Multiline = true;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(285, 28);
-            this.textBox22.TabIndex = 2;
+            //this.textBox23.Location = new System.Drawing.Point(2, 116);
+            //this.textBox23.Margin = new System.Windows.Forms.Padding(2);
+            //this.textBox23.Multiline = true;
+            //this.textBox23.Name = "textBox23";
+            //this.textBox23.Size = new System.Drawing.Size(285, 28);
+            //this.textBox23.TabIndex = 4;
+            //this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
+            //// 
+            //// label36
+            //// 
+            //this.label36.AutoSize = true;
+            //this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.label36.Location = new System.Drawing.Point(5, 18);
+            //this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            //this.label36.Name = "label36";
+            //this.label36.Size = new System.Drawing.Size(85, 18);
+            //this.label36.TabIndex = 3;
+            //this.label36.Text = "Username";
+            //// 
+            //// textBox22
+            //// 
+            //this.textBox22.Location = new System.Drawing.Point(2, 38);
+            //this.textBox22.Margin = new System.Windows.Forms.Padding(2);
+            //this.textBox22.Multiline = true;
+            //this.textBox22.Name = "textBox22";
+            //this.textBox22.Size = new System.Drawing.Size(285, 28);
+            //this.textBox22.TabIndex = 2;
             // 
             // label31
             // 
