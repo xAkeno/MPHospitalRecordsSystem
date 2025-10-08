@@ -978,7 +978,7 @@ namespace MPHospitalRecordsSystem
                 appointment a = new appointment();
                 a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
             }
-
+            loadAppointments();
 
         }
 
@@ -1004,6 +1004,7 @@ namespace MPHospitalRecordsSystem
             //    appointment a = new appointment();
             //    a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
             //}
+            loadAppointments();
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -1018,6 +1019,7 @@ namespace MPHospitalRecordsSystem
             {
                 MessageBox.Show("Please select an appointment first");
             }
+            loadAppointments();
         }
 
         private void dgvAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1038,6 +1040,8 @@ namespace MPHospitalRecordsSystem
                 dateTimePicker3.Location = new Point(8, 356);
                 dateTimePicker4.Location = new Point(7, 422);
 
+                
+
 
                 DataGridViewRow row = dgvAppointments.SelectedRows[0];
                 int appointmentId = Convert.ToInt32(row.Cells["AppointmentId"].Value);
@@ -1053,17 +1057,25 @@ namespace MPHospitalRecordsSystem
                 idlbl.Text = Convert.ToString(appointmentId);
 
                 textBox17.Text = patientName;
+                textBox17.ReadOnly = true;
                 textBox18.Text = contactNumber;
+                textBox18.ReadOnly = true;
                 dateTimePicker2.Value = dateOfBirth;
+                dateTimePicker2.Enabled = false;
                 dateTimePicker3.Value = appointmentDate;
                 dateTimePicker4.Value = appointmentTime;
                 hideExCbDoc.SelectedItem = hideExCbDoc.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == doctorId);
-
+                hideExCbDoc.Enabled = false;
 
             }
         }
 
         private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
         {
 
         }
