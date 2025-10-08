@@ -476,6 +476,7 @@
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.Size = new System.Drawing.Size(966, 585);
             this.dgvSchedule.TabIndex = 13;
+            this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
             // 
             // btnScheduleDelete
             // 
@@ -487,6 +488,7 @@
             this.btnScheduleDelete.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleDelete.TabIndex = 12;
             this.btnScheduleDelete.UseVisualStyleBackColor = true;
+            this.btnScheduleDelete.Click += new System.EventHandler(this.btnScheduleDelete_Click);
             // 
             // btnScheduleUnselect
             // 
@@ -500,6 +502,7 @@
             this.btnScheduleUnselect.TabIndex = 11;
             this.btnScheduleUnselect.Text = "Unselect";
             this.btnScheduleUnselect.UseVisualStyleBackColor = true;
+            this.btnScheduleUnselect.Click += new System.EventHandler(this.btnScheduleUnselect_Click);
             // 
             // btnScheduleSearch
             // 

@@ -153,5 +153,49 @@ namespace MPHospitalRecordsSystem
             }
             return null;
         }
+        public String get_next_id()
+        {
+
+            String sqlNextId = "SELECT MAX(id) from Schedule ";
+            using (MySqlConnection c = con.GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c))
+                {
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    int nextId = (result != DBNull.Value) ? Convert.ToInt32(result) + 1 : 0;
+
+                    return Convert.ToString(nextId);
+                }
+            }
+
+            return null;
+        }
+        public void delete_Schedule(int id)
+        {
+            String sqlDeleteSchedule = "DELETE FROM Schedule WHERE id=@id";
+            using (MySqlConnection c = con.GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteSchedule, c))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    try
+                    {
+                        c.Open();
+                        int row = 0;
+                        row = cmd.ExecuteNonQuery();
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully deleted!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
     }
 }

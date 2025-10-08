@@ -51,6 +51,7 @@ namespace MPHospitalRecordsSystem
         public void loadSchedule() { 
             DocSchedule doc = new DocSchedule();
             dgvSchedule.DataSource = doc.read_schedule();
+            idlbl.Text = doc.get_next_id();
         }
         public void getNextIdVisit()
         {
@@ -771,6 +772,77 @@ namespace MPHospitalRecordsSystem
                 DocSchedule docSchedule = new DocSchedule();
                 docSchedule.update_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key,id);
             }
+            loadSchedule();
+        }
+
+        private void btnScheduleUnselect_Click(object sender, EventArgs e)
+        {
+            DocSchedule doc = new DocSchedule();
+            idlbl.Text = doc.get_next_id();
+            dtpScheduleDate.Value = DateTime.Now;
+            timePicker.Value = DateTime.Now;
+            dgvSchedule.ClearSelection();
+
+            cbDoctorSched.Items.Clear();
+
+            visit v = new visit();
+            List<doctorDTO> doctors = v.getAllDoctors();
+
+            foreach (doctorDTO d in doctors)
+            {
+                string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
+                cbDoctorSched.Items.Add(new KeyValuePair<int, string>(d.DoctorId, display));
+            }
+
+            cbDoctorSched.DisplayMember = "Value";
+            cbDoctorSched.ValueMember = "Key";
+
+            if (cbDoctorSched.Items.Count > 0)
+                cbDoctorSched.SelectedIndex = 0;
+        }
+
+        private void dgvSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvSchedule.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvSchedule.SelectedRows[0];
+                string ScheduleId = row.Cells["ScheduleId"].Value.ToString();
+                int DoctorId = Convert.ToInt32(row.Cells["DoctorId"].Value.ToString());
+                string DoctorName = row.Cells["DoctorName"].Value.ToString();
+                string Specialty = row.Cells["Specialty"].Value.ToString();
+                string AvailableDate = row.Cells["AvailableDate"].Value.ToString();
+                string AvailableTime = row.Cells["AvailableTime"].Value.ToString();
+
+                idlbl.Text = ScheduleId;
+                dtpScheduleDate.Value = DateTime.Parse(AvailableDate);
+                timePicker.Value = DateTime.Parse(AvailableTime);
+
+                string display = $"Name: {DoctorName,-30} | Specialty: {Specialty}";
+
+                cbDoctorSched.Items.Clear();
+
+                cbDoctorSched.DisplayMember = "Value";
+                cbDoctorSched.ValueMember = "Key";
+
+                var doctorItem = new KeyValuePair<int, string>(DoctorId, display);
+                cbDoctorSched.Items.Add(doctorItem);
+                cbDoctorSched.SelectedItem = doctorItem;
+            }
+        }
+
+        private void btnScheduleDelete_Click(object sender, EventArgs e)
+        {
+            String id = idlbl.Text;
+            if (!id.Equals(""))
+            {
+                DocSchedule v = new DocSchedule();
+                v.delete_Schedule(Convert.ToInt32(id));
+            }
+            else
+            {
+                MessageBox.Show("Please select a visit first");
+            }
+            loadSchedule();
         }
     }
 }
