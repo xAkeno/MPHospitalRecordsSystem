@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace MPHospitalRecordsSystem
 {
@@ -89,7 +92,6 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show("Patient is already taken");
             }
             loadPatients();
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -143,22 +145,16 @@ namespace MPHospitalRecordsSystem
             if (dgvPatients.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvPatients.SelectedRows[0];
-
-
                 string id = row.Cells["PatientId"].Value.ToString();
                 string name = row.Cells["Name"].Value.ToString();
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
-
 
                 idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
                 contactnumberIn.Text = contact;
 
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
             }
             else
             {
@@ -178,7 +174,6 @@ namespace MPHospitalRecordsSystem
             {
                 p.update_patient(name, dtps, contact_number, id);
             }
-
             loadPatients();
         }
 
@@ -1060,6 +1055,7 @@ namespace MPHospitalRecordsSystem
                 label29.Visible = true;
                 label27.Visible = true;
                 dateTimePicker2.Visible = true;
+                dateTimePicker2.Enabled = false;
 
                 //label31.Location = new Point(11, 336);
                 //label32.Location = new Point(11, 401);
@@ -1076,6 +1072,7 @@ namespace MPHospitalRecordsSystem
                 string contactNumber = row.Cells["ContactNumber"].Value.ToString();
                 DateTime dateOfBirth = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
                 int doctorId = Convert.ToInt32(row.Cells["DoctorId"].Value);
+                String status = row.Cells["Status"].Value.ToString();   
                 DateTime appointmentDate = Convert.ToDateTime(row.Cells["AppointmentDate"].Value);
 
                 TimeSpan appointmentTime = TimeSpan.Parse(row.Cells["AppointmentTime"].Value.ToString());
@@ -1083,6 +1080,8 @@ namespace MPHospitalRecordsSystem
                 //dateTimePicker4.Format = DateTimePickerFormat.Custom;
                 //dateTimePicker4.CustomFormat = "HH:mm";
 
+                cbAvailable.Text = appointmentDate.ToString("yyyy-MM-dd") + " at " + timeOnly.ToString("HH:mm");
+                statusCb.Text = status;
 
                 idlbl.Text = Convert.ToString(appointmentId);
 
@@ -1093,12 +1092,10 @@ namespace MPHospitalRecordsSystem
                 if (dateOfBirth >= dateTimePicker2.MinDate && dateOfBirth <= dateTimePicker2.MaxDate)
                 {
                     dateTimePicker2.Value = dateOfBirth;
-                    MessageBox.Show(dateOfBirth + "<===");
                 }
                 else
                 {
                     dateTimePicker2.Value = DateTime.Today;
-                    MessageBox.Show(dateOfBirth + "<===>>>");
                 }
 
                 //dateTimePicker2.Enabled = false;
@@ -1114,29 +1111,19 @@ namespace MPHospitalRecordsSystem
         {
             if (dgvRoles.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dgvRoles.SelectedRows[0];
-
-
-
-                string name = row.Cells["username"].Value.ToString();
-
+                DataGridViewRow row = dgvRoles.SelectedRows[0];            
+                string name = row.Cells["user_name"].Value.ToString();
+                string password = row.Cells["password"].Value.ToString();
                 string role = row.Cells["role"].Value.ToString();
 
+            
 
-                textBox22.Text = name;
-                //idlbl.Text = id.ToString();
-                comboBox2.Text = role;
-
-
-
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
             }
             else
             {
                 MessageBox.Show("⚠ Please select a row first.");
             }
+        }
 
         }
 
@@ -1270,12 +1257,123 @@ namespace MPHospitalRecordsSystem
             { 
 
 
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
             }
         }
 
-        private void textBox23_TextChanged(object sender, EventArgs e)
+        private void btnScheduleSearch_Click(object sender, EventArgs e)
         {
+            String search = textBox15.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadSchedule();
+            }
+            else
+            {
+                DocSchedule d = new DocSchedule();
+                dgvSchedule.DataSource = d.search_schedule(search);
+            }
+        }
 
+        private void button18_Click(object sender, EventArgs e)
+        {
+            String search = textBox16.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadAppointments();
+            }
+            else
+            {
+                appointment a = new appointment();
+                dgvAppointments.DataSource = a.search_appointments(search);
+            }
+        }
+        public static void ExportToExcel<T>(List<T> data, string title = "Exported Data")
+        {
+            if (data == null || data.Count == 0)
+            {
+                MessageBox.Show($"No {title.ToLower()} found to export.");
+                return;
+            }
+
+            try
+            {
+                Excel.Application xlApp = new Excel.Application();
+                if (xlApp == null)
+                {
+                    MessageBox.Show("Excel is not properly installed.");
+                    return;
+                }
+
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Add();
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                PropertyInfo[] props = typeof(T).GetProperties();
+
+                // Write headers
+                for (int i = 0; i < props.Length; i++)
+                {
+                    xlWorkSheet.Cells[1, i + 1] = props[i].Name;
+                }
+
+                // Write data
+                int row = 2;
+                foreach (T item in data)
+                {
+                    for (int col = 0; col < props.Length; col++)
+                    {
+                        object value = props[col].GetValue(item);
+                        if (value is DateTime dt)
+                            xlWorkSheet.Cells[row, col + 1] = dt.ToString("yyyy-MM-dd");
+                        else if (value is TimeSpan ts)
+                            xlWorkSheet.Cells[row, col + 1] = ts.ToString(@"hh\:mm");
+                        else
+                            xlWorkSheet.Cells[row, col + 1] = value?.ToString();
+                    }
+                    row++;
+                }
+
+                xlWorkSheet.Columns.AutoFit();
+                xlApp.Visible = true;
+
+                MessageBox.Show($"{title} export completed. Excel opened.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed: " + ex.Message);
+            }
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<patientDTO>)dgvPatients.DataSource, "Patients");
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<doctorDTO>)dgvDoctors.DataSource, "Doctors");
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<visitsDTO>)dgvVisits.DataSource, "Visits");
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<DocScheduleDTO>)dgvSchedule.DataSource, "Doctor Schedules");
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<appointmentDTO>)dgvAppointments.DataSource, "Appointments");
         }
     }
 }

@@ -168,6 +168,11 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -189,7 +194,6 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -306,6 +310,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage1.Controls.Add(this.button22);
             this.tabPage1.Controls.Add(this.button13);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
@@ -407,6 +412,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage2.Controls.Add(this.button23);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.button7);
@@ -509,6 +515,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage3.Controls.Add(this.button26);
             this.tabPage3.Controls.Add(this.button15);
             this.tabPage3.Controls.Add(this.button9);
             this.tabPage3.Controls.Add(this.button10);
@@ -607,6 +614,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage4.Controls.Add(this.button27);
             this.tabPage4.Controls.Add(this.dgvSchedule);
             this.tabPage4.Controls.Add(this.btnScheduleDelete);
             this.tabPage4.Controls.Add(this.btnScheduleUnselect);
@@ -669,6 +677,7 @@
             this.btnScheduleSearch.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleSearch.TabIndex = 10;
             this.btnScheduleSearch.UseVisualStyleBackColor = true;
+            this.btnScheduleSearch.Click += new System.EventHandler(this.btnScheduleSearch_Click);
             // 
             // textBox15
             // 
@@ -705,6 +714,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage5.Controls.Add(this.button28);
             this.tabPage5.Controls.Add(this.button16);
             this.tabPage5.Controls.Add(this.button17);
             this.tabPage5.Controls.Add(this.button18);
@@ -752,6 +762,7 @@
             this.button18.Size = new System.Drawing.Size(33, 28);
             this.button18.TabIndex = 16;
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // textBox16
             // 
@@ -785,6 +796,7 @@
             // 
             // dgvAppointments
             // 
+            this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointments.Location = new System.Drawing.Point(7, 35);
             this.dgvAppointments.Margin = new System.Windows.Forms.Padding(2);
@@ -1463,7 +1475,7 @@
             this.panel7.Controls.Add(this.textBox17);
             this.panel7.Controls.Add(this.label29);
             this.panel7.Controls.Add(this.textBox18);
-            this.panel7.Location = new System.Drawing.Point(1326, 80);
+            this.panel7.Location = new System.Drawing.Point(1338, 113);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(297, 583);
             this.panel7.TabIndex = 8;
@@ -1475,7 +1487,7 @@
             this.cbAvailable.Location = new System.Drawing.Point(8, 330);
             this.cbAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.cbAvailable.Name = "cbAvailable";
-            this.cbAvailable.Size = new System.Drawing.Size(211, 21);
+            this.cbAvailable.Size = new System.Drawing.Size(283, 21);
             this.cbAvailable.TabIndex = 44;
             this.cbAvailable.SelectedIndexChanged += new System.EventHandler(this.cbAvailable_SelectedIndexChanged);
             // 
@@ -1513,7 +1525,7 @@
             this.statusCb.Location = new System.Drawing.Point(11, 379);
             this.statusCb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCb.Name = "statusCb";
-            this.statusCb.Size = new System.Drawing.Size(212, 21);
+            this.statusCb.Size = new System.Drawing.Size(280, 21);
             this.statusCb.TabIndex = 41;
             this.statusCb.Text = "PENDING";
             // 
@@ -1808,6 +1820,56 @@
             this.textBox20.Size = new System.Drawing.Size(285, 28);
             this.textBox20.TabIndex = 12;
             // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(546, 6);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(108, 28);
+            this.button22.TabIndex = 7;
+            this.button22.Text = "Export";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(571, 5);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(108, 28);
+            this.button23.TabIndex = 13;
+            this.button23.Text = "Export";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(570, 7);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(108, 28);
+            this.button26.TabIndex = 14;
+            this.button26.Text = "Export";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(571, 8);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(108, 28);
+            this.button27.TabIndex = 15;
+            this.button27.Text = "Export";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(570, 4);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(108, 28);
+            this.button28.TabIndex = 19;
+            this.button28.Text = "Export";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1865,8 +1927,6 @@
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2007,11 +2067,10 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
     }
 }

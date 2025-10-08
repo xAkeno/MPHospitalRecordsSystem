@@ -215,6 +215,62 @@ namespace MPHospitalRecordsSystem
 
             return null;
         }
+        public List<DocScheduleDTO> search_schedule(string search)
+        {
+            List<DocScheduleDTO> list = new List<DocScheduleDTO>();
+
+            StringBuilder sqlBuilder = new StringBuilder(
+                "SELECT s.id AS schedule_id, s.doctor_id, s.date AS available_date, s.time AS available_time, " +
+                "d.Name AS doctor_name, d.Specialty " +
+                "FROM Schedule s " +
+                "JOIN doctors d ON s.doctor_id = d.doctor_id " +
+                "WHERE 1=1"
+            );
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                sqlBuilder.Append(" AND (d.Name LIKE @search OR d.Specialty LIKE @search)");
+            }
+
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlBuilder.ToString(), c))
+                    {
+                        if (!string.IsNullOrWhiteSpace(search))
+                            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+
+                        c.Open();
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var schedule = new DocScheduleDTO
+                                {
+                                    ScheduleId = reader.GetInt32("schedule_id"),
+                                    DoctorId = reader["doctor_id"].ToString(),
+                                    DoctorName = reader["doctor_name"].ToString(),
+                                    Specialty = reader["Specialty"].ToString(),
+                                    AvailableDate = reader.GetDateTime("available_date"),
+                                    AvailableTime = reader.GetTimeSpan("available_time")
+                                };
+                                list.Add(schedule);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            return list;
+        }
+
+
         public void delete_Schedule(int id)
         {
             String sqlDeleteSchedule = "DELETE FROM Schedule WHERE id=@id";

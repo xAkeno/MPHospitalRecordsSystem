@@ -85,26 +85,6 @@ namespace MPHospitalRecordsSystem
             }
         }
 
-
-        public String get_next_id()
-        {
-
-            String sqlNextId = "SELECT MAX(id) from accinfo ";
-            using (MySqlConnection c = con.GetConnection())
-            {
-                using (MySqlCommand cmd = new MySqlCommand(sqlNextId, c))
-                {
-                    c.Open();
-                    object result = cmd.ExecuteScalar();
-
-                    int nextId = (result != DBNull.Value) ? Convert.ToInt32(result) + 1 : 0;
-
-                    return Convert.ToString(nextId);
-                }
-            }
-        }
-
-
         public List<UserInfoDTO> Read_acc()
         {
             String read = "SELECT * from accinfo";
@@ -119,18 +99,15 @@ namespace MPHospitalRecordsSystem
                     {
                         String name = reader.GetString("user_name");
                         String role = reader.GetString("role");
-                        int id = reader.GetInt32("id");
                         list.Add(new UserInfoDTO
                         {
-                           
-                            username = name,
+                            username = username,
                             role = role
                         });
                     }
                     return list;
                 }
             }
-
         }
         public List<UserInfoDTO> search_Acc(string search)
         {
