@@ -20,10 +20,9 @@ namespace MPHospitalRecordsSystem
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            userValidation();
+           passwordValidation();         
         }
 
         private void txtUname_TextChanged(object sender, EventArgs e)
@@ -42,48 +41,14 @@ namespace MPHospitalRecordsSystem
             login.Show();
             this.Hide();
         }
-        private void userValidation()
-        {
-            string user = txtUname.Text;
-            connection con = new connection();
-
-            if(user.Length < 5)
-            {
-                MessageBox.Show("Username must be at least 5 characters long");
-                return;
-            }
-            using (MySqlConnection conn = con.GetConnection())
-            {
-                conn.Open();
-
-                string see = "select * from accinfo where user_name = @banana";
-                using (var cmdd = new MySqlCommand(see, conn))
-                {
-                    cmdd.Parameters.Add("@banana", MySqlDbType.VarChar).Value = user;
-                    MySqlDataReader reader = cmdd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        user = reader["user_name"].ToString();
-                        MessageBox.Show("Username already exists");
-                    }
-                    else if (user == null) { 
-                        MessageBox.Show("Username field is empty");
-                    }
-                    else
-                    {
-                        passwordValidation();
-                    }
-                    reader.Close();
-                    conn.Close();
-                }
-            }
-        }
-
+      
         private void passwordValidation()
         {
             string pass = txtpword.Text;
             string user = txtUname.Text;
+            string role = "clerk";
+            AccInfo acc = new AccInfo();
+            string HashedPass = GetSha256Hash(pass);               
             if (user.Length < 5)
             {
                 MessageBox.Show("Username must be at least 5 characters long");
@@ -105,35 +70,20 @@ namespace MPHospitalRecordsSystem
                         + (pass.Length <8 ? "- The password must be at least 8 characters long" : "")
                     );
                    hasError = true;
-                }             
-                string hashedPass = GetSha256Hash(pass);
-
-                if (!hasError)
+                }
+                          
+                if (!hasError && acc.repetitionCheck(user))
                 {
-                    string query = "INSERT INTO hospital_records_db.accinfo (user_name, password) " +
-                                         "VALUES (@userName,  @password)";
-
-                    using (var cmd = new MySqlCommand(query, conn))
-                    {
-
-                        cmd.Parameters.Add("@userName", MySqlDbType.VarChar).Value = user;
-                        cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = hashedPass;
-                     
-                        int rows = cmd.ExecuteNonQuery();
-                        if (rows > 0)
-                        {
-                            MessageBox.Show("Successfully registered!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Insert failed.");
-                        }
-                        Form1 frm =  new Form1();
-                        frm.Show();
-                        this.Hide();
-                    }                   
-                }  
+                    acc.addUserInfo(user, HashedPass, role);
+                    Form1 frm = new Form1();
+                    frm.Show();
+                    this.Hide();                  
+                }             
             }
+        }
+        private void topbanner_Click(object sender, EventArgs e)
+        {
+
         }
         static string GetSha256Hash(string input)
         {
@@ -143,11 +93,6 @@ namespace MPHospitalRecordsSystem
                 byte[] hashBytes = sha.ComputeHash(bytes);
                 return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
             }
-        }
-
-        private void topbanner_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
