@@ -69,7 +69,7 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvAppointments = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtp1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -157,7 +157,7 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -586,7 +586,7 @@
             this.tabPage5.Controls.Add(this.textBox16);
             this.tabPage5.Controls.Add(this.button19);
             this.tabPage5.Controls.Add(this.button20);
-            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Controls.Add(this.dgvAppointments);
             this.tabPage5.Location = new System.Drawing.Point(4, 33);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(978, 625);
@@ -659,14 +659,14 @@
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
-            // dataGridView1
+            // dgvAppointments
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 35);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(965, 585);
-            this.dataGridView1.TabIndex = 12;
+            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointments.Location = new System.Drawing.Point(7, 35);
+            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvAppointments.Name = "dgvAppointments";
+            this.dgvAppointments.Size = new System.Drawing.Size(965, 585);
+            this.dgvAppointments.TabIndex = 12;
             // 
             // panel1
             // 
@@ -1541,7 +1541,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1475, 705);
+            this.ClientSize = new System.Drawing.Size(1303, 705);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -1572,7 +1572,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1702,7 +1702,7 @@
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvAppointments;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label31;

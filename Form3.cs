@@ -48,6 +48,12 @@ namespace MPHospitalRecordsSystem
             visit v = new visit();
             dgvVisits.DataSource = v.read_visits();
         }
+
+        public void loadAppointments()
+        {
+            appointment a = new appointment();
+            dgvAppointments.DataSource = a.read_all_appointments();
+        }
         public void loadSchedule() { 
             DocSchedule doc = new DocSchedule();
             dgvSchedule.DataSource = doc.read_schedule();
@@ -438,6 +444,7 @@ namespace MPHospitalRecordsSystem
 
                 if (hideExCbDoc.Items.Count > 0)
                     hideExCbDoc.SelectedIndex = 0;
+                loadAppointments();
             }
             else
             {

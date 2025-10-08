@@ -10,8 +10,11 @@ namespace MPHospitalRecordsSystem
     internal class appointment
     {
         connection con = new connection();
-        public String sqlInsertAppoint = "INSERT INTO Appointment (patient_id,doctor_id,date,time) VALUES (@patient_id,@doctor_id,@date,@time)";
-        public String sqlSearchIfAlready = "SELECT * FROM Appointment WHERE patient_id=@patient_id AND doctor_id=@doctor_id AND date=@date AND time=@time";
+        public string sqlInsertAppoint = "INSERT INTO Appointment (patient_id, doctor_id, date, time, status) VALUES (@patient_id, @doctor_id, @date, @time, @status)";
+        public string sqlSearchIfAlready = "SELECT * FROM Appointment WHERE patient_id=@patient_id AND doctor_id=@doctor_id AND date=@date AND time=@time";
+        public string sqlUpdateAppoint = "UPDATE Appointment SET doctor_id=@doctor_id, date=@date, time=@time, status=@status WHERE appointment_id=@appointment_id";
+        public string sqlDeleteAppoint = "DELETE FROM Appointment WHERE appointment_id=@appointment_id";
+        public string sqlSelectAll = "SELECT * FROM Appointment";
 
         public void add_appoint(DateTime date, DateTime time, int doc_id,int patient_id)
         {
@@ -63,6 +66,7 @@ namespace MPHospitalRecordsSystem
                             cmd.Parameters.AddWithValue("@doctor_id", doc_id);
                             cmd.Parameters.AddWithValue("@date", date.Date);
                             cmd.Parameters.AddWithValue("@time", time.TimeOfDay);
+                            cmd.Parameters.AddWithValue("@status", "Pending");
 
                             int rowsAffected = cmd.ExecuteNonQuery();
                             if (rowsAffected > 0)
@@ -82,6 +86,110 @@ namespace MPHospitalRecordsSystem
                     }
                 }
             }
+        }
+        public void update_appointment(int appointment_id, int doc_id, DateTime date, DateTime time, string status)
+        {
+            using (MySqlConnection c = con.GetConnection())
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdateAppoint, c))
+                    {
+                        cmd.Parameters.AddWithValue("@appointment_id", appointment_id);
+                        cmd.Parameters.AddWithValue("@doctor_id", doc_id);
+                        cmd.Parameters.AddWithValue("@date", date.Date);
+                        cmd.Parameters.AddWithValue("@time", time.TimeOfDay);
+                        cmd.Parameters.AddWithValue("@status", status);
+
+                        c.Open();
+                        int rows = cmd.ExecuteNonQuery();
+
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Appointment updated successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Update failed.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+        public void delete_appointment(int appointment_id)
+        {
+            using (MySqlConnection c = con.GetConnection())
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlDeleteAppoint, c))
+                    {
+                        cmd.Parameters.AddWithValue("@appointment_id", appointment_id);
+
+                        c.Open();
+                        int rows = cmd.ExecuteNonQuery();
+
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Appointment deleted successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Delete failed.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+        public List<appointmentDTO> read_all_appointments()
+        {
+            List<appointmentDTO> list = new List<appointmentDTO>();
+
+            using (MySqlConnection c = con.GetConnection())
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlSelectAll, c))
+                    {
+                        c.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                patient p = new patient();
+
+                                patientDTO patientInfo = p.find_patient_by_id(reader.GetInt32("patient_id"));
+                                appointmentDTO dto = new appointmentDTO
+                                {
+                                    AppointmentId = reader.GetInt32("appointment_id"),
+                                    PatientId = reader.GetInt32("patient_id"),
+                                    PatientName = patientInfo.Name,
+                                    DateOfBirth = patientInfo.DateOfBirth,
+                                    DoctorId = reader.GetInt32("doctor_id"),
+                                    AppointmentDate = reader.GetDateTime("date"),
+                                    AppointmentTime = DateTime.Today.Add(reader.GetTimeSpan("time")),
+                                    Status = reader.GetString("status")
+                                };
+                                list.Add(dto);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
+            return list;
         }
     }
 }
