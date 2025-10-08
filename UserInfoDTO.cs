@@ -8,8 +8,8 @@ namespace MPHospitalRecordsSystem
 {
     internal class UserInfoDTO
     {
-        public  String username {  get; set; }
+        public String username { get; set; }
         public String Password { get; set; }
-        public String role {  get; set; }
+        public String role { get; set; }
     }
 }

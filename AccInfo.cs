@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace MPHospitalRecordsSystem
     {
         public String username;
         public String password;
+        public String role;
         connection con = new connection();
 
 
@@ -53,7 +55,73 @@ namespace MPHospitalRecordsSystem
                     cd.Parameters.Add("@user", MySqlDbType.VarChar).Value = username;
                 }
             }
-        }           
+        } 
+        public void updateAcc(string username, string password, string role)
+        {
+            String updAcc = " UPDATE accinfo set user_name = @uname, password= @pass, role = @role ";
+            using(MySqlConnection c = con.GetConnection())
+            {
+                using (var cd = new MySqlCommand(updAcc, c))
+                {
+                    cd.Parameters.Add("@uname", MySqlDbType.VarChar).Value = username;
+                    cd.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+                    cd.Parameters.Add("@role", MySqlDbType.VarChar).Value = role;
+
+                    c.Open();
+                    int row = cd.ExecuteNonQuery();
+
+                    if (row > 0)
+                    {
+                        MessageBox.Show("Successfully updated!");
+                    }
+                }
+            }
+        }
+
+        public List<UserInfoDTO> Read_acc()
+        {
+            String read = "SELECT * from accinfo";
+            List<UserInfoDTO> list = new List<UserInfoDTO>();
+            using(MySqlConnection c = con.GetConnection())
+            {
+                using (var cmdd = new MySqlCommand(read, c))
+                {
+                    c.Open();
+                    MySqlDataReader reader = cmdd.ExecuteReader();
+                    while (reader.Read()) {
+                         String name = reader.GetString("user_name");
+                        String role = reader.GetString("role");
+                        list.Add(new UserInfoDTO { username = username, 
+                        role = role });
+                    }
+                    return list;
+                }
+            }
+
+        }
+        public List<UserInfoDTO> search_Acc(string search)
+        {
+            String see = " SELECT FROM accinfo WHERE user_name LIKE @search OR user_name  Like @search ";
+            
+            using(MySqlConnection c = con.GetConnection())
+            {               
+                using (var cmdd = new MySqlCommand(see, c))
+                {
+                    c.Open();
+                    cmdd.Parameters.AddWithValue("@search", "%" + search + "%");
+                    MySqlDataReader reader = cmdd.ExecuteReader();
+                    List<UserInfoDTO> lists = new List<UserInfoDTO>();
+                    while (reader.Read())
+                    {
+                        String name = reader.GetString("user_name");
+                        String role = reader.GetString("role");
+                        lists.Add(new UserInfoDTO { username = name, role = role });                      
+                    }
+                    return lists;
+                }
+            }
+        }
+
         public bool repetitionCheck(string username)
         {
             
