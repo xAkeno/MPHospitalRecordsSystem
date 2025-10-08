@@ -852,6 +852,62 @@ namespace MPHospitalRecordsSystem
             loadSchedule();
         }
 
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAppointment2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAppointment2.Checked)
+            {
+                hideExLbl.Location = new Point(10, 72);
+                hideExCb.Location = new Point(7, 93);
+                hideExCb.Visible = true;
+                hideExLbl.Visible = true;
+                textBox17.Visible = false;
+                textBox18.Visible = false;
+                label28.Visible = false;
+                label29.Visible = false;
+                label27.Visible = false;    
+                dateTimePicker2.Visible = false;
+
+                label31.Location = new Point(10, 132);
+                label32.Location = new Point(11, 201);
+                dateTimePicker3.Location = new Point(8, 158);
+                dateTimePicker4.Location = new Point(8, 224);
+            }
+        }
+
+        private void rbAppointment_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAppointment.Checked)
+            {
+                hideExCb.Visible = false;
+                hideExLbl.Visible = false;
+                textBox17.Visible = true;
+                textBox18.Visible = true;
+                label28.Visible = true;
+                label29.Visible = true;
+                label27.Visible = true;
+                dateTimePicker2.Visible = true;
+
+                label31.Location = new Point(11, 336);
+                label32.Location = new Point(11, 401);
+                dateTimePicker3.Location = new Point(8,356);
+                dateTimePicker4.Location = new Point(7,422);
+            }
+        }
         //testing//
         //stuff i added for role access
 
