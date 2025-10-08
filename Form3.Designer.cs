@@ -662,6 +662,7 @@
             this.btnScheduleSearch.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleSearch.TabIndex = 10;
             this.btnScheduleSearch.UseVisualStyleBackColor = true;
+            this.btnScheduleSearch.Click += new System.EventHandler(this.btnScheduleSearch_Click);
             // 
             // textBox15
             // 
@@ -747,6 +748,7 @@
             this.button18.Size = new System.Drawing.Size(33, 28);
             this.button18.TabIndex = 16;
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // textBox16
             // 
@@ -782,6 +784,7 @@
             // 
             // dgvAppointments
             // 
+            this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointments.Location = new System.Drawing.Point(7, 35);
             this.dgvAppointments.Margin = new System.Windows.Forms.Padding(2);

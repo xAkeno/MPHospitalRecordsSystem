@@ -1094,12 +1094,10 @@ namespace MPHospitalRecordsSystem
                 if (dateOfBirth >= dateTimePicker2.MinDate && dateOfBirth <= dateTimePicker2.MaxDate)
                 {
                     dateTimePicker2.Value = dateOfBirth;
-                    MessageBox.Show(dateOfBirth + "<===");
                 }
                 else
                 {
                     dateTimePicker2.Value = DateTime.Today;
-                    MessageBox.Show(dateOfBirth + "<===>>>");
                 }
 
                 //dateTimePicker2.Enabled = false;
@@ -1267,6 +1265,36 @@ namespace MPHospitalRecordsSystem
             else
             {
                 MessageBox.Show("⚠ Please select a row first.");
+            }
+        }
+
+        private void btnScheduleSearch_Click(object sender, EventArgs e)
+        {
+            String search = textBox15.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadSchedule();
+            }
+            else
+            {
+                DocSchedule d = new DocSchedule();
+                dgvSchedule.DataSource = d.search_schedule(search);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            String search = textBox16.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a name or id to search.");
+                loadAppointments();
+            }
+            else
+            {
+                appointment a = new appointment();
+                dgvAppointments.DataSource = a.search_appointments(search);
             }
         }
     }

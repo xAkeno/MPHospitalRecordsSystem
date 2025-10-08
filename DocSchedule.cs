@@ -215,11 +215,10 @@ namespace MPHospitalRecordsSystem
 
             return null;
         }
-        public List<DocScheduleDTO> search_schedule(string doctorName = "", DateTime? date = null)
+        public List<DocScheduleDTO> search_schedule(string search)
         {
             List<DocScheduleDTO> list = new List<DocScheduleDTO>();
 
-            // Base SQL with JOIN
             StringBuilder sqlBuilder = new StringBuilder(
                 "SELECT s.id AS schedule_id, s.doctor_id, s.date AS available_date, s.time AS available_time, " +
                 "d.Name AS doctor_name, d.Specialty " +
@@ -228,11 +227,10 @@ namespace MPHospitalRecordsSystem
                 "WHERE 1=1"
             );
 
-            if (!string.IsNullOrWhiteSpace(doctorName))
-                sqlBuilder.Append(" AND d.Name LIKE @doctorName");
-
-            if (date.HasValue)
-                sqlBuilder.Append(" AND s.date = @date");
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                sqlBuilder.Append(" AND (d.Name LIKE @search OR d.Specialty LIKE @search)");
+            }
 
             try
             {
@@ -240,18 +238,16 @@ namespace MPHospitalRecordsSystem
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sqlBuilder.ToString(), c))
                     {
-                        if (!string.IsNullOrWhiteSpace(doctorName))
-                            cmd.Parameters.AddWithValue("@doctorName", "%" + doctorName + "%");
-
-                        if (date.HasValue)
-                            cmd.Parameters.AddWithValue("@date", date.Value.Date);
+                        if (!string.IsNullOrWhiteSpace(search))
+                            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
 
                         c.Open();
+
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                DocScheduleDTO schedule = new DocScheduleDTO
+                                var schedule = new DocScheduleDTO
                                 {
                                     ScheduleId = reader.GetInt32("schedule_id"),
                                     DoctorId = reader["doctor_id"].ToString(),
@@ -273,6 +269,7 @@ namespace MPHospitalRecordsSystem
 
             return list;
         }
+
 
         public void delete_Schedule(int id)
         {

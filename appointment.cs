@@ -159,28 +159,22 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
-        public List<appointmentDTO> search_appointments(string patientName = "", int? doctorId = null, DateTime? date = null, string status = "")
+        public List<appointmentDTO> search_appointments(string search)
         {
             List<appointmentDTO> list = new List<appointmentDTO>();
 
             StringBuilder sql = new StringBuilder(
-                "SELECT a.id, a.patient_id, a.doctor_id, a.date, a.time, a.status " +
+                "SELECT a.id, a.patient_id, a.doctor_id, a.date, a.time, a.status, p.Name AS patient_name, d.Name AS doctor_name " +
                 "FROM Appointment a " +
                 "JOIN patients p ON a.patient_id = p.patient_id " +
+                "JOIN doctors d ON a.doctor_id = d.doctor_id " +
                 "WHERE 1=1"
             );
 
-            if (!string.IsNullOrWhiteSpace(patientName))
-                sql.Append(" AND p.Name LIKE @patientName");
-
-            if (doctorId.HasValue)
-                sql.Append(" AND a.doctor_id = @doctorId");
-
-            if (date.HasValue)
-                sql.Append(" AND a.date = @date");
-
-            if (!string.IsNullOrWhiteSpace(status))
-                sql.Append(" AND a.status = @status");
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                sql.Append(" AND (p.Name LIKE @search OR d.Name LIKE @search OR a.status LIKE @search OR DATE_FORMAT(a.date, '%Y-%m-%d') LIKE @search)");
+            }
 
             using (MySqlConnection c = con.GetConnection())
             {
@@ -188,19 +182,11 @@ namespace MPHospitalRecordsSystem
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql.ToString(), c))
                     {
-                        if (!string.IsNullOrWhiteSpace(patientName))
-                            cmd.Parameters.AddWithValue("@patientName", "%" + patientName + "%");
-
-                        if (doctorId.HasValue)
-                            cmd.Parameters.AddWithValue("@doctorId", doctorId.Value);
-
-                        if (date.HasValue)
-                            cmd.Parameters.AddWithValue("@date", date.Value.Date);
-
-                        if (!string.IsNullOrWhiteSpace(status))
-                            cmd.Parameters.AddWithValue("@status", status);
+                        if (!string.IsNullOrWhiteSpace(search))
+                            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
 
                         c.Open();
+
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -233,6 +219,7 @@ namespace MPHospitalRecordsSystem
 
             return list;
         }
+
 
         public List<appointmentDTO> read_all_appointments()
         {
