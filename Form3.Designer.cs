@@ -1402,7 +1402,7 @@
             // cbAvailable
             // 
             this.cbAvailable.FormattingEnabled = true;
-            this.cbAvailable.Location = new System.Drawing.Point(8, 284);
+            this.cbAvailable.Location = new System.Drawing.Point(8, 330);
             this.cbAvailable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAvailable.Name = "cbAvailable";
             this.cbAvailable.Size = new System.Drawing.Size(211, 21);
@@ -1413,7 +1413,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(8, 267);
+            this.label34.Location = new System.Drawing.Point(8, 313);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(146, 18);
@@ -1424,7 +1424,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(8, 436);
+            this.label33.Location = new System.Drawing.Point(13, 416);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(60, 18);
@@ -1440,7 +1440,7 @@
             "COMPLETED",
             "UNATTENDED",
             "CANCELED"});
-            this.statusCb.Location = new System.Drawing.Point(6, 379);
+            this.statusCb.Location = new System.Drawing.Point(11, 379);
             this.statusCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusCb.Name = "statusCb";
             this.statusCb.Size = new System.Drawing.Size(212, 21);
@@ -1450,7 +1450,7 @@
             // hideExCb
             // 
             this.hideExCb.FormattingEnabled = true;
-            this.hideExCb.Location = new System.Drawing.Point(6, 453);
+            this.hideExCb.Location = new System.Drawing.Point(11, 433);
             this.hideExCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.hideExCb.Name = "hideExCb";
             this.hideExCb.Size = new System.Drawing.Size(280, 21);
@@ -1461,13 +1461,12 @@
             // 
             this.hideExLbl.AutoSize = true;
             this.hideExLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideExLbl.Location = new System.Drawing.Point(8, 362);
+            this.hideExLbl.Location = new System.Drawing.Point(13, 362);
             this.hideExLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hideExLbl.Name = "hideExLbl";
             this.hideExLbl.Size = new System.Drawing.Size(56, 18);
             this.hideExLbl.TabIndex = 39;
             this.hideExLbl.Text = "Status";
-            this.hideExLbl.Visible = false;
             // 
             // groupBox1
             // 
@@ -1510,7 +1509,7 @@
             // hideExCbDoc
             // 
             this.hideExCbDoc.FormattingEnabled = true;
-            this.hideExCbDoc.Location = new System.Drawing.Point(6, 293);
+            this.hideExCbDoc.Location = new System.Drawing.Point(8, 282);
             this.hideExCbDoc.Name = "hideExCbDoc";
             this.hideExCbDoc.Size = new System.Drawing.Size(284, 21);
             this.hideExCbDoc.TabIndex = 10;
@@ -1520,7 +1519,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(10, 272);
+            this.label30.Location = new System.Drawing.Point(10, 260);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(60, 18);
@@ -1602,13 +1601,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel8.Controls.Add(this.label32);
-            this.panel8.Controls.Add(this.textBox20);
-            this.panel8.Controls.Add(this.label35);
-            this.panel8.Controls.Add(this.comboBox1);
-            this.panel8.Controls.Add(this.label31);
-            this.panel8.Controls.Add(this.textBox19);
-            this.panel8.Location = new System.Drawing.Point(1323, 77);
+            this.panel8.Location = new System.Drawing.Point(1519, 676);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
@@ -1749,7 +1742,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1855, 714);
+            this.ClientSize = new System.Drawing.Size(1443, 862);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);

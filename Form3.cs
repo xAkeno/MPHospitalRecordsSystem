@@ -15,6 +15,8 @@ namespace MPHospitalRecordsSystem
 {
     public partial class Form3 : Form
     {
+        private DateTime date;
+        private DateTime time;
         public Form3()
         {
             InitializeComponent();
@@ -953,15 +955,17 @@ namespace MPHospitalRecordsSystem
         {
             if (rbAppointment2.Checked)
             {
-                hideExLbl.Location = new Point(10, 72);
+                label33.Location = new Point(10, 72);
                 hideExCb.Location = new Point(7, 93);
                 hideExCb.Visible = true;
-                hideExLbl.Visible = true;
+
+                //hideExLbl.Visible = true;
                 textBox17.Visible = false;
                 textBox18.Visible = false;
                 label28.Visible = false;
                 label29.Visible = false;
-                label27.Visible = false;    
+                label27.Visible = false;
+                label33.Visible = true;
                 dateTimePicker2.Visible = false;
 
                 //label31.Location = new Point(10, 132);
@@ -976,7 +980,8 @@ namespace MPHospitalRecordsSystem
             if (rbAppointment.Checked)
             {
                 hideExCb.Visible = false;
-                hideExLbl.Visible = false;
+                label33.Visible = false;
+                //hideExLbl.Visible = false;
                 textBox17.Visible = true;
                 textBox18.Visible = true;
                 label28.Visible = true;
@@ -993,9 +998,6 @@ namespace MPHospitalRecordsSystem
 
         private void button20_Click(object sender, EventArgs e)
         {
-
-            //String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
-            //String startTime = dateTimePicker4.Value.ToString("HH:mm");
             if (rbAppointment.Checked)
             {
                 String name = textBox17.Text;
@@ -1005,13 +1007,13 @@ namespace MPHospitalRecordsSystem
                 patient p = new patient();
                 p.add_patient(name, dateOfBirth, contact);
 
-                //a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
+                a.add_appoint(date, time, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
             }
             else if (rbAppointment2.Checked)
             {
                 String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
                 appointment a = new appointment();
-                //a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
+                a.add_appoint(date, time, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
             }
             loadAppointments();
 
@@ -1022,23 +1024,12 @@ namespace MPHospitalRecordsSystem
             //String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
             //String startTime = dateTimePicker4.Value.ToString("HH:mm");
             int App_id = Convert.ToInt32(idlbl.Text);
-            if (rbAppointment.Checked)
-            {
-                String name = textBox17.Text;
+            String name = textBox17.Text;
             String contact = textBox18.Text;
             String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-
             appointment a = new appointment();
             patient p = new patient();
-
-            //a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, statusCb.Text.ToString());
-            }
-            else if (rbAppointment2.Checked)
-            {
-                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
-                appointment a = new appointment();
-                //a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
-            }
+            a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, date, time, statusCb.Text.ToString());
             loadAppointments();
         }
 
@@ -1146,24 +1137,39 @@ namespace MPHospitalRecordsSystem
         {
             if (cbAvailable.SelectedItem is KeyValuePair<int, string> selectedSchedule)
             {
-                string[] parts = cbAvailable.SelectedItem.ToString().Split(new string[] { " at " }, StringSplitOptions.None);
+                string scheduleText = selectedSchedule.Value;
+                string[] parts = scheduleText.Split(new string[] { " at " }, StringSplitOptions.None);
 
                 if (parts.Length == 2)
                 {
-                    string dateAppoint = parts[0]; // "2025-10-15"
-                    string startTime = parts[1];   // "15:45"
+                    string dateAppoint = parts[0].Trim();
+                    string startTime = parts[1].Trim();
 
-                    // Now you can use dateAppoint and startTime as needed
-                    MessageBox.Show("Date: " + dateAppoint);
-                    MessageBox.Show("Time: " + startTime);
+                    Console.WriteLine($"Date part: '{dateAppoint}' (Length: {dateAppoint.Length})");
+                    Console.WriteLine($"Time part: '{startTime}' (Length: {startTime.Length})");
+
+                    if (!DateTime.TryParseExact(dateAppoint, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+                    {
+                        MessageBox.Show($"Failed to parse date: '{dateAppoint}'");
+                        return;
+                    }
+
+                    if (!DateTime.TryParseExact(startTime, "HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime parsedTime))
+                    {
+                        MessageBox.Show($"Failed to parse time: '{startTime}'");
+                        return;
+                    }
+
+                    date = parsedDate;
+                    time = parsedTime;
                 }
                 else
                 {
                     MessageBox.Show("Invalid format");
                 }
             }
-
         }
+
 
         private void hideExCbDoc_SelectedIndexChanged(object sender, EventArgs e)
         {

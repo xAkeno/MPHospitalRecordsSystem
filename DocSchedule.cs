@@ -11,7 +11,7 @@ namespace MPHospitalRecordsSystem
     internal class DocSchedule
     {
         connection con = new connection();
-        public String sqlInsertSchedule = "INSERT INTO Schedule (doctor_id,date,time) VALUES (@doctor_id,@date,@time)";
+        public String sqlInsertSchedule = "INSERT INTO Schedule (doctor_id,date,time,status) VALUES (@doctor_id,@date,@time,@stat)";
         public String sqlSearchIfAlready = "SELECT * FROM Schedule WHERE Date=@Date AND time=@time";
 
         public void add_Schedule(DateTime date, DateTime time, int doc_id)
@@ -59,6 +59,7 @@ namespace MPHospitalRecordsSystem
                             cmd.Parameters.AddWithValue("@doctor_id", doc_id);
                             cmd.Parameters.AddWithValue("@date", date);
                             cmd.Parameters.AddWithValue("@time", time);
+                            cmd.Parameters.AddWithValue("@stat", 0);
 
                             int row = cmd.ExecuteNonQuery();
                             if (row > 0)
@@ -81,7 +82,7 @@ namespace MPHospitalRecordsSystem
         }
         public List<DocScheduleDTO> get_doctor_all_schedule(int id)
         {
-            string sql = "SELECT id AS schedule_id, doctor_id, date AS available_date, time AS available_time FROM Schedule WHERE doctor_id = @doctor_id";
+            string sql = "SELECT id AS schedule_id, doctor_id, date AS available_date, time AS available_time FROM Schedule WHERE doctor_id = @doctor_id AND status=@stat";
 
             try
             {
@@ -90,6 +91,7 @@ namespace MPHospitalRecordsSystem
                     using (MySqlCommand cmd = new MySqlCommand(sql, c))
                     {
                         cmd.Parameters.AddWithValue("@doctor_id", id);
+                        cmd.Parameters.AddWithValue("@stat", 0);
                         c.Open();
 
                         List<DocScheduleDTO> list = new List<DocScheduleDTO>();
