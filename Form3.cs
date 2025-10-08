@@ -92,7 +92,6 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show("Patient is already taken");
             }
             loadPatients();
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -146,22 +145,16 @@ namespace MPHospitalRecordsSystem
             if (dgvPatients.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvPatients.SelectedRows[0];
-
-
                 string id = row.Cells["PatientId"].Value.ToString();
                 string name = row.Cells["Name"].Value.ToString();
                 string dob = row.Cells["DateOfBirth"].Value.ToString();
                 string contact = row.Cells["ContactNumber"].Value.ToString();
-
 
                 idlbl.Text = id;
                 nameIn.Text = name;
                 dtp1.Value = DateTime.Parse(dob);
                 contactnumberIn.Text = contact;
 
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
             }
             else
             {
@@ -181,7 +174,6 @@ namespace MPHospitalRecordsSystem
             {
                 p.update_patient(name, dtps, contact_number, id);
             }
-
             loadPatients();
         }
 
@@ -1117,7 +1109,20 @@ namespace MPHospitalRecordsSystem
 
         private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvRoles.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvRoles.SelectedRows[0];            
+                string name = row.Cells["user_name"].Value.ToString();
+                string password = row.Cells["password"].Value.ToString();
+                string role = row.Cells["role"].Value.ToString();
 
+            
+
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)

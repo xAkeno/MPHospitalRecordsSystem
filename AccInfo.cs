@@ -101,7 +101,6 @@ namespace MPHospitalRecordsSystem
                     return list;
                 }
             }
-
         }
         public List<UserInfoDTO> search_Acc(string search)
         {
