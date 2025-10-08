@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.button21 = new System.Windows.Forms.Button();
+            this.btnUnselectRoles = new System.Windows.Forms.Button();
+            this.btnUpdateRoles = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
@@ -150,16 +156,16 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.btnUnselectRoles = new System.Windows.Forms.Button();
-            this.btnUpdateRoles = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.textBox21 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
@@ -218,6 +224,74 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "roles";
             // 
+            // button25
+            // 
+            this.button25.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button25.BackgroundImage")));
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button25.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button25.Location = new System.Drawing.Point(942, 2);
+            this.button25.Margin = new System.Windows.Forms.Padding(2);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(33, 28);
+            this.button25.TabIndex = 12;
+            this.button25.UseVisualStyleBackColor = true;
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(687, 2);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(252, 29);
+            this.textBox21.TabIndex = 11;
+            // 
+            // button21
+            // 
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.Location = new System.Drawing.Point(192, 2);
+            this.button21.Margin = new System.Windows.Forms.Padding(2);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(33, 28);
+            this.button21.TabIndex = 10;
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // btnUnselectRoles
+            // 
+            this.btnUnselectRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUnselectRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnselectRoles.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnUnselectRoles.Location = new System.Drawing.Point(96, 2);
+            this.btnUnselectRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUnselectRoles.Name = "btnUnselectRoles";
+            this.btnUnselectRoles.Size = new System.Drawing.Size(92, 28);
+            this.btnUnselectRoles.TabIndex = 9;
+            this.btnUnselectRoles.Text = "Unselect";
+            this.btnUnselectRoles.UseVisualStyleBackColor = true;
+            this.btnUnselectRoles.Click += new System.EventHandler(this.btnUnselectRoles_Click);
+            // 
+            // btnUpdateRoles
+            // 
+            this.btnUpdateRoles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateRoles.BackgroundImage")));
+            this.btnUpdateRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUpdateRoles.Location = new System.Drawing.Point(58, 2);
+            this.btnUpdateRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateRoles.Name = "btnUpdateRoles";
+            this.btnUpdateRoles.Size = new System.Drawing.Size(33, 28);
+            this.btnUpdateRoles.TabIndex = 8;
+            this.btnUpdateRoles.UseVisualStyleBackColor = true;
+            this.btnUpdateRoles.Click += new System.EventHandler(this.btnUpdateRoles_Click);
+            // 
+            // button24
+            // 
+            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.Location = new System.Drawing.Point(21, 2);
+            this.button24.Margin = new System.Windows.Forms.Padding(2);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(33, 28);
+            this.button24.TabIndex = 7;
+            this.button24.UseVisualStyleBackColor = true;
+            // 
             // dgvRoles
             // 
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -241,7 +315,7 @@
             this.tabPage1.Controls.Add(this.dgvPatients);
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(978, 625);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "patient";
@@ -251,7 +325,7 @@
             this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button13.Location = new System.Drawing.Point(178, 6);
-            this.button13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(33, 28);
             this.button13.TabIndex = 6;
@@ -264,7 +338,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button4.Location = new System.Drawing.Point(82, 6);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 28);
             this.button4.TabIndex = 5;
@@ -278,7 +352,7 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button3.Location = new System.Drawing.Point(940, 6);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(33, 28);
             this.button3.TabIndex = 4;
@@ -288,7 +362,7 @@
             // searchbox
             // 
             this.searchbox.Location = new System.Drawing.Point(685, 6);
-            this.searchbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchbox.Margin = new System.Windows.Forms.Padding(2);
             this.searchbox.Name = "searchbox";
             this.searchbox.Size = new System.Drawing.Size(252, 29);
             this.searchbox.TabIndex = 3;
@@ -299,7 +373,7 @@
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Location = new System.Drawing.Point(44, 6);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(33, 28);
             this.button2.TabIndex = 2;
@@ -311,7 +385,7 @@
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Location = new System.Drawing.Point(7, 6);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(33, 28);
             this.button1.TabIndex = 1;
@@ -342,7 +416,7 @@
             this.tabPage2.Controls.Add(this.dgvDoctors);
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(978, 625);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "doctor";
@@ -353,7 +427,7 @@
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Location = new System.Drawing.Point(180, 6);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 28);
             this.button5.TabIndex = 12;
@@ -365,7 +439,7 @@
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(82, 6);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(94, 28);
             this.button6.TabIndex = 11;
@@ -379,7 +453,7 @@
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button7.Location = new System.Drawing.Point(940, 6);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(33, 28);
             this.button7.TabIndex = 10;
@@ -389,7 +463,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(685, 5);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(252, 29);
             this.textBox6.TabIndex = 9;
@@ -400,7 +474,7 @@
             this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.Location = new System.Drawing.Point(44, 6);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(33, 28);
             this.button8.TabIndex = 8;
@@ -412,7 +486,7 @@
             this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button14.Location = new System.Drawing.Point(7, 6);
-            this.button14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button14.Margin = new System.Windows.Forms.Padding(2);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(33, 28);
             this.button14.TabIndex = 7;
@@ -424,7 +498,7 @@
             this.dgvDoctors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDoctors.Location = new System.Drawing.Point(7, 38);
-            this.dgvDoctors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDoctors.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDoctors.Name = "dgvDoctors";
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.Size = new System.Drawing.Size(966, 585);
@@ -453,7 +527,7 @@
             this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button15.Location = new System.Drawing.Point(180, 7);
-            this.button15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button15.Margin = new System.Windows.Forms.Padding(2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(33, 28);
             this.button15.TabIndex = 11;
@@ -465,7 +539,7 @@
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.Location = new System.Drawing.Point(82, 8);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(94, 28);
             this.button9.TabIndex = 10;
@@ -479,7 +553,7 @@
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button10.Location = new System.Drawing.Point(939, 8);
-            this.button10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(33, 28);
             this.button10.TabIndex = 9;
@@ -489,7 +563,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(683, 7);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(252, 29);
             this.textBox2.TabIndex = 8;
@@ -499,7 +573,7 @@
             this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button11.Location = new System.Drawing.Point(45, 8);
-            this.button11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(33, 28);
             this.button11.TabIndex = 7;
@@ -511,7 +585,7 @@
             this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button12.Location = new System.Drawing.Point(7, 8);
-            this.button12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(33, 28);
             this.button12.TabIndex = 6;
@@ -522,7 +596,7 @@
             // 
             this.dgvVisits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVisits.Location = new System.Drawing.Point(7, 38);
-            this.dgvVisits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvVisits.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVisits.Name = "dgvVisits";
             this.dgvVisits.RowHeadersWidth = 51;
             this.dgvVisits.Size = new System.Drawing.Size(965, 585);
@@ -563,7 +637,7 @@
             this.btnScheduleDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleDelete.BackgroundImage")));
             this.btnScheduleDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnScheduleDelete.Location = new System.Drawing.Point(177, 7);
-            this.btnScheduleDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnScheduleDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnScheduleDelete.Name = "btnScheduleDelete";
             this.btnScheduleDelete.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleDelete.TabIndex = 12;
@@ -576,7 +650,7 @@
             this.btnScheduleUnselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnScheduleUnselect.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnScheduleUnselect.Location = new System.Drawing.Point(81, 7);
-            this.btnScheduleUnselect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnScheduleUnselect.Margin = new System.Windows.Forms.Padding(2);
             this.btnScheduleUnselect.Name = "btnScheduleUnselect";
             this.btnScheduleUnselect.Size = new System.Drawing.Size(92, 28);
             this.btnScheduleUnselect.TabIndex = 11;
@@ -590,7 +664,7 @@
             this.btnScheduleSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnScheduleSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnScheduleSearch.Location = new System.Drawing.Point(939, 7);
-            this.btnScheduleSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnScheduleSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnScheduleSearch.Name = "btnScheduleSearch";
             this.btnScheduleSearch.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleSearch.TabIndex = 10;
@@ -599,7 +673,7 @@
             // textBox15
             // 
             this.textBox15.Location = new System.Drawing.Point(684, 7);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(252, 29);
             this.textBox15.TabIndex = 9;
@@ -609,7 +683,7 @@
             this.btnScheduleUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleUpdate.BackgroundImage")));
             this.btnScheduleUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnScheduleUpdate.Location = new System.Drawing.Point(43, 7);
-            this.btnScheduleUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnScheduleUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnScheduleUpdate.Name = "btnScheduleUpdate";
             this.btnScheduleUpdate.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleUpdate.TabIndex = 8;
@@ -621,7 +695,7 @@
             this.btnScheduleAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleAdd.BackgroundImage")));
             this.btnScheduleAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnScheduleAdd.Location = new System.Drawing.Point(6, 7);
-            this.btnScheduleAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnScheduleAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnScheduleAdd.Name = "btnScheduleAdd";
             this.btnScheduleAdd.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleAdd.TabIndex = 7;
@@ -646,10 +720,9 @@
             // 
             // button16
             // 
-            this.button16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button16.BackgroundImage")));
             this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button16.Location = new System.Drawing.Point(180, 4);
-            this.button16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button16.Margin = new System.Windows.Forms.Padding(2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(33, 28);
             this.button16.TabIndex = 18;
@@ -661,7 +734,7 @@
             this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button17.Location = new System.Drawing.Point(82, 5);
-            this.button17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(94, 28);
             this.button17.TabIndex = 17;
@@ -671,11 +744,10 @@
             // 
             // button18
             // 
-            this.button18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button18.BackgroundImage")));
             this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button18.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button18.Location = new System.Drawing.Point(939, 5);
-            this.button18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(33, 28);
             this.button18.TabIndex = 16;
@@ -684,17 +756,16 @@
             // textBox16
             // 
             this.textBox16.Location = new System.Drawing.Point(683, 4);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(2);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(252, 29);
             this.textBox16.TabIndex = 15;
             // 
             // button19
             // 
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
             this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button19.Location = new System.Drawing.Point(45, 5);
-            this.button19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button19.Margin = new System.Windows.Forms.Padding(2);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(33, 28);
             this.button19.TabIndex = 14;
@@ -703,10 +774,9 @@
             // 
             // button20
             // 
-            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
             this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button20.Location = new System.Drawing.Point(7, 5);
-            this.button20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button20.Margin = new System.Windows.Forms.Padding(2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(33, 28);
             this.button20.TabIndex = 13;
@@ -717,7 +787,7 @@
             // 
             this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointments.Location = new System.Drawing.Point(7, 35);
-            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.RowHeadersWidth = 51;
             this.dgvAppointments.Size = new System.Drawing.Size(965, 585);
@@ -745,7 +815,7 @@
             // 
             this.dtp1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtp1.Location = new System.Drawing.Point(8, 161);
-            this.dtp1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp1.Margin = new System.Windows.Forms.Padding(2);
             this.dtp1.MinDate = new System.DateTime(1895, 1, 1, 0, 0, 0, 0);
             this.dtp1.Name = "dtp1";
             this.dtp1.Size = new System.Drawing.Size(284, 20);
@@ -789,7 +859,7 @@
             // nameIn
             // 
             this.nameIn.Location = new System.Drawing.Point(7, 29);
-            this.nameIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nameIn.Margin = new System.Windows.Forms.Padding(2);
             this.nameIn.Multiline = true;
             this.nameIn.Name = "nameIn";
             this.nameIn.Size = new System.Drawing.Size(285, 28);
@@ -810,7 +880,7 @@
             // contactnumberIn
             // 
             this.contactnumberIn.Location = new System.Drawing.Point(8, 95);
-            this.contactnumberIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contactnumberIn.Margin = new System.Windows.Forms.Padding(2);
             this.contactnumberIn.Multiline = true;
             this.contactnumberIn.Name = "contactnumberIn";
             this.contactnumberIn.Size = new System.Drawing.Size(284, 28);
@@ -841,7 +911,7 @@
             // textBox13
             // 
             this.textBox13.Location = new System.Drawing.Point(8, 540);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(281, 28);
@@ -850,7 +920,7 @@
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(8, 491);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(281, 28);
@@ -872,7 +942,7 @@
             // 
             this.textBox11.Enabled = false;
             this.textBox11.Location = new System.Drawing.Point(8, 439);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(281, 28);
@@ -893,7 +963,7 @@
             // 
             this.textBox10.Enabled = false;
             this.textBox10.Location = new System.Drawing.Point(8, 388);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(281, 28);
@@ -914,7 +984,7 @@
             // 
             this.textBox9.Enabled = false;
             this.textBox9.Location = new System.Drawing.Point(8, 330);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(281, 28);
@@ -935,7 +1005,7 @@
             // 
             this.textBox8.Enabled = false;
             this.textBox8.Location = new System.Drawing.Point(8, 39);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(281, 28);
@@ -956,7 +1026,7 @@
             // 
             this.textBox7.Enabled = false;
             this.textBox7.Location = new System.Drawing.Point(8, 216);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(281, 28);
@@ -977,7 +1047,7 @@
             // 
             this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(8, 160);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(281, 28);
@@ -999,7 +1069,7 @@
             // 
             this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(8, 95);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(281, 28);
@@ -1020,7 +1090,7 @@
             // 
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(8, 270);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(281, 28);
@@ -1075,7 +1145,7 @@
             "Psychiatry",
             "Ophthalmology"});
             this.cbspecial.Location = new System.Drawing.Point(7, 95);
-            this.cbspecial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbspecial.Margin = new System.Windows.Forms.Padding(2);
             this.cbspecial.Name = "cbspecial";
             this.cbspecial.Size = new System.Drawing.Size(282, 21);
             this.cbspecial.TabIndex = 14;
@@ -1096,7 +1166,7 @@
             // tb13
             // 
             this.tb13.Location = new System.Drawing.Point(9, 226);
-            this.tb13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb13.Margin = new System.Windows.Forms.Padding(2);
             this.tb13.Multiline = true;
             this.tb13.Name = "tb13";
             this.tb13.Size = new System.Drawing.Size(281, 28);
@@ -1138,7 +1208,7 @@
             // tb12
             // 
             this.tb12.Location = new System.Drawing.Point(7, 159);
-            this.tb12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb12.Margin = new System.Windows.Forms.Padding(2);
             this.tb12.Multiline = true;
             this.tb12.Name = "tb12";
             this.tb12.Size = new System.Drawing.Size(283, 28);
@@ -1181,7 +1251,7 @@
             // doctorNameIn
             // 
             this.doctorNameIn.Location = new System.Drawing.Point(7, 39);
-            this.doctorNameIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.doctorNameIn.Margin = new System.Windows.Forms.Padding(2);
             this.doctorNameIn.Multiline = true;
             this.doctorNameIn.Name = "doctorNameIn";
             this.doctorNameIn.Size = new System.Drawing.Size(282, 28);
@@ -1190,7 +1260,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(1349, 19);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(206, 28);
@@ -1252,7 +1322,7 @@
             // 
             this.textBox14.Enabled = false;
             this.textBox14.Location = new System.Drawing.Point(1306, 19);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
             this.textBox14.Multiline = true;
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(281, 28);
@@ -1403,7 +1473,7 @@
             // 
             this.cbAvailable.FormattingEnabled = true;
             this.cbAvailable.Location = new System.Drawing.Point(8, 330);
-            this.cbAvailable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.cbAvailable.Name = "cbAvailable";
             this.cbAvailable.Size = new System.Drawing.Size(211, 21);
             this.cbAvailable.TabIndex = 44;
@@ -1441,7 +1511,7 @@
             "UNATTENDED",
             "CANCELED"});
             this.statusCb.Location = new System.Drawing.Point(11, 379);
-            this.statusCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCb.Name = "statusCb";
             this.statusCb.Size = new System.Drawing.Size(212, 21);
             this.statusCb.TabIndex = 41;
@@ -1451,7 +1521,7 @@
             // 
             this.hideExCb.FormattingEnabled = true;
             this.hideExCb.Location = new System.Drawing.Point(11, 433);
-            this.hideExCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.hideExCb.Margin = new System.Windows.Forms.Padding(2);
             this.hideExCb.Name = "hideExCb";
             this.hideExCb.Size = new System.Drawing.Size(280, 21);
             this.hideExCb.TabIndex = 40;
@@ -1530,7 +1600,7 @@
             // 
             this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePicker2.Location = new System.Drawing.Point(8, 224);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.MinDate = new System.DateTime(1895, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(284, 20);
@@ -1572,7 +1642,7 @@
             // textBox17
             // 
             this.textBox17.Location = new System.Drawing.Point(7, 92);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(2);
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(285, 28);
@@ -1592,7 +1662,7 @@
             // textBox18
             // 
             this.textBox18.Location = new System.Drawing.Point(8, 158);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(2);
             this.textBox18.Multiline = true;
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(284, 28);
@@ -1601,11 +1671,80 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel8.Controls.Add(this.label38);
+            this.panel8.Controls.Add(this.comboBox2);
+            this.panel8.Controls.Add(this.label37);
+            this.panel8.Controls.Add(this.textBox23);
+            this.panel8.Controls.Add(this.label36);
+            this.panel8.Controls.Add(this.textBox22);
             this.panel8.Location = new System.Drawing.Point(1519, 676);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(14, 174);
+            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(52, 18);
+            this.label38.TabIndex = 7;
+            this.label38.Text = "Roles";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Admin",
+            "Recepetionist"});
+            this.comboBox2.Location = new System.Drawing.Point(15, 194);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(258, 21);
+            this.comboBox2.TabIndex = 6;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(5, 96);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(83, 18);
+            this.label37.TabIndex = 5;
+            this.label37.Text = "Password";
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(2, 116);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox23.Multiline = true;
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(285, 28);
+            this.textBox23.TabIndex = 4;
+            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(5, 18);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(85, 18);
+            this.label36.TabIndex = 3;
+            this.label36.Text = "Username";
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(2, 38);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox22.Multiline = true;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(285, 28);
+            this.textBox22.TabIndex = 2;
             // 
             // label31
             // 
@@ -1649,74 +1788,6 @@
             this.label35.TabIndex = 11;
             this.label35.Text = "Roles";
             // 
-            // button21
-            // 
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.Location = new System.Drawing.Point(192, 2);
-            this.button21.Margin = new System.Windows.Forms.Padding(2);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(33, 28);
-            this.button21.TabIndex = 10;
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // btnUnselectRoles
-            // 
-            this.btnUnselectRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUnselectRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnselectRoles.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUnselectRoles.Location = new System.Drawing.Point(96, 2);
-            this.btnUnselectRoles.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUnselectRoles.Name = "btnUnselectRoles";
-            this.btnUnselectRoles.Size = new System.Drawing.Size(92, 28);
-            this.btnUnselectRoles.TabIndex = 9;
-            this.btnUnselectRoles.Text = "Unselect";
-            this.btnUnselectRoles.UseVisualStyleBackColor = true;
-            this.btnUnselectRoles.Click += new System.EventHandler(this.btnUnselectRoles_Click);
-            // 
-            // btnUpdateRoles
-            // 
-            this.btnUpdateRoles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateRoles.BackgroundImage")));
-            this.btnUpdateRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUpdateRoles.Location = new System.Drawing.Point(58, 2);
-            this.btnUpdateRoles.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUpdateRoles.Name = "btnUpdateRoles";
-            this.btnUpdateRoles.Size = new System.Drawing.Size(33, 28);
-            this.btnUpdateRoles.TabIndex = 8;
-            this.btnUpdateRoles.UseVisualStyleBackColor = true;
-            this.btnUpdateRoles.Click += new System.EventHandler(this.btnUpdateRoles_Click);
-            // 
-            // button24
-            // 
-            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.Location = new System.Drawing.Point(21, 2);
-            this.button24.Margin = new System.Windows.Forms.Padding(2);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(33, 28);
-            this.button24.TabIndex = 7;
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // button25
-            // 
-            this.button25.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button25.BackgroundImage")));
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button25.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button25.Location = new System.Drawing.Point(942, 2);
-            this.button25.Margin = new System.Windows.Forms.Padding(2);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(33, 28);
-            this.button25.TabIndex = 12;
-            this.button25.UseVisualStyleBackColor = true;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(687, 2);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(252, 29);
-            this.textBox21.TabIndex = 11;
-            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -1742,7 +1813,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1443, 862);
+            this.ClientSize = new System.Drawing.Size(1343, 687);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -1936,5 +2007,11 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

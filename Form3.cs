@@ -1112,6 +1112,31 @@ namespace MPHospitalRecordsSystem
 
         private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvRoles.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvRoles.SelectedRows[0];
+
+
+
+                string name = row.Cells["username"].Value.ToString();
+
+                string role = row.Cells["role"].Value.ToString();
+
+
+                textBox22.Text = name;
+                //idlbl.Text = id.ToString();
+                comboBox2.Text = role;
+
+
+
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
+            }
 
         }
 
@@ -1213,11 +1238,12 @@ namespace MPHospitalRecordsSystem
 
         private void btnUpdateRoles_Click(object sender, EventArgs e)
         {
-            string user_name = textBox19.Text;
-            string role = comboBox1.Text;
-            string password = textBox20.Text;
+            string user_name = textBox22.Text;
+            string role = comboBox2.Text;
+            string password = textBox23.Text;
+            int id = Convert.ToInt32(idlbl.Text);
             AccInfo a = new AccInfo();
-            a.updateAcc(user_name, password, role);
+            a.updateAcc(id,user_name, password, role);
             loadAcc();
 
             
@@ -1241,32 +1267,15 @@ namespace MPHospitalRecordsSystem
 
         private void dgvRoles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvRoles.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dgvRoles.SelectedRows[0];
+            { 
 
 
-
-                string name = row.Cells["user_name"].Value.ToString();
-                string password = row.Cells["password"].Value.ToString();
-                string role = row.Cells["role"].Value.ToString();
-
-
-
-                textBox19.Text = name;
-                textBox20.Text = password;
-                comboBox1.Text = role;
-
-
-
-                //MessageBox.Show(
-                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
-                //);
             }
-            else
-            {
-                MessageBox.Show("⚠ Please select a row first.");
-            }
+        }
+
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
