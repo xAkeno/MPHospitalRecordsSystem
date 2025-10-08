@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace MPHospitalRecordsSystem
 {
@@ -1299,6 +1302,85 @@ namespace MPHospitalRecordsSystem
                 appointment a = new appointment();
                 dgvAppointments.DataSource = a.search_appointments(search);
             }
+        }
+        public static void ExportToExcel<T>(List<T> data, string title = "Exported Data")
+        {
+            if (data == null || data.Count == 0)
+            {
+                MessageBox.Show($"No {title.ToLower()} found to export.");
+                return;
+            }
+
+            try
+            {
+                Excel.Application xlApp = new Excel.Application();
+                if (xlApp == null)
+                {
+                    MessageBox.Show("Excel is not properly installed.");
+                    return;
+                }
+
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Add();
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                PropertyInfo[] props = typeof(T).GetProperties();
+
+                // Write headers
+                for (int i = 0; i < props.Length; i++)
+                {
+                    xlWorkSheet.Cells[1, i + 1] = props[i].Name;
+                }
+
+                // Write data
+                int row = 2;
+                foreach (T item in data)
+                {
+                    for (int col = 0; col < props.Length; col++)
+                    {
+                        object value = props[col].GetValue(item);
+                        if (value is DateTime dt)
+                            xlWorkSheet.Cells[row, col + 1] = dt.ToString("yyyy-MM-dd");
+                        else if (value is TimeSpan ts)
+                            xlWorkSheet.Cells[row, col + 1] = ts.ToString(@"hh\:mm");
+                        else
+                            xlWorkSheet.Cells[row, col + 1] = value?.ToString();
+                    }
+                    row++;
+                }
+
+                xlWorkSheet.Columns.AutoFit();
+                xlApp.Visible = true;
+
+                MessageBox.Show($"{title} export completed. Excel opened.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed: " + ex.Message);
+            }
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<patientDTO>)dgvPatients.DataSource, "Patients");
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<doctorDTO>)dgvDoctors.DataSource, "Doctors");
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<visitsDTO>)dgvVisits.DataSource, "Visits");
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<DocScheduleDTO>)dgvSchedule.DataSource, "Doctor Schedules");
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<appointmentDTO>)dgvAppointments.DataSource, "Appointments");
         }
     }
 }

@@ -162,6 +162,11 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -299,6 +304,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage1.Controls.Add(this.button22);
             this.tabPage1.Controls.Add(this.button13);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
@@ -400,6 +406,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage2.Controls.Add(this.button23);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.button7);
@@ -502,6 +509,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage3.Controls.Add(this.button26);
             this.tabPage3.Controls.Add(this.button15);
             this.tabPage3.Controls.Add(this.button9);
             this.tabPage3.Controls.Add(this.button10);
@@ -600,6 +608,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage4.Controls.Add(this.button27);
             this.tabPage4.Controls.Add(this.dgvSchedule);
             this.tabPage4.Controls.Add(this.btnScheduleDelete);
             this.tabPage4.Controls.Add(this.btnScheduleUnselect);
@@ -699,6 +708,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage5.Controls.Add(this.button28);
             this.tabPage5.Controls.Add(this.button16);
             this.tabPage5.Controls.Add(this.button17);
             this.tabPage5.Controls.Add(this.button18);
@@ -1739,6 +1749,56 @@
             this.textBox20.Size = new System.Drawing.Size(285, 28);
             this.textBox20.TabIndex = 12;
             // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(546, 6);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(108, 28);
+            this.button22.TabIndex = 7;
+            this.button22.Text = "Export";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(571, 5);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(108, 28);
+            this.button23.TabIndex = 13;
+            this.button23.Text = "Export";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(570, 7);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(108, 28);
+            this.button26.TabIndex = 14;
+            this.button26.Text = "Export";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(571, 8);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(108, 28);
+            this.button27.TabIndex = 15;
+            this.button27.Text = "Export";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(570, 4);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(108, 28);
+            this.button28.TabIndex = 19;
+            this.button28.Text = "Export";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1936,5 +1996,10 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
     }
 }
