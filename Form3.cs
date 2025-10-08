@@ -407,7 +407,16 @@ namespace MPHospitalRecordsSystem
                 panel6.Visible = false;
             }
 
-
+            bool showAppointments = e.TabPage.Text.Equals("Appointment");
+            if (showAppointments) { 
+            
+                panel7.Visible = true;
+                panel7.Location = new Point(4, 112);
+            }
+            else
+            {
+                panel7.Visible = false;
+            }
 
             if (showPatients)
                 label5.Text = "Patient Id:";
