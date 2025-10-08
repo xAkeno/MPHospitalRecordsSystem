@@ -15,7 +15,7 @@ namespace MPHospitalRecordsSystem
 {
     public partial class Form3 : Form
     {
-
+        //the stuff i added for role access
         private string userRole;
         private List<TabPage> hiddenTabs = new List<TabPage>();
 
@@ -118,6 +118,7 @@ namespace MPHospitalRecordsSystem
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            //the stuff i added for role access
             ApplyRoleAccess();
         }
 
@@ -852,6 +853,7 @@ namespace MPHospitalRecordsSystem
         }
 
         //testing//
+        //stuff i added for role access
 
         private void ApplyRoleAccess()
         {
