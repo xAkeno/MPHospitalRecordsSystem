@@ -1077,6 +1077,7 @@ namespace MPHospitalRecordsSystem
                 string contactNumber = row.Cells["ContactNumber"].Value.ToString();
                 DateTime dateOfBirth = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
                 int doctorId = Convert.ToInt32(row.Cells["DoctorId"].Value);
+                String status = row.Cells["Status"].Value.ToString();   
                 DateTime appointmentDate = Convert.ToDateTime(row.Cells["AppointmentDate"].Value);
 
                 TimeSpan appointmentTime = TimeSpan.Parse(row.Cells["AppointmentTime"].Value.ToString());
@@ -1084,6 +1085,8 @@ namespace MPHospitalRecordsSystem
                 //dateTimePicker4.Format = DateTimePickerFormat.Custom;
                 //dateTimePicker4.CustomFormat = "HH:mm";
 
+                cbAvailable.Text = appointmentDate.ToString("yyyy-MM-dd") + " at " + timeOnly.ToString("HH:mm");
+                statusCb.Text = status;
 
                 idlbl.Text = Convert.ToString(appointmentId);
 
