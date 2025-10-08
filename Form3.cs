@@ -48,7 +48,10 @@ namespace MPHospitalRecordsSystem
             visit v = new visit();
             dgvVisits.DataSource = v.read_visits();
         }
-        
+        public void loadSchedule() { 
+            DocSchedule doc = new DocSchedule();
+            dgvSchedule.DataSource = doc.read_schedule();
+        }
         public void getNextIdVisit()
         {
             visit v = new visit();
@@ -397,6 +400,7 @@ namespace MPHospitalRecordsSystem
 
                 if (cbDoctorSched.Items.Count > 0)
                     cbDoctorSched.SelectedIndex = 0;
+                loadSchedule();
             }
             else { 
                 panel6.Visible = false;
@@ -753,6 +757,20 @@ namespace MPHospitalRecordsSystem
                 docSchedule.add_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key);
             }
 
+        }
+
+        private void btnScheduleUpdate_Click(object sender, EventArgs e)
+        {
+            String doc = cbDoctorSched.SelectedItem.ToString();
+            String SchedDate = dtpScheduleDate.Value.ToString("yyyy-MM-dd");
+            String SchedTime = timePicker.Value.ToString("HH:mm");
+            int id = Convert.ToInt32(idlbl.Text);
+
+            if (!doc.Equals("") || !SchedDate.Equals("") || !SchedDate.Equals(""))
+            {
+                DocSchedule docSchedule = new DocSchedule();
+                docSchedule.update_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key,id);
+            }
         }
     }
 }

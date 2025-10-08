@@ -531,6 +531,7 @@
             this.btnScheduleUpdate.Size = new System.Drawing.Size(33, 28);
             this.btnScheduleUpdate.TabIndex = 8;
             this.btnScheduleUpdate.UseVisualStyleBackColor = true;
+            this.btnScheduleUpdate.Click += new System.EventHandler(this.btnScheduleUpdate_Click);
             // 
             // btnScheduleAdd
             // 

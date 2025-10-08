@@ -79,5 +79,79 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
+        public void update_Schedule(DateTime date, DateTime time, int doc_id, int sched_id)
+        {
+            //@doctor_id,@date,@time
+            String sqlUpdateSchedule = "UPDATE Schedule SET doctor_id=@doctor_id, date=@date, time=@time WHERE id=@sched_id";
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+
+                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdateSchedule, c))
+                    {
+                        cmd.Parameters.AddWithValue("@doctor_id", date);
+                        cmd.Parameters.AddWithValue("@date", date);
+                        cmd.Parameters.AddWithValue("@id", sched_id);
+                        cmd.Parameters.AddWithValue("@time", time);
+
+                        c.Open();
+                        int row = cmd.ExecuteNonQuery();
+
+                        if (row > 0)
+                        {
+                            MessageBox.Show("Successfully updated!");
+                        }
+                        // else MessageBox.Show("Patient is already taken");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public List<DocScheduleDTO> read_schedule() {
+            string sqlSelectSchedule =
+                "SELECT s.id AS schedule_id, s.doctor_id, s.date AS available_date, s.time AS available_time, " +
+                "d.Name AS doctor_name, d.Specialty " +
+                "FROM Schedule s " +
+                "JOIN doctors d ON s.doctor_id = d.doctor_id";
+
+
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlSelectSchedule, c))
+                    {
+                        c.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        List<DocScheduleDTO> list = new List<DocScheduleDTO>();
+                        while (reader.Read())
+                        {
+                            DocScheduleDTO schedule = new DocScheduleDTO
+                            {
+                                ScheduleId = reader.GetInt32("schedule_id"),
+                                DoctorId = reader["doctor_id"].ToString(),
+                                DoctorName = reader["doctor_name"].ToString(),
+                                Specialty = reader["Specialty"].ToString(),
+                                AvailableDate = reader.GetDateTime("available_date"),
+                                AvailableTime = reader.GetTimeSpan("available_time")
+                            };
+                            list.Add(schedule);
+                        }
+                        return list;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
     }
 }

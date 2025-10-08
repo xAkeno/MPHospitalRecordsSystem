@@ -13,6 +13,6 @@ namespace MPHospitalRecordsSystem
         public string DoctorName { get; set; }
         public string Specialty { get; set; }
         public DateTime AvailableDate { get; set; }
-        public DateTime AvailableTime { get; set; }
+        public TimeSpan AvailableTime { get; set; }
     }
 }
