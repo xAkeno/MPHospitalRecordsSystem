@@ -138,7 +138,7 @@
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.hideExCbDoc = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label24 = new System.Windows.Forms.Label();
@@ -657,6 +657,7 @@
             this.button20.Size = new System.Drawing.Size(33, 28);
             this.button20.TabIndex = 13;
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // dataGridView1
             // 
@@ -1327,7 +1328,7 @@
             this.panel7.Controls.Add(this.dateTimePicker4);
             this.panel7.Controls.Add(this.label31);
             this.panel7.Controls.Add(this.dateTimePicker3);
-            this.panel7.Controls.Add(this.comboBox1);
+            this.panel7.Controls.Add(this.hideExCbDoc);
             this.panel7.Controls.Add(this.label30);
             this.panel7.Controls.Add(this.dateTimePicker2);
             this.panel7.Controls.Add(this.label24);
@@ -1443,13 +1444,13 @@
             this.dateTimePicker3.Size = new System.Drawing.Size(284, 20);
             this.dateTimePicker3.TabIndex = 11;
             // 
-            // comboBox1
+            // hideExCbDoc
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(8, 294);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(284, 21);
-            this.comboBox1.TabIndex = 10;
+            this.hideExCbDoc.FormattingEnabled = true;
+            this.hideExCbDoc.Location = new System.Drawing.Point(8, 294);
+            this.hideExCbDoc.Name = "hideExCbDoc";
+            this.hideExCbDoc.Size = new System.Drawing.Size(284, 21);
+            this.hideExCbDoc.TabIndex = 10;
             // 
             // label30
             // 
@@ -1540,7 +1541,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1310, 705);
+            this.ClientSize = new System.Drawing.Size(1475, 705);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -1706,7 +1707,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox hideExCbDoc;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.RadioButton rbAppointment2;
         private System.Windows.Forms.RadioButton rbAppointment;

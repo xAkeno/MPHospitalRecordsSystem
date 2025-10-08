@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccInfo.cs" />
     <Compile Include="connection.cs" />
     <Compile Include="DocSchedule.cs" />
     <Compile Include="DocScheduleDTO.cs" />

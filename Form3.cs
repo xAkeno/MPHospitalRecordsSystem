@@ -412,6 +412,32 @@ namespace MPHospitalRecordsSystem
             
                 panel7.Visible = true;
                 panel7.Location = new Point(4, 112);
+
+                visit v = new visit();
+                List<patientDTO> patients = v.getAllPatient();
+                List<doctorDTO> doctors = v.getAllDoctors();
+
+                foreach (patientDTO p in patients)
+                {
+                    string display = string.Format("{0,-30} | {1}", "Name: " + p.Name, "ID: " + p.PatientId);
+                    hideExCb.Items.Add(new KeyValuePair<int, string>(p.PatientId, display));
+                }
+                hideExCb.DisplayMember = "Value"; // what user sees
+                hideExCb.ValueMember = "Key";     // actual PatientId
+                if (hideExCb.Items.Count > 0)
+                    hideExCb.SelectedIndex = 0;
+
+                // Populate Doctors ComboBox
+                foreach (doctorDTO d in doctors)
+                {
+                    string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
+                    hideExCbDoc.Items.Add(new KeyValuePair<int, string>(d.DoctorId, display));
+                }
+                hideExCbDoc.DisplayMember = "Value";
+                hideExCbDoc.ValueMember = "Key";
+
+                if (hideExCbDoc.Items.Count > 0)
+                    hideExCbDoc.SelectedIndex = 0;
             }
             else
             {
@@ -909,6 +935,11 @@ namespace MPHospitalRecordsSystem
                 dateTimePicker3.Location = new Point(8,356);
                 dateTimePicker4.Location = new Point(7,422);
             }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
