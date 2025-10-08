@@ -122,6 +122,7 @@
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.dtpScheduleDate = new System.Windows.Forms.DateTimePicker();
             this.cbDoctorSched = new System.Windows.Forms.ComboBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -141,6 +142,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -169,7 +171,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(978, 625);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "patient";
+            this.tabPage1.Text = "Patient";
             // 
             // button13
             // 
@@ -269,7 +271,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(978, 625);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "doctor";
+            this.tabPage2.Text = "Doctor";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // button5
@@ -369,7 +371,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(978, 625);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "visitors";
+            this.tabPage3.Text = "Visitors";
             // 
             // button15
             // 
@@ -550,12 +552,12 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.tabPage5.Location = new System.Drawing.Point(4, 33);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(978, 625);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Apointment";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -1225,6 +1227,15 @@
             this.cbDoctorSched.Size = new System.Drawing.Size(281, 21);
             this.cbDoctorSched.TabIndex = 31;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage6.Location = new System.Drawing.Point(4, 33);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(978, 625);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Roles";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1369,5 +1380,6 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Button btnScheduleUpdate;
         private System.Windows.Forms.Button btnScheduleAdd;
+        private System.Windows.Forms.TabPage tabPage6;
     }
 }
