@@ -1049,6 +1049,7 @@ namespace MPHospitalRecordsSystem
                 label29.Visible = true;
                 label27.Visible = true;
                 dateTimePicker2.Visible = true;
+                dateTimePicker2.Enabled = false;
 
                 //label31.Location = new Point(11, 336);
                 //label32.Location = new Point(11, 401);

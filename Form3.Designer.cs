@@ -1372,7 +1372,7 @@
             this.panel7.Controls.Add(this.textBox17);
             this.panel7.Controls.Add(this.label29);
             this.panel7.Controls.Add(this.textBox18);
-            this.panel7.Location = new System.Drawing.Point(1326, 80);
+            this.panel7.Location = new System.Drawing.Point(1338, 113);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(297, 583);
             this.panel7.TabIndex = 8;
@@ -1384,7 +1384,7 @@
             this.cbAvailable.Location = new System.Drawing.Point(8, 330);
             this.cbAvailable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAvailable.Name = "cbAvailable";
-            this.cbAvailable.Size = new System.Drawing.Size(211, 21);
+            this.cbAvailable.Size = new System.Drawing.Size(283, 21);
             this.cbAvailable.TabIndex = 44;
             this.cbAvailable.SelectedIndexChanged += new System.EventHandler(this.cbAvailable_SelectedIndexChanged);
             // 
@@ -1422,7 +1422,7 @@
             this.statusCb.Location = new System.Drawing.Point(11, 379);
             this.statusCb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusCb.Name = "statusCb";
-            this.statusCb.Size = new System.Drawing.Size(212, 21);
+            this.statusCb.Size = new System.Drawing.Size(280, 21);
             this.statusCb.TabIndex = 41;
             this.statusCb.Text = "PENDING";
             // 

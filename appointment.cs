@@ -159,6 +159,81 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
+        public List<appointmentDTO> search_appointments(string patientName = "", int? doctorId = null, DateTime? date = null, string status = "")
+        {
+            List<appointmentDTO> list = new List<appointmentDTO>();
+
+            StringBuilder sql = new StringBuilder(
+                "SELECT a.id, a.patient_id, a.doctor_id, a.date, a.time, a.status " +
+                "FROM Appointment a " +
+                "JOIN patients p ON a.patient_id = p.patient_id " +
+                "WHERE 1=1"
+            );
+
+            if (!string.IsNullOrWhiteSpace(patientName))
+                sql.Append(" AND p.Name LIKE @patientName");
+
+            if (doctorId.HasValue)
+                sql.Append(" AND a.doctor_id = @doctorId");
+
+            if (date.HasValue)
+                sql.Append(" AND a.date = @date");
+
+            if (!string.IsNullOrWhiteSpace(status))
+                sql.Append(" AND a.status = @status");
+
+            using (MySqlConnection c = con.GetConnection())
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql.ToString(), c))
+                    {
+                        if (!string.IsNullOrWhiteSpace(patientName))
+                            cmd.Parameters.AddWithValue("@patientName", "%" + patientName + "%");
+
+                        if (doctorId.HasValue)
+                            cmd.Parameters.AddWithValue("@doctorId", doctorId.Value);
+
+                        if (date.HasValue)
+                            cmd.Parameters.AddWithValue("@date", date.Value.Date);
+
+                        if (!string.IsNullOrWhiteSpace(status))
+                            cmd.Parameters.AddWithValue("@status", status);
+
+                        c.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                patient p = new patient();
+                                patientDTO patientInfo = p.find_patient_by_id(reader.GetInt32("patient_id"));
+
+                                appointmentDTO dto = new appointmentDTO
+                                {
+                                    AppointmentId = reader.GetInt32("id"),
+                                    PatientId = reader.GetInt32("patient_id"),
+                                    PatientName = patientInfo.Name,
+                                    ContactNumber = patientInfo.ContactNumber,
+                                    DateOfBirth = patientInfo.DateOfBirth,
+                                    DoctorId = reader.GetInt32("doctor_id"),
+                                    AppointmentDate = reader.GetDateTime("date"),
+                                    AppointmentTime = reader.GetTimeSpan("time"),
+                                    Status = reader.GetString("status")
+                                };
+                                list.Add(dto);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
+            return list;
+        }
+
         public List<appointmentDTO> read_all_appointments()
         {
             List<appointmentDTO> list = new List<appointmentDTO>();

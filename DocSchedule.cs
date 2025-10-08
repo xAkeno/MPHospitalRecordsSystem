@@ -215,6 +215,65 @@ namespace MPHospitalRecordsSystem
 
             return null;
         }
+        public List<DocScheduleDTO> search_schedule(string doctorName = "", DateTime? date = null)
+        {
+            List<DocScheduleDTO> list = new List<DocScheduleDTO>();
+
+            // Base SQL with JOIN
+            StringBuilder sqlBuilder = new StringBuilder(
+                "SELECT s.id AS schedule_id, s.doctor_id, s.date AS available_date, s.time AS available_time, " +
+                "d.Name AS doctor_name, d.Specialty " +
+                "FROM Schedule s " +
+                "JOIN doctors d ON s.doctor_id = d.doctor_id " +
+                "WHERE 1=1"
+            );
+
+            if (!string.IsNullOrWhiteSpace(doctorName))
+                sqlBuilder.Append(" AND d.Name LIKE @doctorName");
+
+            if (date.HasValue)
+                sqlBuilder.Append(" AND s.date = @date");
+
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlBuilder.ToString(), c))
+                    {
+                        if (!string.IsNullOrWhiteSpace(doctorName))
+                            cmd.Parameters.AddWithValue("@doctorName", "%" + doctorName + "%");
+
+                        if (date.HasValue)
+                            cmd.Parameters.AddWithValue("@date", date.Value.Date);
+
+                        c.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DocScheduleDTO schedule = new DocScheduleDTO
+                                {
+                                    ScheduleId = reader.GetInt32("schedule_id"),
+                                    DoctorId = reader["doctor_id"].ToString(),
+                                    DoctorName = reader["doctor_name"].ToString(),
+                                    Specialty = reader["Specialty"].ToString(),
+                                    AvailableDate = reader.GetDateTime("available_date"),
+                                    AvailableTime = reader.GetTimeSpan("available_time")
+                                };
+                                list.Add(schedule);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            return list;
+        }
+
         public void delete_Schedule(int id)
         {
             String sqlDeleteSchedule = "DELETE FROM Schedule WHERE id=@id";
