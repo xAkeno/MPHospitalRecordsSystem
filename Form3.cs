@@ -799,7 +799,7 @@ namespace MPHospitalRecordsSystem
                 DocSchedule docSchedule = new DocSchedule();
                 docSchedule.add_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key);
             }
-
+            loadSchedule();
         }
 
         private void btnScheduleUpdate_Click(object sender, EventArgs e)
@@ -859,16 +859,17 @@ namespace MPHospitalRecordsSystem
                 dtpScheduleDate.Value = DateTime.Parse(AvailableDate);
                 timePicker.Value = DateTime.Parse(AvailableTime);
 
-                string display = $"Name: {DoctorName,-30} | Specialty: {Specialty}";
 
-                cbDoctorSched.Items.Clear();
+                //string display = $"Name: {DoctorName,-30} | Specialty: {Specialty}";
 
-                cbDoctorSched.DisplayMember = "Value";
-                cbDoctorSched.ValueMember = "Key";
+                //cbDoctorSched.Items.Clear();
 
-                var doctorItem = new KeyValuePair<int, string>(DoctorId, display);
-                cbDoctorSched.Items.Add(doctorItem);
-                cbDoctorSched.SelectedItem = doctorItem;
+                //cbDoctorSched.DisplayMember = "Value";
+                //cbDoctorSched.ValueMember = "Key";
+
+                //var doctorItem = new KeyValuePair<int, string>(DoctorId, display);
+                //cbDoctorSched.Items.Add(doctorItem);
+                cbDoctorSched.SelectedItem = cbDoctorSched.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == DoctorId); ;
             }
         }
 

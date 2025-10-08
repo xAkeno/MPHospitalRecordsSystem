@@ -90,9 +90,9 @@ namespace MPHospitalRecordsSystem
 
                     using (MySqlCommand cmd = new MySqlCommand(sqlUpdateSchedule, c))
                     {
-                        cmd.Parameters.AddWithValue("@doctor_id", date);
+                        cmd.Parameters.AddWithValue("@doctor_id", doc_id);
                         cmd.Parameters.AddWithValue("@date", date);
-                        cmd.Parameters.AddWithValue("@id", sched_id);
+                        cmd.Parameters.AddWithValue("@sched_id", sched_id);
                         cmd.Parameters.AddWithValue("@time", time);
 
                         c.Open();
