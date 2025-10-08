@@ -167,6 +167,7 @@
     <Compile Include="RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserInfoDTO.cs" />
     <Compile Include="visit.cs" />
     <Compile Include="visitsDTO.cs" />
     <EmbeddedResource Include="Form1.resx">
