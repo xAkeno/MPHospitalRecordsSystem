@@ -987,22 +987,23 @@ namespace MPHospitalRecordsSystem
             String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
             String startTime = dateTimePicker4.Value.ToString("HH:mm");
             int App_id = Convert.ToInt32(idlbl.Text);
-            if (rbAppointment.Checked)
-            {
-                String name = textBox17.Text;
-                String contact = textBox18.Text;
-                String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-                appointment a = new appointment();
-                patient p = new patient();
+            //if (rbAppointment.Checked)
+            //{
+            String name = textBox17.Text;
+            String contact = textBox18.Text;
+            String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
 
-                a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value,"");
-            }
-            else if (rbAppointment2.Checked)
-            {
-                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
-                appointment a = new appointment();
-                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
-            }
+            appointment a = new appointment();
+            patient p = new patient();
+
+            a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, statusCb.Text.ToString());
+            //}
+            //else if (rbAppointment2.Checked)
+            //{
+            //    String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+            //    appointment a = new appointment();
+            //    a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
+            //}
         }
 
         private void button16_Click(object sender, EventArgs e)

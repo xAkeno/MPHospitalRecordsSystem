@@ -66,7 +66,7 @@ namespace MPHospitalRecordsSystem
                             cmd.Parameters.AddWithValue("@doctor_id", doc_id);
                             cmd.Parameters.AddWithValue("@date", date.Date);
                             cmd.Parameters.AddWithValue("@time", time.TimeOfDay);
-                            cmd.Parameters.AddWithValue("@status", "Pending");
+                            cmd.Parameters.AddWithValue("@status", Status.PENDING.ToString());
 
                             int rowsAffected = cmd.ExecuteNonQuery();
                             if (rowsAffected > 0)

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -148,10 +149,12 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.statusCb = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -170,7 +173,6 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -198,6 +200,15 @@
             this.tabPage6.Size = new System.Drawing.Size(978, 625);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "roles";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(950, 583);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellClick);
             // 
             // tabPage1
             // 
@@ -1340,6 +1351,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.label33);
+            this.panel7.Controls.Add(this.statusCb);
             this.panel7.Controls.Add(this.hideExCb);
             this.panel7.Controls.Add(this.hideExLbl);
             this.panel7.Controls.Add(this.groupBox1);
@@ -1365,7 +1378,12 @@
             // hideExCb
             // 
             this.hideExCb.FormattingEnabled = true;
-            this.hideExCb.Location = new System.Drawing.Point(7, 497);
+            this.hideExCb.Items.AddRange(new object[] {
+            "PENDING",
+            "COMPLETED",
+            "UNATTENDED",
+            "CANCELED"});
+            this.hideExCb.Location = new System.Drawing.Point(8, 534);
             this.hideExCb.Name = "hideExCb";
             this.hideExCb.Size = new System.Drawing.Size(280, 21);
             this.hideExCb.TabIndex = 40;
@@ -1375,12 +1393,12 @@
             // 
             this.hideExLbl.AutoSize = true;
             this.hideExLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideExLbl.Location = new System.Drawing.Point(10, 476);
+            this.hideExLbl.Location = new System.Drawing.Point(10, 454);
             this.hideExLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hideExLbl.Name = "hideExLbl";
-            this.hideExLbl.Size = new System.Drawing.Size(60, 18);
+            this.hideExLbl.Size = new System.Drawing.Size(56, 18);
             this.hideExLbl.TabIndex = 39;
-            this.hideExLbl.Text = "Patient";
+            this.hideExLbl.Text = "Status";
             this.hideExLbl.Visible = false;
             // 
             // groupBox1
@@ -1500,9 +1518,8 @@
             this.label24.Location = new System.Drawing.Point(96, 558);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(70, 20);
+            this.label24.Size = new System.Drawing.Size(0, 20);
             this.label24.TabIndex = 6;
-            this.label24.Text = "Log out";
             // 
             // label27
             // 
@@ -1555,15 +1572,6 @@
             this.textBox18.Size = new System.Drawing.Size(284, 28);
             this.textBox18.TabIndex = 4;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(950, 583);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellClick);
-            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1571,6 +1579,31 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
+            // 
+            // statusCb
+            // 
+            this.statusCb.FormattingEnabled = true;
+            this.statusCb.Items.AddRange(new object[] {
+            "PENDING",
+            "COMPLETED",
+            "UNATTENDED",
+            "CANCELED"});
+            this.statusCb.Location = new System.Drawing.Point(7, 475);
+            this.statusCb.Name = "statusCb";
+            this.statusCb.Size = new System.Drawing.Size(281, 21);
+            this.statusCb.TabIndex = 41;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(11, 513);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(60, 18);
+            this.label33.TabIndex = 42;
+            this.label33.Text = "Patient";
+            this.label33.Visible = false;
             // 
             // Form3
             // 
@@ -1596,6 +1629,7 @@
             this.Load += new System.EventHandler(this.Form3_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
@@ -1627,7 +1661,6 @@
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1756,5 +1789,7 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ComboBox statusCb;
     }
 }
