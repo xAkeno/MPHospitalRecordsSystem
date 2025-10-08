@@ -605,6 +605,7 @@
             this.button16.Size = new System.Drawing.Size(33, 28);
             this.button16.TabIndex = 18;
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // button17
             // 
@@ -648,6 +649,7 @@
             this.button19.Size = new System.Drawing.Size(33, 28);
             this.button19.TabIndex = 14;
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button20
             // 
@@ -669,6 +671,7 @@
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.Size = new System.Drawing.Size(965, 585);
             this.dgvAppointments.TabIndex = 12;
+            this.dgvAppointments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellClick);
             // 
             // panel1
             // 
@@ -1552,7 +1555,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1303, 705);
+            this.ClientSize = new System.Drawing.Size(1545, 705);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
