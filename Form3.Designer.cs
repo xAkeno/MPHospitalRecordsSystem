@@ -55,6 +55,13 @@
             this.button12 = new System.Windows.Forms.Button();
             this.dgvVisits = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dgvSchedule = new System.Windows.Forms.DataGridView();
+            this.btnScheduleDelete = new System.Windows.Forms.Button();
+            this.btnScheduleUnselect = new System.Windows.Forms.Button();
+            this.btnScheduleSearch = new System.Windows.Forms.Button();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.btnScheduleUpdate = new System.Windows.Forms.Button();
+            this.btnScheduleAdd = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtp1 = new System.Windows.Forms.DateTimePicker();
@@ -113,15 +120,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpScheduleDate = new System.Windows.Forms.DateTimePicker();
             this.cbDoctorSched = new System.Windows.Forms.ComboBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -130,13 +130,13 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVisits)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -455,18 +455,94 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Controls.Add(this.button16);
-            this.tabPage4.Controls.Add(this.button17);
-            this.tabPage4.Controls.Add(this.button18);
+            this.tabPage4.Controls.Add(this.dgvSchedule);
+            this.tabPage4.Controls.Add(this.btnScheduleDelete);
+            this.tabPage4.Controls.Add(this.btnScheduleUnselect);
+            this.tabPage4.Controls.Add(this.btnScheduleSearch);
             this.tabPage4.Controls.Add(this.textBox15);
-            this.tabPage4.Controls.Add(this.button19);
-            this.tabPage4.Controls.Add(this.button20);
+            this.tabPage4.Controls.Add(this.btnScheduleUpdate);
+            this.tabPage4.Controls.Add(this.btnScheduleAdd);
             this.tabPage4.Location = new System.Drawing.Point(4, 33);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(978, 625);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Doctor schedule";
+            // 
+            // dgvSchedule
+            // 
+            this.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedule.Location = new System.Drawing.Point(6, 38);
+            this.dgvSchedule.Name = "dgvSchedule";
+            this.dgvSchedule.Size = new System.Drawing.Size(966, 585);
+            this.dgvSchedule.TabIndex = 13;
+            // 
+            // btnScheduleDelete
+            // 
+            this.btnScheduleDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleDelete.BackgroundImage")));
+            this.btnScheduleDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScheduleDelete.Location = new System.Drawing.Point(177, 7);
+            this.btnScheduleDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleDelete.Name = "btnScheduleDelete";
+            this.btnScheduleDelete.Size = new System.Drawing.Size(33, 28);
+            this.btnScheduleDelete.TabIndex = 12;
+            this.btnScheduleDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnScheduleUnselect
+            // 
+            this.btnScheduleUnselect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScheduleUnselect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleUnselect.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnScheduleUnselect.Location = new System.Drawing.Point(81, 7);
+            this.btnScheduleUnselect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleUnselect.Name = "btnScheduleUnselect";
+            this.btnScheduleUnselect.Size = new System.Drawing.Size(92, 28);
+            this.btnScheduleUnselect.TabIndex = 11;
+            this.btnScheduleUnselect.Text = "Unselect";
+            this.btnScheduleUnselect.UseVisualStyleBackColor = true;
+            // 
+            // btnScheduleSearch
+            // 
+            this.btnScheduleSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleSearch.BackgroundImage")));
+            this.btnScheduleSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScheduleSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnScheduleSearch.Location = new System.Drawing.Point(939, 7);
+            this.btnScheduleSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleSearch.Name = "btnScheduleSearch";
+            this.btnScheduleSearch.Size = new System.Drawing.Size(33, 28);
+            this.btnScheduleSearch.TabIndex = 10;
+            this.btnScheduleSearch.UseVisualStyleBackColor = true;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(684, 7);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(252, 29);
+            this.textBox15.TabIndex = 9;
+            // 
+            // btnScheduleUpdate
+            // 
+            this.btnScheduleUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleUpdate.BackgroundImage")));
+            this.btnScheduleUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScheduleUpdate.Location = new System.Drawing.Point(43, 7);
+            this.btnScheduleUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleUpdate.Name = "btnScheduleUpdate";
+            this.btnScheduleUpdate.Size = new System.Drawing.Size(33, 28);
+            this.btnScheduleUpdate.TabIndex = 8;
+            this.btnScheduleUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnScheduleAdd
+            // 
+            this.btnScheduleAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnScheduleAdd.BackgroundImage")));
+            this.btnScheduleAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScheduleAdd.Location = new System.Drawing.Point(6, 7);
+            this.btnScheduleAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleAdd.Name = "btnScheduleAdd";
+            this.btnScheduleAdd.Size = new System.Drawing.Size(33, 28);
+            this.btnScheduleAdd.TabIndex = 7;
+            this.btnScheduleAdd.UseVisualStyleBackColor = true;
+            this.btnScheduleAdd.Click += new System.EventHandler(this.btnScheduleAdd_Click);
             // 
             // tabPage5
             // 
@@ -1099,11 +1175,11 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.panel6.Controls.Add(this.label23);
             this.panel6.Controls.Add(this.timePicker);
-            this.panel6.Controls.Add(this.dateTimePicker2);
+            this.panel6.Controls.Add(this.dtpScheduleDate);
             this.panel6.Controls.Add(this.cbDoctorSched);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Controls.Add(this.label26);
-            this.panel6.Location = new System.Drawing.Point(1225, 676);
+            this.panel6.Location = new System.Drawing.Point(1227, 676);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(297, 597);
             this.panel6.TabIndex = 34;
@@ -1130,12 +1206,12 @@
             this.timePicker.Size = new System.Drawing.Size(280, 20);
             this.timePicker.TabIndex = 33;
             // 
-            // dateTimePicker2
+            // dtpScheduleDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(8, 103);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(280, 20);
-            this.dateTimePicker2.TabIndex = 32;
+            this.dtpScheduleDate.Location = new System.Drawing.Point(8, 103);
+            this.dtpScheduleDate.Name = "dtpScheduleDate";
+            this.dtpScheduleDate.Size = new System.Drawing.Size(280, 20);
+            this.dtpScheduleDate.TabIndex = 32;
             // 
             // cbDoctorSched
             // 
@@ -1144,81 +1220,6 @@
             this.cbDoctorSched.Name = "cbDoctorSched";
             this.cbDoctorSched.Size = new System.Drawing.Size(281, 21);
             this.cbDoctorSched.TabIndex = 31;
-            // 
-            // button16
-            // 
-            this.button16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button16.BackgroundImage")));
-            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button16.Location = new System.Drawing.Point(177, 7);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(33, 28);
-            this.button16.TabIndex = 12;
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button17.Location = new System.Drawing.Point(81, 7);
-            this.button17.Margin = new System.Windows.Forms.Padding(2);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(92, 28);
-            this.button17.TabIndex = 11;
-            this.button17.Text = "Unselect";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button18.BackgroundImage")));
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button18.Location = new System.Drawing.Point(939, 7);
-            this.button18.Margin = new System.Windows.Forms.Padding(2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(33, 28);
-            this.button18.TabIndex = 10;
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(684, 7);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(252, 29);
-            this.textBox15.TabIndex = 9;
-            // 
-            // button19
-            // 
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.Location = new System.Drawing.Point(43, 7);
-            this.button19.Margin = new System.Windows.Forms.Padding(2);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(33, 28);
-            this.button19.TabIndex = 8;
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.Location = new System.Drawing.Point(6, 7);
-            this.button20.Margin = new System.Windows.Forms.Padding(2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(33, 28);
-            this.button20.TabIndex = 7;
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 38);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(966, 585);
-            this.dataGridView1.TabIndex = 13;
             // 
             // Form3
             // 
@@ -1252,6 +1253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvVisits)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1264,7 +1266,6 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1353,16 +1354,16 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpScheduleDate;
         private System.Windows.Forms.ComboBox cbDoctorSched;
         private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.DataGridView dgvSchedule;
+        private System.Windows.Forms.Button btnScheduleDelete;
+        private System.Windows.Forms.Button btnScheduleUnselect;
+        private System.Windows.Forms.Button btnScheduleSearch;
         private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btnScheduleUpdate;
+        private System.Windows.Forms.Button btnScheduleAdd;
     }
 }

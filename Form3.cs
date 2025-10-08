@@ -383,6 +383,20 @@ namespace MPHospitalRecordsSystem
             {
                 panel6.Visible = true;
                 panel6.Location = new Point(4, 112);
+
+                visit v = new visit();
+                List<doctorDTO> doctors = v.getAllDoctors();
+
+                foreach (doctorDTO d in doctors)
+                {
+                    string display = string.Format("{0,-30} | {1}", "Name: " + d.DoctorName, "Specialty: " + d.Specialty);
+                    cbDoctorSched.Items.Add(new KeyValuePair<int, string>(d.DoctorId, display));
+                }
+                cbDoctorSched.DisplayMember = "Value";
+                cbDoctorSched.ValueMember = "Key";
+
+                if (cbDoctorSched.Items.Count > 0)
+                    cbDoctorSched.SelectedIndex = 0;
             }
             else { 
                 panel6.Visible = false;
@@ -725,6 +739,19 @@ namespace MPHospitalRecordsSystem
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnScheduleAdd_Click(object sender, EventArgs e)
+        {
+            String doc = cbDoctorSched.SelectedItem.ToString();
+            String SchedDate = dtpScheduleDate.Value.ToString("yyyy-MM-dd");
+            String SchedTime = timePicker.Value.ToString("HH:mm");
+
+            if (!doc.Equals("") || !SchedDate.Equals("") || !SchedDate.Equals("")) { 
+                DocSchedule docSchedule = new DocSchedule();
+                docSchedule.add_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key);
+            }
 
         }
     }
