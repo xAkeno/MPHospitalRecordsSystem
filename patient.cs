@@ -237,7 +237,23 @@ namespace MPHospitalRecordsSystem
             }
         }
 
-        
+        public int get_patient_id_by_name(String name)
+        {
+            String sqlGetId = "SELECT patient_id FROM patients WHERE Name=@Name";
+            using (MySqlConnection c = con.GetConnection()) {
+                using (MySqlCommand cmd = new MySqlCommand(sqlGetId, c))
+                {
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+            }
+            return 0;
+        }
         public void delete_patient(int patient_id)
         {
             String sqlDeletePatient = "DELETE FROM patients WHERE patient_id=@patient_id";

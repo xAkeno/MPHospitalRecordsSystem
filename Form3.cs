@@ -939,7 +939,28 @@ namespace MPHospitalRecordsSystem
 
         private void button20_Click(object sender, EventArgs e)
         {
-            
+
+            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            if (rbAppointment.Checked)
+            {
+                String name = textBox17.Text;
+                String contact = textBox18.Text;
+                String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+                appointment a = new appointment();
+                patient p = new patient();
+                p.add_patient(name, dateOfBirth, contact);
+
+                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
+            }
+            else if (rbAppointment2.Checked)
+            { 
+                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+                appointment a = new appointment();
+                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
+            }
+
+
         }
     }
 }

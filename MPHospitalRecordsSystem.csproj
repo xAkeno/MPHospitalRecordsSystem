@@ -133,6 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccInfo.cs" />
+    <Compile Include="appointment.cs" />
+    <Compile Include="appointmentDTO.cs" />
     <Compile Include="connection.cs" />
     <Compile Include="DocSchedule.cs" />
     <Compile Include="DocScheduleDTO.cs" />
