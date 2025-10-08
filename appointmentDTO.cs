@@ -11,6 +11,7 @@ namespace MPHospitalRecordsSystem
         public int AppointmentId { get; set; }
         public int PatientId { get; set; }
         public String PatientName { get; set; }
+        public String ContactNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int DoctorId { get; set; }
         public DateTime AppointmentDate { get; set; }

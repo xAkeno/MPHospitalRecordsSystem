@@ -969,5 +969,85 @@ namespace MPHospitalRecordsSystem
 
 
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            int App_id = Convert.ToInt32(idlbl.Text);
+            if (rbAppointment.Checked)
+            {
+                String name = textBox17.Text;
+                String contact = textBox18.Text;
+                String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+                appointment a = new appointment();
+                patient p = new patient();
+
+                a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value,"");
+            }
+            else if (rbAppointment2.Checked)
+            {
+                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+                appointment a = new appointment();
+                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if(!idlbl.Text.Equals(""))
+            {
+                int id = Convert.ToInt32(idlbl.Text);
+                appointment a = new appointment();
+                a.delete_appointment(id);
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment first");
+            }
+        }
+
+        private void dgvAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAppointments.SelectedRows.Count > 0)
+            {
+                hideExCb.Visible = false;
+                hideExLbl.Visible = false;
+                textBox17.Visible = true;
+                textBox18.Visible = true;
+                label28.Visible = true;
+                label29.Visible = true;
+                label27.Visible = true;
+                dateTimePicker2.Visible = true;
+
+                label31.Location = new Point(11, 336);
+                label32.Location = new Point(11, 401);
+                dateTimePicker3.Location = new Point(8, 356);
+                dateTimePicker4.Location = new Point(7, 422);
+
+
+                DataGridViewRow row = dgvAppointments.SelectedRows[0];
+                int appointmentId = Convert.ToInt32(row.Cells["AppointmentId"].Value);
+                int patientId = Convert.ToInt32(row.Cells["PatientId"].Value);
+                string patientName = row.Cells["PatientName"].Value.ToString();
+                string contactNumber = row.Cells["ContactNumber"].Value.ToString();
+                DateTime dateOfBirth = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
+                int doctorId = Convert.ToInt32(row.Cells["DoctorId"].Value);
+                DateTime appointmentDate = Convert.ToDateTime(row.Cells["AppointmentDate"].Value);
+                DateTime appointmentTime = Convert.ToDateTime(row.Cells["AppointmentTime"].Value);
+                string status = row.Cells["Status"].Value.ToString();
+
+                idlbl.Text = Convert.ToString(appointmentId);
+
+                textBox17.Text = patientName;
+                textBox18.Text = contactNumber;
+                dateTimePicker2.Value = dateOfBirth;
+                dateTimePicker3.Value = appointmentDate;
+                dateTimePicker4.Value = appointmentTime;
+                hideExCbDoc.SelectedItem = hideExCbDoc.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == doctorId);
+
+
+            }
+        }
     }
 }

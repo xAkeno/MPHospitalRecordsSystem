@@ -172,6 +172,7 @@ namespace MPHospitalRecordsSystem
                                     AppointmentId = reader.GetInt32("id"),
                                     PatientId = reader.GetInt32("patient_id"),
                                     PatientName = patientInfo.Name,
+                                    ContactNumber = patientInfo.ContactNumber,
                                     DateOfBirth = patientInfo.DateOfBirth,
                                     DoctorId = reader.GetInt32("doctor_id"),
                                     AppointmentDate = reader.GetDateTime("date"),
