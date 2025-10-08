@@ -48,6 +48,12 @@ namespace MPHospitalRecordsSystem
             visit v = new visit();
             dgvVisits.DataSource = v.read_visits();
         }
+
+        public void loadAppointments()
+        {
+            appointment a = new appointment();
+            dgvAppointments.DataSource = a.read_all_appointments();
+        }
         public void loadSchedule() { 
             DocSchedule doc = new DocSchedule();
             dgvSchedule.DataSource = doc.read_schedule();
@@ -438,10 +444,22 @@ namespace MPHospitalRecordsSystem
 
                 if (hideExCbDoc.Items.Count > 0)
                     hideExCbDoc.SelectedIndex = 0;
+                loadAppointments();
             }
             else
             {
                 panel7.Visible = false;
+            }
+
+            bool showroles = e.TabPage.Text.Equals("roles");
+            if(showroles)
+            {
+                panel8.Visible = true;
+                panel8.Location = new Point(4, 112);
+            }
+            else
+            {
+                panel8.Visible = false;
             }
 
             if (showPatients)
@@ -792,7 +810,7 @@ namespace MPHospitalRecordsSystem
                 DocSchedule docSchedule = new DocSchedule();
                 docSchedule.add_Schedule(DateTime.Parse(SchedDate), DateTime.Parse(SchedTime), ((KeyValuePair<int, string>)cbDoctorSched.SelectedItem).Key);
             }
-
+            loadSchedule();
         }
 
         private void btnScheduleUpdate_Click(object sender, EventArgs e)
@@ -852,16 +870,17 @@ namespace MPHospitalRecordsSystem
                 dtpScheduleDate.Value = DateTime.Parse(AvailableDate);
                 timePicker.Value = DateTime.Parse(AvailableTime);
 
-                string display = $"Name: {DoctorName,-30} | Specialty: {Specialty}";
 
-                cbDoctorSched.Items.Clear();
+                //string display = $"Name: {DoctorName,-30} | Specialty: {Specialty}";
 
-                cbDoctorSched.DisplayMember = "Value";
-                cbDoctorSched.ValueMember = "Key";
+                //cbDoctorSched.Items.Clear();
 
-                var doctorItem = new KeyValuePair<int, string>(DoctorId, display);
-                cbDoctorSched.Items.Add(doctorItem);
-                cbDoctorSched.SelectedItem = doctorItem;
+                //cbDoctorSched.DisplayMember = "Value";
+                //cbDoctorSched.ValueMember = "Key";
+
+                //var doctorItem = new KeyValuePair<int, string>(DoctorId, display);
+                //cbDoctorSched.Items.Add(doctorItem);
+                cbDoctorSched.SelectedItem = cbDoctorSched.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == DoctorId); ;
             }
         }
 
@@ -939,7 +958,126 @@ namespace MPHospitalRecordsSystem
 
         private void button20_Click(object sender, EventArgs e)
         {
-            
+
+            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            if (rbAppointment.Checked)
+            {
+                String name = textBox17.Text;
+                String contact = textBox18.Text;
+                String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+                appointment a = new appointment();
+                patient p = new patient();
+                p.add_patient(name, dateOfBirth, contact);
+
+                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, p.get_patient_id_by_name(name));
+            }
+            else if (rbAppointment2.Checked)
+            { 
+                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+                appointment a = new appointment();
+                a.add_appoint(dateTimePicker3.Value, dateTimePicker4.Value, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, Convert.ToInt32(id));
+            }
+            loadAppointments();
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            String startTime = dateTimePicker4.Value.ToString("HH:mm");
+            int App_id = Convert.ToInt32(idlbl.Text);
+            //if (rbAppointment.Checked)
+            //{
+            String name = textBox17.Text;
+            String contact = textBox18.Text;
+            String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+
+            appointment a = new appointment();
+            patient p = new patient();
+
+            a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, statusCb.Text.ToString());
+            //}
+            //else if (rbAppointment2.Checked)
+            //{
+            //    String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
+            //    appointment a = new appointment();
+            //    a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, dateTimePicker3.Value, dateTimePicker4.Value, "");
+            //}
+            loadAppointments();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if(!idlbl.Text.Equals(""))
+            {
+                int id = Convert.ToInt32(idlbl.Text);
+                appointment a = new appointment();
+                a.delete_appointment(id);
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment first");
+            }
+            loadAppointments();
+        }
+
+        private void dgvAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAppointments.SelectedRows.Count > 0)
+            {
+                hideExCb.Visible = false;
+                hideExLbl.Visible = false;
+                textBox17.Visible = true;
+                textBox18.Visible = true;
+                label28.Visible = true;
+                label29.Visible = true;
+                label27.Visible = true;
+                dateTimePicker2.Visible = true;
+
+                label31.Location = new Point(11, 336);
+                label32.Location = new Point(11, 401);
+                dateTimePicker3.Location = new Point(8, 356);
+                dateTimePicker4.Location = new Point(7, 422);
+
+                
+
+
+                DataGridViewRow row = dgvAppointments.SelectedRows[0];
+                int appointmentId = Convert.ToInt32(row.Cells["AppointmentId"].Value);
+                int patientId = Convert.ToInt32(row.Cells["PatientId"].Value);
+                string patientName = row.Cells["PatientName"].Value.ToString();
+                string contactNumber = row.Cells["ContactNumber"].Value.ToString();
+                DateTime dateOfBirth = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
+                int doctorId = Convert.ToInt32(row.Cells["DoctorId"].Value);
+                DateTime appointmentDate = Convert.ToDateTime(row.Cells["AppointmentDate"].Value);
+                DateTime appointmentTime = Convert.ToDateTime(row.Cells["AppointmentTime"].Value);
+                string status = row.Cells["Status"].Value.ToString();
+
+                idlbl.Text = Convert.ToString(appointmentId);
+
+                textBox17.Text = patientName;
+                textBox17.ReadOnly = true;
+                textBox18.Text = contactNumber;
+                textBox18.ReadOnly = true;
+                dateTimePicker2.Value = dateOfBirth;
+                dateTimePicker2.Enabled = false;
+                dateTimePicker3.Value = appointmentDate;
+                dateTimePicker4.Value = appointmentTime;
+                hideExCbDoc.SelectedItem = hideExCbDoc.Items.Cast<KeyValuePair<int, string>>().FirstOrDefault(item => item.Key == doctorId);
+                hideExCbDoc.Enabled = false;
+
+            }
+        }
+
+        private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
