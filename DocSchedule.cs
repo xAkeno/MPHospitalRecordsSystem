@@ -79,6 +79,47 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
+        public List<DocScheduleDTO> get_doctor_all_schedule(int id)
+        {
+            string sql = "SELECT id AS schedule_id, doctor_id, date AS available_date, time AS available_time FROM Schedule WHERE doctor_id = @doctor_id";
+
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql, c))
+                    {
+                        cmd.Parameters.AddWithValue("@doctor_id", id);
+                        c.Open();
+
+                        List<DocScheduleDTO> list = new List<DocScheduleDTO>();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DocScheduleDTO schedule = new DocScheduleDTO
+                                {
+                                    ScheduleId = reader.GetInt32("schedule_id"),
+                                    DoctorId = reader["doctor_id"].ToString(),
+                                    AvailableDate = reader.GetDateTime("available_date"),
+                                    AvailableTime = reader.GetTimeSpan("available_time")
+                                };
+
+                                list.Add(schedule);
+                            }
+                        }
+
+                        return list;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return new List<DocScheduleDTO>();
+            }
+        }
+
         public void update_Schedule(DateTime date, DateTime time, int doc_id, int sched_id)
         {
             //@doctor_id,@date,@time

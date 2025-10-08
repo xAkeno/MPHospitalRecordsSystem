@@ -15,7 +15,7 @@ namespace MPHospitalRecordsSystem
         public DateTime DateOfBirth { get; set; }
         public int DoctorId { get; set; }
         public DateTime AppointmentDate { get; set; }
-        public DateTime AppointmentTime { get; set; }
+        public TimeSpan AppointmentTime { get; set; }
         public String Status { get; set; }
     }
 }
