@@ -68,9 +68,19 @@ namespace MPHospitalRecordsSystem
                             cmd.Parameters.AddWithValue("@time", time.TimeOfDay);
                             cmd.Parameters.AddWithValue("@status", Status.PENDING.ToString());
 
+
                             int rowsAffected = cmd.ExecuteNonQuery();
                             if (rowsAffected > 0)
                             {
+                                using (MySqlCommand updateSchedule = new MySqlCommand(
+                                                    "UPDATE Schedule SET status = 1 WHERE doctor_id = @doctor_id AND date = @date AND time = @time", c))
+                                {
+                                    updateSchedule.Parameters.AddWithValue("@doctor_id", doc_id);
+                                    updateSchedule.Parameters.AddWithValue("@date", date);
+                                    updateSchedule.Parameters.AddWithValue("@time", time);
+
+                                    updateSchedule.ExecuteNonQuery();
+                                }
                                 MessageBox.Show("Appointment successfully scheduled!");
                             }
                             else

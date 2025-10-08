@@ -944,15 +944,17 @@ namespace MPHospitalRecordsSystem
         {
             if (rbAppointment2.Checked)
             {
-                hideExLbl.Location = new Point(10, 72);
+                label33.Location = new Point(10, 72);
                 hideExCb.Location = new Point(7, 93);
                 hideExCb.Visible = true;
-                hideExLbl.Visible = true;
+
+                //hideExLbl.Visible = true;
                 textBox17.Visible = false;
                 textBox18.Visible = false;
                 label28.Visible = false;
                 label29.Visible = false;
-                label27.Visible = false;    
+                label27.Visible = false;
+                label33.Visible = true;
                 dateTimePicker2.Visible = false;
 
                 //label31.Location = new Point(10, 132);
@@ -967,7 +969,8 @@ namespace MPHospitalRecordsSystem
             if (rbAppointment.Checked)
             {
                 hideExCb.Visible = false;
-                hideExLbl.Visible = false;
+                label33.Visible = false;
+                //hideExLbl.Visible = false;
                 textBox17.Visible = true;
                 textBox18.Visible = true;
                 label28.Visible = true;
@@ -1010,23 +1013,12 @@ namespace MPHospitalRecordsSystem
             //String dateAppoint = dateTimePicker3.Value.ToString("yyyy-MM-dd");
             //String startTime = dateTimePicker4.Value.ToString("HH:mm");
             int App_id = Convert.ToInt32(idlbl.Text);
-            if (rbAppointment.Checked)
-            {
-                String name = textBox17.Text;
+            String name = textBox17.Text;
             String contact = textBox18.Text;
             String dateOfBirth = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-
             appointment a = new appointment();
             patient p = new patient();
-
             a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, date, time, statusCb.Text.ToString());
-            }
-            else if (rbAppointment2.Checked)
-            {
-                String id = ((KeyValuePair<int, string>)hideExCb.SelectedItem).Key.ToString();
-                appointment a = new appointment();
-                a.update_appointment(App_id, ((KeyValuePair<int, string>)hideExCbDoc.SelectedItem).Key, date, time, "");
-            }
             loadAppointments();
         }
 
