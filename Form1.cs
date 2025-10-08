@@ -62,7 +62,9 @@ namespace MPHospitalRecordsSystem
                    if (reader.Read())
                      {
                         user = reader["user_name"].ToString();
-                         Form3 fr = new Form3();
+                        string role = reader["role"].ToString();
+
+                        Form3 fr = new Form3(role);
                          fr.Show();
                          this.Hide();
                      }
