@@ -147,6 +147,7 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -170,6 +171,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -198,7 +200,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(978, 625);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "patient";
+            this.tabPage1.Text = "Patient";
             // 
             // button13
             // 
@@ -298,7 +300,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(978, 625);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "doctor";
+            this.tabPage2.Text = "Doctor";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // button5
@@ -398,7 +400,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(978, 625);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "visitors";
+            this.tabPage3.Text = "Visitors";
             // 
             // button15
             // 
@@ -495,7 +497,7 @@
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(978, 625);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Doctor schedule";
+            this.tabPage4.Text = "Doctor Schedule";
             // 
             // dgvSchedule
             // 
@@ -1536,6 +1538,15 @@
             this.textBox18.Size = new System.Drawing.Size(284, 28);
             this.textBox18.TabIndex = 4;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage6.Location = new System.Drawing.Point(4, 33);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(978, 625);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Roles";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1714,5 +1725,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox hideExCb;
         private System.Windows.Forms.Label hideExLbl;
+        private System.Windows.Forms.TabPage tabPage6;
     }
 }
