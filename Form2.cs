@@ -6,10 +6,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace MPHospitalRecordsSystem
 {
@@ -92,26 +93,19 @@ namespace MPHospitalRecordsSystem
             using (MySqlConnection conn = con.GetConnection())
             {
                 conn.Open();
-
-                var validations = new List<(bool Passed, string Message)>
-                {
-                    (pass.Any(Char.IsUpper), "This password has no uppercase letter"),
-                    (pass.Any(Char.IsDigit), "This password has no digit"),
-                    (pass.Any(c => char.IsLetterOrDigit(c)), "passowrd is less than 8 characters"),
-                    (pass== null, "pasword can't be empty"),
-
-                };
-
                 bool hasError = false;
-                foreach (var v in validations)
+                if (user.Equals("") || pass.Equals("") || !pass.Any(Char.IsDigit) || !pass.Any(Char.IsUpper) || !pass.Any(c => !char.IsLetterOrDigit(c)) || pass.Length <8)
                 {
-                    if (!v.Passed)
-                    {
-                        MessageBox.Show(v.Message);
-                        hasError = true;
-                    }
-                    break;
-                }
+                    MessageBox.Show("Please follow the instructions given below\n"
+                        + (user.Equals("") ? "- Enter in a username\n" : "")
+                        + (pass.Equals("") ? "- Enter in a Password \n" : "")
+                        + (!pass.Any(Char.IsDigit) ? "- The password must contain at least 1 digit\n" : "")
+                        + (!pass.Any(Char.IsUpper) ? "- The password must contain at least 1 Uppercase letter\n" : "")
+                        + (!pass.Any(c => !char.IsLetterOrDigit(c)) ? "- The password must contain at least 1 special character\n" : "")
+                        + (pass.Length <8 ? "- The password must be at least 8 characters long" : "")
+                    );
+                   hasError = true;
+                }             
                 string hashedPass = GetSha256Hash(pass);
 
                 if (!hasError)

@@ -176,7 +176,7 @@ namespace MPHospitalRecordsSystem
                         }
                         else MessageBox.Show("Patient is already taken");
                     }
-                }
+                }  
             }
             catch (Exception ex)
             {
