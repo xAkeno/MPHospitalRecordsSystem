@@ -150,6 +150,18 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.button21 = new System.Windows.Forms.Button();
+            this.btnUnselectRoles = new System.Windows.Forms.Button();
+            this.btnUpdateRoles = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -171,6 +183,7 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -192,6 +205,12 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage6.Controls.Add(this.button25);
+            this.tabPage6.Controls.Add(this.textBox21);
+            this.tabPage6.Controls.Add(this.button21);
+            this.tabPage6.Controls.Add(this.btnUnselectRoles);
+            this.tabPage6.Controls.Add(this.btnUpdateRoles);
+            this.tabPage6.Controls.Add(this.button24);
             this.tabPage6.Controls.Add(this.dgvRoles);
             this.tabPage6.Location = new System.Drawing.Point(4, 33);
             this.tabPage6.Name = "tabPage6";
@@ -208,6 +227,7 @@
             this.dgvRoles.Size = new System.Drawing.Size(960, 585);
             this.dgvRoles.TabIndex = 0;
             this.dgvRoles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellClick);
+            this.dgvRoles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoles_CellContentClick);
             // 
             // tabPage1
             // 
@@ -536,6 +556,7 @@
             this.dgvSchedule.Size = new System.Drawing.Size(966, 585);
             this.dgvSchedule.TabIndex = 13;
             this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
+            this.dgvSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellContentClick);
             // 
             // btnScheduleDelete
             // 
@@ -1584,6 +1605,137 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(13, 19);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(85, 18);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "Username";
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(10, 39);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox19.Multiline = true;
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(285, 28);
+            this.textBox19.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Admin",
+            "Receptionist"});
+            this.comboBox1.Location = new System.Drawing.Point(28, 275);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(224, 21);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(25, 252);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(52, 18);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "Roles";
+            // 
+            // button21
+            // 
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.Location = new System.Drawing.Point(192, 2);
+            this.button21.Margin = new System.Windows.Forms.Padding(2);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(33, 28);
+            this.button21.TabIndex = 10;
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // btnUnselectRoles
+            // 
+            this.btnUnselectRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUnselectRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnselectRoles.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnUnselectRoles.Location = new System.Drawing.Point(96, 2);
+            this.btnUnselectRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUnselectRoles.Name = "btnUnselectRoles";
+            this.btnUnselectRoles.Size = new System.Drawing.Size(92, 28);
+            this.btnUnselectRoles.TabIndex = 9;
+            this.btnUnselectRoles.Text = "Unselect";
+            this.btnUnselectRoles.UseVisualStyleBackColor = true;
+            this.btnUnselectRoles.Click += new System.EventHandler(this.btnUnselectRoles_Click);
+            // 
+            // btnUpdateRoles
+            // 
+            this.btnUpdateRoles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateRoles.BackgroundImage")));
+            this.btnUpdateRoles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUpdateRoles.Location = new System.Drawing.Point(58, 2);
+            this.btnUpdateRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateRoles.Name = "btnUpdateRoles";
+            this.btnUpdateRoles.Size = new System.Drawing.Size(33, 28);
+            this.btnUpdateRoles.TabIndex = 8;
+            this.btnUpdateRoles.UseVisualStyleBackColor = true;
+            this.btnUpdateRoles.Click += new System.EventHandler(this.btnUpdateRoles_Click);
+            // 
+            // button24
+            // 
+            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.Location = new System.Drawing.Point(21, 2);
+            this.button24.Margin = new System.Windows.Forms.Padding(2);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(33, 28);
+            this.button24.TabIndex = 7;
+            this.button24.UseVisualStyleBackColor = true;
+            // 
+            // button25
+            // 
+            this.button25.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button25.BackgroundImage")));
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button25.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button25.Location = new System.Drawing.Point(942, 2);
+            this.button25.Margin = new System.Windows.Forms.Padding(2);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(33, 28);
+            this.button25.TabIndex = 12;
+            this.button25.UseVisualStyleBackColor = true;
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(687, 2);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(252, 29);
+            this.textBox21.TabIndex = 11;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(8, 105);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(83, 18);
+            this.label32.TabIndex = 13;
+            this.label32.Text = "Password";
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(5, 125);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox20.Multiline = true;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(285, 28);
+            this.textBox20.TabIndex = 12;
             // 
             // Form3
             // 
@@ -1609,6 +1761,7 @@
             this.Load += new System.EventHandler(this.Form3_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1641,6 +1794,8 @@
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1769,5 +1924,17 @@
         private System.Windows.Forms.ComboBox statusCb;
         private System.Windows.Forms.ComboBox cbAvailable;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button btnUnselectRoles;
+        private System.Windows.Forms.Button btnUpdateRoles;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textBox20;
     }
 }

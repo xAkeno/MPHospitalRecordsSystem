@@ -58,7 +58,7 @@ namespace MPHospitalRecordsSystem
         } 
         public void updateAcc(string username, string password, string role)
         {
-            String updAcc = " UPDATE accinfo set user_name = @uname, password= @pass, role = @role ";
+            String updAcc = " UPDATE accinfo SET user_name = @uname, password= @pass, role = @role ";
             using(MySqlConnection c = con.GetConnection())
             {
                 using (var cd = new MySqlCommand(updAcc, c))
