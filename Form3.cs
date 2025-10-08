@@ -15,9 +15,15 @@ namespace MPHospitalRecordsSystem
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        //the stuff i added for role access
+        private string userRole;
+        private List<TabPage> hiddenTabs = new List<TabPage>();
+
+        public Form3(string role)
         {
             InitializeComponent();
+            userRole = role;
+
             loadPatients();
             getNextId();
             panel1.Visible = true;
@@ -112,7 +118,8 @@ namespace MPHospitalRecordsSystem
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            //the stuff i added for role access
+            ApplyRoleAccess();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -901,5 +908,47 @@ namespace MPHospitalRecordsSystem
                 dateTimePicker4.Location = new Point(7,422);
             }
         }
+        //testing//
+        //stuff i added for role access
+
+        private void ApplyRoleAccess()
+        {
+            if (userRole == "Receptionist")
+            {
+                
+                HideTab(tabPage6);
+                HideTab(tabPage1);
+                HideTab(tabPage2);
+                HideTab(tabPage3);
+                HideTab(tabPage4);
+            }
+            else if (userRole == "Admin")
+            {
+                
+                RestoreTabs();
+            }
+        }
+
+        private void HideTab(TabPage tab)
+        {
+            if (tabControl1.TabPages.Contains(tab))
+            {
+                hiddenTabs.Add(tab);
+                tabControl1.TabPages.Remove(tab);
+            }
+        }
+
+        private void RestoreTabs()
+        {
+            foreach (var tab in hiddenTabs)
+            {
+                if (!tabControl1.TabPages.Contains(tab))
+                    tabControl1.TabPages.Add(tab);
+            }
+            hiddenTabs.Clear();
+        }
+
+
+
     }
 }

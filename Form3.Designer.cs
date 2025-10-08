@@ -148,6 +148,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hideExLbl = new System.Windows.Forms.Label();
             this.hideExCb = new System.Windows.Forms.ComboBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -167,10 +169,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -199,7 +204,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(978, 625);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "patient";
+            this.tabPage1.Text = "Patient";
             // 
             // button13
             // 
@@ -299,7 +304,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(978, 625);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "doctor";
+            this.tabPage2.Text = "Doctor";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // button5
@@ -399,7 +404,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(978, 625);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "visitors";
+            this.tabPage3.Text = "Visitors";
             // 
             // button15
             // 
@@ -1552,6 +1557,24 @@
             this.hideExCb.Size = new System.Drawing.Size(280, 21);
             this.hideExCb.TabIndex = 40;
             this.hideExCb.Visible = false;
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage6.Controls.Add(this.dataGridView1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 33);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(978, 625);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Roles";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 51);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(966, 571);
+            this.dataGridView1.TabIndex = 1;
             // 
             // Form3
             // 
@@ -1606,6 +1629,8 @@
             this.panel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1731,5 +1756,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox hideExCb;
         private System.Windows.Forms.Label hideExLbl;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
