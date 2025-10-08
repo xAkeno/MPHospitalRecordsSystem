@@ -58,7 +58,7 @@ namespace MPHospitalRecordsSystem
         } 
         public void updateAcc(string username, string password, string role)
         {
-            String updAcc = " UPDATE accinfo set user_name = @uname, password= @pass, role = @role ";
+            String updAcc = " UPDATE accinfo SET user_name = @uname, password= @pass, role = @role ";
             using(MySqlConnection c = con.GetConnection())
             {
                 using (var cd = new MySqlCommand(updAcc, c))
@@ -90,9 +90,8 @@ namespace MPHospitalRecordsSystem
                     MySqlDataReader reader = cmdd.ExecuteReader();
                     while (reader.Read()) {
                          String name = reader.GetString("user_name");
-                        String role = reader.GetString("role");
-                        list.Add(new UserInfoDTO { username = username, 
-                        role = role });
+                            String role = reader.GetString("role");
+                        list.Add(new UserInfoDTO { username = name, role = role });
                     }
                     return list;
                 }

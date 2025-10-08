@@ -23,6 +23,11 @@ namespace MPHospitalRecordsSystem
             panel1.Visible = true;
         }
 
+        public void loadAcc() { 
+            AccInfo t = new AccInfo();  
+            dgvRoles.DataSource = t.Read_acc();
+        }
+       
         public void loadPatients()
         {
             patient p = new patient();
@@ -480,6 +485,12 @@ namespace MPHospitalRecordsSystem
             {
                 panel8.Visible = true;
                 panel8.Location = new Point(4, 112);
+                //AccInfo t = new AccInfo();
+                //dgvRoles.DataSource = t.read_roles();
+                //List<UserInfoDTO> roles = t.getAll();
+                AccInfo a = new AccInfo();
+                dgvRoles.DataSource = a.Read_acc();
+
             }
             else
             {
@@ -811,7 +822,7 @@ namespace MPHospitalRecordsSystem
 
         private void dgvVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
@@ -1181,6 +1192,74 @@ namespace MPHospitalRecordsSystem
                 {
                     cbAvailable.SelectedIndex = 0;
                 }
+            }
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdateRoles_Click(object sender, EventArgs e)
+        {
+            string user_name = textBox19.Text;
+            string role = comboBox1.Text;
+            string password = textBox20.Text;
+            AccInfo a = new AccInfo();
+            a.updateAcc(user_name, password, role);
+            loadAcc();
+
+            
+        }
+
+        private void btnUnselectRoles_Click(object sender, EventArgs e)
+        {
+            
+
+            //AccInfo d = new AccInfo();
+            //textBox19.Text = "";
+            //textBox20.Text = "";
+            //comboBox1.Items.Clear();
+            //dgvRoles.ClearSelection();
+        }
+
+        private void dgvSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvRoles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvRoles.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvRoles.SelectedRows[0];
+
+
+
+                string name = row.Cells["user_name"].Value.ToString();
+                string password = row.Cells["password"].Value.ToString();
+                string role = row.Cells["role"].Value.ToString();
+
+
+
+                textBox19.Text = name;
+                textBox20.Text = password;
+                comboBox1.Text = role;
+
+
+
+                //MessageBox.Show(
+                //    $"Patient Info:\nID: {id}\nName: {name}\nDate of Birth: {dob}\nContact: {contact}"
+                //);
+            }
+            else
+            {
+                MessageBox.Show("⚠ Please select a row first.");
             }
         }
     }
