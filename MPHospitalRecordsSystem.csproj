@@ -158,6 +158,8 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="inventory.cs" />
+    <Compile Include="inventoryDTO.cs" />
     <Compile Include="passwordUtils.cs" />
     <Compile Include="patient.cs" />
     <Compile Include="patientDTO.cs" />

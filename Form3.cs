@@ -69,10 +69,21 @@ namespace MPHospitalRecordsSystem
             dgvSchedule.DataSource = doc.read_schedule();
             idlbl.Text = doc.get_next_id();
         }
+        public void loadInventory()
+        {
+            inventory i = new inventory();
+            dgvInventory.DataSource = i.read_inventory();
+            idlbl.Text = i.get_next_id().ToString();
+        }
         public void getNextIdVisit()
         {
             visit v = new visit();
             idlbl.Text = v.get_next_id();
+        }
+        public void getNextIdInventory()
+        {
+            inventory i = new inventory();
+            idlbl.Text = i.get_next_id().ToString();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -415,11 +426,25 @@ namespace MPHospitalRecordsSystem
                 panel6.Visible = false;
             }
 
+            bool showInventory = e.TabPage.Text.Equals("Inventory");
+            if (showInventory)
+            {
+                panel9.Visible = true;
+                panel9.Location = new Point(4, 112);
+
+                inventory i = new inventory();
+                loadInventory();
+            }
+            else
+            {
+                panel9.Visible = false;
+            }
+
             bool showAppointments = e.TabPage.Text.Equals("Appointment");
             if (showAppointments)
             {
-                panel7.Visible = true;
-                panel7.Location = new Point(4, 112);
+                invenInput1.Visible = true;
+                invenInput1.Location = new Point(4, 112);
 
                 visit v = new visit();
                 List<patientDTO> patients = v.getAllPatient();
@@ -474,7 +499,7 @@ namespace MPHospitalRecordsSystem
 
             else
             {
-                panel7.Visible = false;
+                invenInput1.Visible = false;
             }
 
             bool showroles = e.TabPage.Text.Equals("roles");
@@ -1352,6 +1377,119 @@ namespace MPHospitalRecordsSystem
         private void button28_Click(object sender, EventArgs e)
         {
             ExportToExcel((List<appointmentDTO>)dgvAppointments.DataSource, "Appointments");
+        }
+
+        private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            String medicineName = invenInputMed.Text;
+            String genericName = invenInputGen.Text;
+            String dosageForm = invenCBDosage.Text;
+            String stockQuantity = invenInputQTY.Text;
+
+            inventory inv = new inventory();
+            if (!int.TryParse(stockQuantity, out int qty))
+            {
+                MessageBox.Show("Please enter a valid number for stock quantity.");
+                return;
+            }
+            inv.add_inventory(medicineName, genericName, dosageForm, qty);
+            loadInventory();
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            String medicineName = invenInputMed.Text;
+            String genericName = invenInputGen.Text;
+            String dosageForm = invenCBDosage.Text;
+            String stockQuantity = invenInputQTY.Text;
+            inventory inv = new inventory();
+            if (!int.TryParse(stockQuantity, out int qty))
+            {
+                MessageBox.Show("Please enter a valid number for stock quantity.");
+                return;
+            }
+            inv.update_inventory(Convert.ToInt32(idlbl.Text), medicineName, genericName, dosageForm, qty);
+            loadInventory();
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(idlbl.Text);
+            inventory inv = new inventory();
+            inv.delete_inventory(id);
+            loadInventory();
+        }
+
+        private void dgvInventory_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvInventory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvInventory.Rows[e.RowIndex];
+
+                string medicineId = row.Cells["id"].Value.ToString();
+                string medicineName = row.Cells["MedicineName"].Value.ToString();
+                string genericName = row.Cells["GenericName"].Value.ToString();
+                string dosageForm = row.Cells["DosageForm"].Value.ToString();
+                String quantity = row.Cells["StockQuantity"].Value.ToString();
+
+                idlbl.Text = medicineId;
+                invenInputMed.Text = medicineName;
+                invenInputGen.Text = genericName;
+                invenCBDosage.Text = dosageForm;
+                invenInputQTY.Text = quantity;
+
+            }
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            inventory inv = new inventory();
+            idlbl.Text = Convert.ToString(inv.get_next_id());
+            invenInputMed.Text = "";
+            invenInputGen.Text = "";
+            invenCBDosage.Text = "";
+            invenInputQTY.Text = "";
+
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            inventory inv = new inventory();
+            String search = invenInputSearch.Text;
+            if (search.Equals(""))
+            {
+                MessageBox.Show("Please enter a medicine name or id to search.");
+                loadInventory();
+            }
+            else
+            {
+                dgvInventory.DataSource = inv.search_inventory(search);
+            }
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            ExportToExcel((List<inventoryDTO>)dgvInventory.DataSource, "Inventory");
         }
     }
 }
