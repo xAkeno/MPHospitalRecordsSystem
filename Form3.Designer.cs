@@ -83,6 +83,24 @@
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.dgvPrescription = new System.Windows.Forms.DataGridView();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.invenInputSearch = new System.Windows.Forms.TextBox();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.dgvInventory = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtp1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -167,33 +185,33 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.button29 = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
-            this.button31 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button35 = new System.Windows.Forms.Button();
-            this.button36 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.invenInputSearch = new System.Windows.Forms.TextBox();
-            this.button39 = new System.Windows.Forms.Button();
-            this.button40 = new System.Windows.Forms.Button();
-            this.dgvInventory = new System.Windows.Forms.DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label36 = new System.Windows.Forms.Label();
-            this.invenInputMed = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.invenInputGen = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.invenCBDosage = new System.Windows.Forms.ComboBox();
             this.label38 = new System.Windows.Forms.Label();
             this.invenInputQTY = new System.Windows.Forms.TextBox();
-            this.invenCBDosage = new System.Windows.Forms.ComboBox();
-            this.label39 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.invenInputGen = new System.Windows.Forms.TextBox();
+            this.invenInputMed = new System.Windows.Forms.TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label43 = new System.Windows.Forms.Label();
+            this.presInputDuration = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.presInputFreq = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.presInputDosage = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.presInputInstruction = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.presInputQuantity = new System.Windows.Forms.TextBox();
+            this.button41 = new System.Windows.Forms.Button();
+            this.label46 = new System.Windows.Forms.Label();
+            this.presInputValid = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbDoctorPres = new System.Windows.Forms.ComboBox();
+            this.label47 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -207,6 +225,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrescription)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -215,11 +237,8 @@
             this.panel6.SuspendLayout();
             this.invenInput1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -890,6 +909,227 @@
             this.dgvAppointments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellClick);
             this.dgvAppointments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppointments_CellContentClick);
             // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage7.Controls.Add(this.button29);
+            this.tabPage7.Controls.Add(this.button30);
+            this.tabPage7.Controls.Add(this.button31);
+            this.tabPage7.Controls.Add(this.button32);
+            this.tabPage7.Controls.Add(this.textBox22);
+            this.tabPage7.Controls.Add(this.button33);
+            this.tabPage7.Controls.Add(this.button34);
+            this.tabPage7.Controls.Add(this.dgvPrescription);
+            this.tabPage7.Location = new System.Drawing.Point(4, 33);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(978, 625);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Prescription";
+            // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(570, 4);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(108, 28);
+            this.button29.TabIndex = 27;
+            this.button29.Text = "Export";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // button30
+            // 
+            this.button30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button30.BackgroundImage")));
+            this.button30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button30.Location = new System.Drawing.Point(180, 4);
+            this.button30.Margin = new System.Windows.Forms.Padding(2);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(33, 28);
+            this.button30.TabIndex = 26;
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // button31
+            // 
+            this.button31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button31.Location = new System.Drawing.Point(82, 5);
+            this.button31.Margin = new System.Windows.Forms.Padding(2);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(94, 28);
+            this.button31.TabIndex = 25;
+            this.button31.Text = "Unselect";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // button32
+            // 
+            this.button32.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button32.BackgroundImage")));
+            this.button32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button32.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button32.Location = new System.Drawing.Point(939, 5);
+            this.button32.Margin = new System.Windows.Forms.Padding(2);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(33, 28);
+            this.button32.TabIndex = 24;
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(683, 4);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(252, 29);
+            this.textBox22.TabIndex = 23;
+            // 
+            // button33
+            // 
+            this.button33.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button33.BackgroundImage")));
+            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button33.Location = new System.Drawing.Point(45, 5);
+            this.button33.Margin = new System.Windows.Forms.Padding(2);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(33, 28);
+            this.button33.TabIndex = 22;
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // button34
+            // 
+            this.button34.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button34.BackgroundImage")));
+            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button34.Location = new System.Drawing.Point(7, 5);
+            this.button34.Margin = new System.Windows.Forms.Padding(2);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(33, 28);
+            this.button34.TabIndex = 21;
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // dgvPrescription
+            // 
+            this.dgvPrescription.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPrescription.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrescription.Location = new System.Drawing.Point(7, 35);
+            this.dgvPrescription.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvPrescription.Name = "dgvPrescription";
+            this.dgvPrescription.RowHeadersWidth = 51;
+            this.dgvPrescription.Size = new System.Drawing.Size(965, 585);
+            this.dgvPrescription.TabIndex = 20;
+            this.dgvPrescription.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrescription_CellClick);
+            this.dgvPrescription.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrescription_CellContentClick);
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tabPage8.Controls.Add(this.button35);
+            this.tabPage8.Controls.Add(this.button36);
+            this.tabPage8.Controls.Add(this.button37);
+            this.tabPage8.Controls.Add(this.button38);
+            this.tabPage8.Controls.Add(this.invenInputSearch);
+            this.tabPage8.Controls.Add(this.button39);
+            this.tabPage8.Controls.Add(this.button40);
+            this.tabPage8.Controls.Add(this.dgvInventory);
+            this.tabPage8.Location = new System.Drawing.Point(4, 33);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(978, 625);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Inventory";
+            // 
+            // button35
+            // 
+            this.button35.Location = new System.Drawing.Point(570, 4);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(108, 28);
+            this.button35.TabIndex = 27;
+            this.button35.Text = "Export";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button36
+            // 
+            this.button36.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button36.BackgroundImage")));
+            this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button36.Location = new System.Drawing.Point(180, 4);
+            this.button36.Margin = new System.Windows.Forms.Padding(2);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(33, 28);
+            this.button36.TabIndex = 26;
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.Location = new System.Drawing.Point(82, 5);
+            this.button37.Margin = new System.Windows.Forms.Padding(2);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(94, 28);
+            this.button37.TabIndex = 25;
+            this.button37.Text = "Unselect";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // button38
+            // 
+            this.button38.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button38.BackgroundImage")));
+            this.button38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button38.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button38.Location = new System.Drawing.Point(939, 5);
+            this.button38.Margin = new System.Windows.Forms.Padding(2);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(33, 28);
+            this.button38.TabIndex = 24;
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // invenInputSearch
+            // 
+            this.invenInputSearch.Location = new System.Drawing.Point(683, 4);
+            this.invenInputSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.invenInputSearch.Name = "invenInputSearch";
+            this.invenInputSearch.Size = new System.Drawing.Size(252, 29);
+            this.invenInputSearch.TabIndex = 23;
+            // 
+            // button39
+            // 
+            this.button39.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button39.BackgroundImage")));
+            this.button39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button39.Location = new System.Drawing.Point(45, 5);
+            this.button39.Margin = new System.Windows.Forms.Padding(2);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(33, 28);
+            this.button39.TabIndex = 22;
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button40
+            // 
+            this.button40.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button40.BackgroundImage")));
+            this.button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button40.Location = new System.Drawing.Point(7, 5);
+            this.button40.Margin = new System.Windows.Forms.Padding(2);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(33, 28);
+            this.button40.TabIndex = 21;
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // dgvInventory
+            // 
+            this.dgvInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventory.Location = new System.Drawing.Point(7, 35);
+            this.dgvInventory.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvInventory.Name = "dgvInventory";
+            this.dgvInventory.RowHeadersWidth = 51;
+            this.dgvInventory.Size = new System.Drawing.Size(965, 585);
+            this.dgvInventory.TabIndex = 20;
+            this.dgvInventory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellClick);
+            this.dgvInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentClick);
+            this.dgvInventory.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentDoubleClick);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1407,7 +1647,7 @@
             this.panel3.Controls.Add(this.textBox10);
             this.panel3.Controls.Add(this.textBox13);
             this.panel3.Controls.Add(this.textBox12);
-            this.panel3.Location = new System.Drawing.Point(913, 676);
+            this.panel3.Location = new System.Drawing.Point(650, 720);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(297, 597);
             this.panel3.TabIndex = 7;
@@ -1470,7 +1710,7 @@
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.dtpvisit);
             this.panel4.Controls.Add(this.label9);
-            this.panel4.Location = new System.Drawing.Point(610, 676);
+            this.panel4.Location = new System.Drawing.Point(338, 720);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(297, 597);
             this.panel4.TabIndex = 33;
@@ -1483,7 +1723,7 @@
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.doctorNameIn);
-            this.panel5.Location = new System.Drawing.Point(307, 676);
+            this.panel5.Location = new System.Drawing.Point(18, 720);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(297, 597);
             this.panel5.TabIndex = 33;
@@ -1498,7 +1738,7 @@
             this.panel6.Controls.Add(this.cbDoctorSched);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Controls.Add(this.label26);
-            this.panel6.Location = new System.Drawing.Point(1216, 676);
+            this.panel6.Location = new System.Drawing.Point(965, 720);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(297, 597);
             this.panel6.TabIndex = 34;
@@ -1559,7 +1799,7 @@
             this.invenInput1.Controls.Add(this.textBox17);
             this.invenInput1.Controls.Add(this.label29);
             this.invenInput1.Controls.Add(this.textBox18);
-            this.invenInput1.Location = new System.Drawing.Point(1707, 72);
+            this.invenInput1.Location = new System.Drawing.Point(1636, 87);
             this.invenInput1.Name = "invenInput1";
             this.invenInput1.Size = new System.Drawing.Size(297, 583);
             this.invenInput1.TabIndex = 8;
@@ -1734,6 +1974,7 @@
             this.label28.Size = new System.Drawing.Size(52, 18);
             this.label28.TabIndex = 1;
             this.label28.Text = "Name";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
             // 
             // textBox17
             // 
@@ -1743,6 +1984,7 @@
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(285, 28);
             this.textBox17.TabIndex = 0;
+            this.textBox17.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
             // 
             // label29
             // 
@@ -1767,7 +2009,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel8.Location = new System.Drawing.Point(1564, 676);
+            this.panel8.Location = new System.Drawing.Point(1290, 720);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(297, 583);
             this.panel8.TabIndex = 35;
@@ -1835,219 +2077,6 @@
             this.textBox20.Size = new System.Drawing.Size(285, 28);
             this.textBox20.TabIndex = 12;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tabPage7.Controls.Add(this.button29);
-            this.tabPage7.Controls.Add(this.button30);
-            this.tabPage7.Controls.Add(this.button31);
-            this.tabPage7.Controls.Add(this.button32);
-            this.tabPage7.Controls.Add(this.textBox22);
-            this.tabPage7.Controls.Add(this.button33);
-            this.tabPage7.Controls.Add(this.button34);
-            this.tabPage7.Controls.Add(this.dataGridView1);
-            this.tabPage7.Location = new System.Drawing.Point(4, 33);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(978, 625);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Prescription";
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tabPage8.Controls.Add(this.button35);
-            this.tabPage8.Controls.Add(this.button36);
-            this.tabPage8.Controls.Add(this.button37);
-            this.tabPage8.Controls.Add(this.button38);
-            this.tabPage8.Controls.Add(this.invenInputSearch);
-            this.tabPage8.Controls.Add(this.button39);
-            this.tabPage8.Controls.Add(this.button40);
-            this.tabPage8.Controls.Add(this.dgvInventory);
-            this.tabPage8.Location = new System.Drawing.Point(4, 33);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(978, 625);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "Inventory";
-            // 
-            // button29
-            // 
-            this.button29.Location = new System.Drawing.Point(570, 4);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(108, 28);
-            this.button29.TabIndex = 27;
-            this.button29.Text = "Export";
-            this.button29.UseVisualStyleBackColor = true;
-            // 
-            // button30
-            // 
-            this.button30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button30.BackgroundImage")));
-            this.button30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button30.Location = new System.Drawing.Point(180, 4);
-            this.button30.Margin = new System.Windows.Forms.Padding(2);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(33, 28);
-            this.button30.TabIndex = 26;
-            this.button30.UseVisualStyleBackColor = true;
-            // 
-            // button31
-            // 
-            this.button31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button31.Location = new System.Drawing.Point(82, 5);
-            this.button31.Margin = new System.Windows.Forms.Padding(2);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(94, 28);
-            this.button31.TabIndex = 25;
-            this.button31.Text = "Unselect";
-            this.button31.UseVisualStyleBackColor = true;
-            // 
-            // button32
-            // 
-            this.button32.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button32.BackgroundImage")));
-            this.button32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button32.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button32.Location = new System.Drawing.Point(939, 5);
-            this.button32.Margin = new System.Windows.Forms.Padding(2);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(33, 28);
-            this.button32.TabIndex = 24;
-            this.button32.UseVisualStyleBackColor = true;
-            // 
-            // textBox22
-            // 
-            this.textBox22.Location = new System.Drawing.Point(683, 4);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(252, 29);
-            this.textBox22.TabIndex = 23;
-            // 
-            // button33
-            // 
-            this.button33.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button33.BackgroundImage")));
-            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button33.Location = new System.Drawing.Point(45, 5);
-            this.button33.Margin = new System.Windows.Forms.Padding(2);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(33, 28);
-            this.button33.TabIndex = 22;
-            this.button33.UseVisualStyleBackColor = true;
-            // 
-            // button34
-            // 
-            this.button34.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button34.BackgroundImage")));
-            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button34.Location = new System.Drawing.Point(7, 5);
-            this.button34.Margin = new System.Windows.Forms.Padding(2);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(33, 28);
-            this.button34.TabIndex = 21;
-            this.button34.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 35);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(965, 585);
-            this.dataGridView1.TabIndex = 20;
-            // 
-            // button35
-            // 
-            this.button35.Location = new System.Drawing.Point(570, 4);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(108, 28);
-            this.button35.TabIndex = 27;
-            this.button35.Text = "Export";
-            this.button35.UseVisualStyleBackColor = true;
-            this.button35.Click += new System.EventHandler(this.button35_Click);
-            // 
-            // button36
-            // 
-            this.button36.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button36.BackgroundImage")));
-            this.button36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button36.Location = new System.Drawing.Point(180, 4);
-            this.button36.Margin = new System.Windows.Forms.Padding(2);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(33, 28);
-            this.button36.TabIndex = 26;
-            this.button36.UseVisualStyleBackColor = true;
-            this.button36.Click += new System.EventHandler(this.button36_Click);
-            // 
-            // button37
-            // 
-            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button37.Location = new System.Drawing.Point(82, 5);
-            this.button37.Margin = new System.Windows.Forms.Padding(2);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(94, 28);
-            this.button37.TabIndex = 25;
-            this.button37.Text = "Unselect";
-            this.button37.UseVisualStyleBackColor = true;
-            this.button37.Click += new System.EventHandler(this.button37_Click);
-            // 
-            // button38
-            // 
-            this.button38.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button38.BackgroundImage")));
-            this.button38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button38.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button38.Location = new System.Drawing.Point(939, 5);
-            this.button38.Margin = new System.Windows.Forms.Padding(2);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(33, 28);
-            this.button38.TabIndex = 24;
-            this.button38.UseVisualStyleBackColor = true;
-            this.button38.Click += new System.EventHandler(this.button38_Click);
-            // 
-            // invenInputSearch
-            // 
-            this.invenInputSearch.Location = new System.Drawing.Point(683, 4);
-            this.invenInputSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.invenInputSearch.Name = "invenInputSearch";
-            this.invenInputSearch.Size = new System.Drawing.Size(252, 29);
-            this.invenInputSearch.TabIndex = 23;
-            // 
-            // button39
-            // 
-            this.button39.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button39.BackgroundImage")));
-            this.button39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button39.Location = new System.Drawing.Point(45, 5);
-            this.button39.Margin = new System.Windows.Forms.Padding(2);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(33, 28);
-            this.button39.TabIndex = 22;
-            this.button39.UseVisualStyleBackColor = true;
-            this.button39.Click += new System.EventHandler(this.button39_Click);
-            // 
-            // button40
-            // 
-            this.button40.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button40.BackgroundImage")));
-            this.button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button40.Location = new System.Drawing.Point(7, 5);
-            this.button40.Margin = new System.Windows.Forms.Padding(2);
-            this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(33, 28);
-            this.button40.TabIndex = 21;
-            this.button40.UseVisualStyleBackColor = true;
-            this.button40.Click += new System.EventHandler(this.button40_Click);
-            // 
-            // dgvInventory
-            // 
-            this.dgvInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventory.Location = new System.Drawing.Point(7, 35);
-            this.dgvInventory.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvInventory.Name = "dgvInventory";
-            this.dgvInventory.RowHeadersWidth = 51;
-            this.dgvInventory.Size = new System.Drawing.Size(965, 585);
-            this.dgvInventory.TabIndex = 20;
-            this.dgvInventory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellClick);
-            this.dgvInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentClick);
-            this.dgvInventory.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventory_CellContentDoubleClick);
-            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -2059,51 +2088,41 @@
             this.panel9.Controls.Add(this.label36);
             this.panel9.Controls.Add(this.invenInputGen);
             this.panel9.Controls.Add(this.invenInputMed);
-            this.panel9.Location = new System.Drawing.Point(1349, 72);
+            this.panel9.Location = new System.Drawing.Point(1659, 705);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(297, 583);
             this.panel9.TabIndex = 36;
             this.panel9.Visible = false;
             // 
-            // label36
+            // label39
             // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(9, 17);
-            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(124, 18);
-            this.label36.TabIndex = 3;
-            this.label36.Text = "Medicine Name";
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(11, 127);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(111, 18);
+            this.label39.TabIndex = 42;
+            this.label39.Text = "Dosage Form";
             // 
-            // invenInputMed
+            // invenCBDosage
             // 
-            this.invenInputMed.Location = new System.Drawing.Point(6, 37);
-            this.invenInputMed.Margin = new System.Windows.Forms.Padding(2);
-            this.invenInputMed.Multiline = true;
-            this.invenInputMed.Name = "invenInputMed";
-            this.invenInputMed.Size = new System.Drawing.Size(285, 28);
-            this.invenInputMed.TabIndex = 2;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(10, 72);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(116, 18);
-            this.label37.TabIndex = 38;
-            this.label37.Text = "Generic Name";
-            // 
-            // invenInputGen
-            // 
-            this.invenInputGen.Location = new System.Drawing.Point(7, 92);
-            this.invenInputGen.Margin = new System.Windows.Forms.Padding(2);
-            this.invenInputGen.Multiline = true;
-            this.invenInputGen.Name = "invenInputGen";
-            this.invenInputGen.Size = new System.Drawing.Size(285, 28);
-            this.invenInputGen.TabIndex = 37;
+            this.invenCBDosage.FormattingEnabled = true;
+            this.invenCBDosage.Items.AddRange(new object[] {
+            "Tablet",
+            "Capsule",
+            "Syrup",
+            "Suspension",
+            "Cream",
+            "Ointment",
+            "Gel",
+            "Injection",
+            "Inhaler",
+            "Eye Drops"});
+            this.invenCBDosage.Location = new System.Drawing.Point(7, 148);
+            this.invenCBDosage.Name = "invenCBDosage";
+            this.invenCBDosage.Size = new System.Drawing.Size(285, 21);
+            this.invenCBDosage.TabIndex = 41;
             // 
             // label38
             // 
@@ -2125,42 +2144,248 @@
             this.invenInputQTY.Size = new System.Drawing.Size(285, 28);
             this.invenInputQTY.TabIndex = 39;
             // 
-            // invenCBDosage
+            // label37
             // 
-            this.invenCBDosage.FormattingEnabled = true;
-            this.invenCBDosage.Items.AddRange(new object[] {
-            "Tablet",
-            "Capsule",
-            "Syrup",
-            "Suspension",
-            "Cream",
-            "Ointment",
-            "Gel",
-            "Injection",
-            "Inhaler",
-            "Eye Drops"});
-            this.invenCBDosage.Location = new System.Drawing.Point(7, 148);
-            this.invenCBDosage.Name = "invenCBDosage";
-            this.invenCBDosage.Size = new System.Drawing.Size(285, 21);
-            this.invenCBDosage.TabIndex = 41;
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(10, 72);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(116, 18);
+            this.label37.TabIndex = 38;
+            this.label37.Text = "Generic Name";
             // 
-            // label39
+            // label36
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(11, 127);
-            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(111, 18);
-            this.label39.TabIndex = 42;
-            this.label39.Text = "Dosage Form";
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(9, 17);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(124, 18);
+            this.label36.TabIndex = 3;
+            this.label36.Text = "Medicine Name";
+            // 
+            // invenInputGen
+            // 
+            this.invenInputGen.Location = new System.Drawing.Point(7, 92);
+            this.invenInputGen.Margin = new System.Windows.Forms.Padding(2);
+            this.invenInputGen.Multiline = true;
+            this.invenInputGen.Name = "invenInputGen";
+            this.invenInputGen.Size = new System.Drawing.Size(285, 28);
+            this.invenInputGen.TabIndex = 37;
+            // 
+            // invenInputMed
+            // 
+            this.invenInputMed.Location = new System.Drawing.Point(6, 37);
+            this.invenInputMed.Margin = new System.Windows.Forms.Padding(2);
+            this.invenInputMed.Multiline = true;
+            this.invenInputMed.Name = "invenInputMed";
+            this.invenInputMed.Size = new System.Drawing.Size(285, 28);
+            this.invenInputMed.TabIndex = 2;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.cbDoctorPres);
+            this.panel7.Controls.Add(this.label47);
+            this.panel7.Controls.Add(this.comboBox2);
+            this.panel7.Controls.Add(this.label46);
+            this.panel7.Controls.Add(this.presInputValid);
+            this.panel7.Controls.Add(this.button41);
+            this.panel7.Controls.Add(this.label44);
+            this.panel7.Controls.Add(this.presInputInstruction);
+            this.panel7.Controls.Add(this.label45);
+            this.panel7.Controls.Add(this.presInputQuantity);
+            this.panel7.Controls.Add(this.label43);
+            this.panel7.Controls.Add(this.presInputDuration);
+            this.panel7.Controls.Add(this.label42);
+            this.panel7.Controls.Add(this.presInputFreq);
+            this.panel7.Controls.Add(this.label41);
+            this.panel7.Controls.Add(this.presInputDosage);
+            this.panel7.Controls.Add(this.label40);
+            this.panel7.Location = new System.Drawing.Point(1320, 87);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(297, 583);
+            this.panel7.TabIndex = 37;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(11, 313);
+            this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(72, 18);
+            this.label43.TabIndex = 9;
+            this.label43.Text = "Duration";
+            // 
+            // presInputDuration
+            // 
+            this.presInputDuration.Location = new System.Drawing.Point(8, 333);
+            this.presInputDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputDuration.Multiline = true;
+            this.presInputDuration.Name = "presInputDuration";
+            this.presInputDuration.Size = new System.Drawing.Size(285, 28);
+            this.presInputDuration.TabIndex = 8;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(11, 255);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(86, 18);
+            this.label42.TabIndex = 7;
+            this.label42.Text = "Frequency";
+            // 
+            // presInputFreq
+            // 
+            this.presInputFreq.Location = new System.Drawing.Point(8, 275);
+            this.presInputFreq.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputFreq.Multiline = true;
+            this.presInputFreq.Name = "presInputFreq";
+            this.presInputFreq.Size = new System.Drawing.Size(285, 28);
+            this.presInputFreq.TabIndex = 6;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(11, 198);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(66, 18);
+            this.label41.TabIndex = 5;
+            this.label41.Text = "Dosage";
+            // 
+            // presInputDosage
+            // 
+            this.presInputDosage.Location = new System.Drawing.Point(8, 218);
+            this.presInputDosage.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputDosage.Multiline = true;
+            this.presInputDosage.Name = "presInputDosage";
+            this.presInputDosage.Size = new System.Drawing.Size(285, 28);
+            this.presInputDosage.TabIndex = 4;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(9, 14);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(75, 18);
+            this.label40.TabIndex = 3;
+            this.label40.Text = "Medicine";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(12, 421);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(96, 18);
+            this.label44.TabIndex = 14;
+            this.label44.Text = "Instructions";
+            // 
+            // presInputInstruction
+            // 
+            this.presInputInstruction.Location = new System.Drawing.Point(9, 441);
+            this.presInputInstruction.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputInstruction.Multiline = true;
+            this.presInputInstruction.Name = "presInputInstruction";
+            this.presInputInstruction.Size = new System.Drawing.Size(285, 28);
+            this.presInputInstruction.TabIndex = 13;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(12, 363);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(70, 18);
+            this.label45.TabIndex = 12;
+            this.label45.Text = "Quantity";
+            // 
+            // presInputQuantity
+            // 
+            this.presInputQuantity.Location = new System.Drawing.Point(9, 383);
+            this.presInputQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputQuantity.Multiline = true;
+            this.presInputQuantity.Name = "presInputQuantity";
+            this.presInputQuantity.Size = new System.Drawing.Size(285, 28);
+            this.presInputQuantity.TabIndex = 11;
+            // 
+            // button41
+            // 
+            this.button41.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button41.BackgroundImage")));
+            this.button41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button41.Location = new System.Drawing.Point(258, 6);
+            this.button41.Margin = new System.Windows.Forms.Padding(2);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(33, 28);
+            this.button41.TabIndex = 27;
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(11, 479);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(83, 18);
+            this.label46.TabIndex = 29;
+            this.label46.Text = "Valid Until";
+            // 
+            // presInputValid
+            // 
+            this.presInputValid.Location = new System.Drawing.Point(8, 499);
+            this.presInputValid.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputValid.Multiline = true;
+            this.presInputValid.Name = "presInputValid";
+            this.presInputValid.Size = new System.Drawing.Size(285, 28);
+            this.presInputValid.TabIndex = 28;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(9, 36);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(282, 21);
+            this.comboBox2.TabIndex = 30;
+            // 
+            // cbDoctorPres
+            // 
+            this.cbDoctorPres.FormattingEnabled = true;
+            this.cbDoctorPres.Location = new System.Drawing.Point(9, 548);
+            this.cbDoctorPres.Name = "cbDoctorPres";
+            this.cbDoctorPres.Size = new System.Drawing.Size(282, 21);
+            this.cbDoctorPres.TabIndex = 32;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(9, 526);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(60, 18);
+            this.label47.TabIndex = 31;
+            this.label47.Text = "Doctor";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1743, 1040);
+            this.ClientSize = new System.Drawing.Size(1316, 695);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.invenInput1);
@@ -2197,6 +2422,12 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrescription)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -2213,14 +2444,10 @@
             this.invenInput1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2375,7 +2602,7 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPrescription;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button37;
@@ -2393,5 +2620,23 @@
         private System.Windows.Forms.TextBox invenInputMed;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.ComboBox invenCBDosage;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox presInputDuration;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox presInputFreq;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox presInputDosage;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox presInputInstruction;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox presInputQuantity;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox presInputValid;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbDoctorPres;
+        private System.Windows.Forms.Label label47;
     }
 }

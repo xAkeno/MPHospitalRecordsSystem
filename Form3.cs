@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace MPHospitalRecordsSystem
 {
@@ -74,6 +75,12 @@ namespace MPHospitalRecordsSystem
             inventory i = new inventory();
             dgvInventory.DataSource = i.read_inventory();
             idlbl.Text = i.get_next_id().ToString();
+        }
+        public void loadPrescription()
+        {
+            Prescription p = new Prescription();
+            dgvPrescription.DataSource = p.ReadPrescriptions();
+            idlbl.Text = p.GetNextPrescriptionId();
         }
         public void getNextIdVisit()
         {
@@ -170,6 +177,78 @@ namespace MPHospitalRecordsSystem
             else
             {
                 MessageBox.Show("⚠ Please select a row first.");
+            }
+        }
+
+        public static void ExportToWord<T>(List<T> data, string title = "Exported Data", string doctorName = "Dr. John Doe")
+        {
+            if (data == null || data.Count == 0)
+            {
+                MessageBox.Show($"No {title.ToLower()} found to export.");
+                return;
+            }
+
+            try
+            {
+                // Create Word application
+                Word.Application wordApp = new Word.Application();
+                Word.Document doc = wordApp.Documents.Add();
+
+                // Add title
+                Word.Paragraph titleParagraph = doc.Content.Paragraphs.Add();
+                titleParagraph.Range.Text = title;
+                titleParagraph.Range.Font.Bold = 1;
+                titleParagraph.Range.Font.Size = 18;
+                titleParagraph.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                titleParagraph.Range.InsertParagraphAfter();
+
+                // Add space
+                Word.Paragraph space = doc.Content.Paragraphs.Add();
+                space.Range.Text = "\n";
+
+                // Create table
+                PropertyInfo[] props = typeof(T).GetProperties();
+                int rowCount = data.Count + 1;
+                int colCount = props.Length;
+
+                Word.Table table = doc.Tables.Add(doc.Bookmarks.get_Item("\\endofdoc").Range, rowCount, colCount);
+                table.Borders.Enable = 1;
+
+                // Header row
+                for (int i = 0; i < colCount; i++)
+                {
+                    table.Cell(1, i + 1).Range.Text = props[i].Name;
+                    table.Cell(1, i + 1).Range.Bold = 1;
+                    table.Cell(1, i + 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
+                }
+
+                // Data rows
+                for (int r = 0; r < data.Count; r++)
+                {
+                    for (int c = 0; c < colCount; c++)
+                    {
+                        object value = props[c].GetValue(data[r]);
+                        table.Cell(r + 2, c + 1).Range.Text = value?.ToString() ?? "";
+                    }
+                }
+
+                // Add space before signature
+                Word.Paragraph sigSpace = doc.Content.Paragraphs.Add();
+                sigSpace.Range.Text = "\n\n\n";
+
+                // Add doctor signature line on the right
+                Word.Paragraph signature = doc.Content.Paragraphs.Add();
+                signature.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                signature.Range.Text = "___________________________\n" + doctorName + "\nSignature";
+
+                // Show Word
+                wordApp.Visible = true;
+
+                MessageBox.Show($"{title} export completed. Word opened.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed: " + ex.Message);
             }
         }
 
@@ -438,6 +517,25 @@ namespace MPHospitalRecordsSystem
             else
             {
                 panel9.Visible = false;
+            }
+
+            bool showPrescription = e.TabPage.Text.Equals("Prescription");
+            if (showPrescription)
+            {
+                panel7.Visible = true;
+                panel7.Location = new Point(4, 112);
+                doctor d = new doctor();
+                List<doctorDTO> doctors = d.read_doctors();
+                foreach (doctorDTO doc in doctors)
+                {
+                    //string display = string.Format("{0,-30} | {1}", "Name: " + doc.DoctorName, "Specialty: " + doc.Specialty);
+                    cbDoctorPres.Items.Add(doc.DoctorName);
+                }
+                loadPrescription();
+            }
+            else
+            {
+                panel7.Visible = false;
             }
 
             bool showAppointments = e.TabPage.Text.Equals("Appointment");
@@ -1490,6 +1588,258 @@ namespace MPHospitalRecordsSystem
         private void button35_Click(object sender, EventArgs e)
         {
             ExportToExcel((List<inventoryDTO>)dgvInventory.DataSource, "Inventory");
+        }
+
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+
+        }
+        private int comboBoxCount = 0; 
+        private int comboBoxSpacing = 30;
+        
+        private void button41_Click(object sender, EventArgs e)
+        {
+            comboBoxCount++;
+            if(comboBoxCount > 4) 
+            {
+                MessageBox.Show("Maximum of 4 ComboBoxes reached.");
+                return;
+            }
+
+            ComboBox newCombo = new ComboBox();
+            newCombo.Name = "dynamicComboBox" + comboBoxCount;
+            newCombo.Width = 283;
+            newCombo.Left = 9; 
+            newCombo.Top = 73 + (comboBoxCount - 1) * comboBoxSpacing; 
+
+            inventory i = new inventory();
+            i.read_inventory().ForEach(item =>
+            {
+                newCombo.Items.Add(item.MedicineName);
+            });
+            if (newCombo.Items.Count > 0)
+            {
+                newCombo.SelectedIndex = 0;
+            }
+            panel7.Controls.Add(newCombo);
+
+            newCombo.SelectedIndexChanged += (s, ev) =>
+            {
+                MessageBox.Show("Selected: " + newCombo.SelectedItem);
+            };
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(presInputValid.Text) || !presInputValid.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter a valid number for 'Valid Until' field (numbers only).");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(presInputFreq.Text) || !presInputFreq.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter a valid number for 'Frequency' field (numbers only).");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(presInputDuration.Text) || !presInputDuration.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter a valid number for 'Duration' field (numbers only).");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(presInputDosage.Text))
+            {
+                MessageBox.Show("Please enter a valid input for 'Dosage' field.");
+                return;
+            }
+
+
+
+            //MessageBox.Show("Prescription added successfully!" + idlbl.Text + presInputFreq.Text+ presInputDuration.Text+ presInputDuration.Text+ presInputValid.Text);
+
+            List<PrescriptionDTO> medicines = new List<PrescriptionDTO>();
+
+            foreach (Control ctrl in panel7.Controls)
+            {
+                if (ctrl is ComboBox combo && combo.SelectedItem != null)
+                {
+                    medicines.Add(new PrescriptionDTO
+                    {
+                        MedicineName = combo.SelectedItem.ToString(),
+                        Dosage = presInputDosage.Text, 
+                        Frequency = Convert.ToInt32(presInputFreq.Text), 
+                        Duration = Convert.ToInt32(presInputDuration.Text), 
+                        Quantity = Convert.ToInt32(presInputFreq.Text) * Convert.ToInt32(presInputDuration.Text), 
+                        Instructions = presInputInstruction.Text, 
+                        ValidUntil = Convert.ToInt32(presInputValid.Text)   
+                    });
+                }
+            }
+
+            //if (medicines.Count == 0)
+            //{
+            //    MessageBox.Show("No medicines selected.");
+            //    return;
+            //}
+
+            //// Build a string to display all selected medicines
+            //string output = "Prescription List:\n\n";
+            //foreach (var med in medicines)
+            //{
+            //    output += $"Medicine: {med.MedicineName}\n" +
+            //              $"Dosage: {med.Dosage}\n" +
+            //              $"Frequency: {med.Frequency}x/day\n" +
+            //              $"Duration: {med.Duration} days\n" +
+            //              $"Quantity: {med.Quantity}\n" +
+            //              $"Instructions: {med.Instructions}\n" +
+            //              $"Valid Until: {med.ValidUntil:yyyy-MM-dd}\n\n";
+            //}
+
+            //MessageBox.Show(output, "Prescription Preview");
+            Prescription p = new Prescription();
+            p.AddPrescription(Convert.ToInt32(presInputValid.Text), medicines);
+            loadPrescription();
+        }
+
+        private void dgvPrescription_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Make sure it's not a header row
+            {
+                DataGridViewRow row = dgvPrescription.Rows[e.RowIndex];
+
+                // Get cell values
+                string id = row.Cells["PrescriptionID"].Value.ToString();
+                string valid = row.Cells["ValidUntil"].Value.ToString();
+                string MedicineID = row.Cells["MedicineID"].Value.ToString();
+                string MedicineName = row.Cells["MedicineName"].Value.ToString();
+                string dosage = row.Cells["Dosage"].Value.ToString();
+                string freq = row.Cells["Frequency"].Value.ToString();
+                string duration = row.Cells["Duration"].Value.ToString();
+                string quantity = row.Cells["Quantity"].Value.ToString();
+                string instruction = row.Cells["Instructions"].Value.ToString();
+
+                foreach (Control ctrl in panel7.Controls)
+                {
+                    if (ctrl is ComboBox combo && combo.Name.StartsWith("dynamicComboBox"))
+                    {
+                        combo.Visible = false;
+                    }
+                }
+                comboBoxCount = 0;
+
+                comboBox2.Items.Clear();
+
+                inventory inv = new inventory();
+                inv.read_inventory().ForEach(item =>
+                {
+                    comboBox2.Items.Add(item.MedicineName);
+                });
+
+                comboBox2.Text = MedicineName;
+
+                presInputDosage.Text = dosage;
+                presInputFreq.Text = freq;
+                presInputDuration.Text = duration;
+                presInputInstruction.Text = instruction;
+                presInputQuantity.Text = quantity;
+                presInputValid.Text = valid;
+                idlbl.Text = id;
+            }
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            String id = idlbl.Text;
+            String valid = presInputValid.Text;
+            String medicineName = comboBox2.Text;
+            String dosage = presInputDosage.Text;
+            String freq = presInputFreq.Text;
+            String duration = presInputDuration.Text;
+            String instruction = presInputInstruction.Text;
+
+            Prescription p = new Prescription();
+
+            List<PrescriptionDTO> asd = new List<PrescriptionDTO>();
+
+            PrescriptionDTO pres = new PrescriptionDTO
+            {
+                PrescriptionID = id,
+                ValidUntil = Convert.ToInt32(valid),
+                MedicineName = medicineName,
+                Dosage = dosage,
+                Frequency = Convert.ToInt32(freq),
+                Duration = Convert.ToInt32(duration),
+                Instructions = instruction
+            };
+
+            asd.Add(pres);
+            p.UpdatePrescription(id, asd);
+            loadPrescription();
+        }
+
+        private void dgvPrescription_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            String id = idlbl.Text;
+            Prescription p = new Prescription();
+            p.DeletePrescription(id);
+            loadPrescription();
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            presInputDosage.Text = "";
+            presInputFreq.Text = "";
+            presInputDuration.Text = "";
+            presInputInstruction.Text = "";
+            presInputQuantity.Text = "";
+            presInputValid.Text = "";
+            comboBox2.SelectedIndex = -1;
+
+            foreach (Control ctrl in panel7.Controls)
+            {
+                if (ctrl is ComboBox combo && combo.Name.StartsWith("dynamicComboBox"))
+                {
+                    combo.Visible = false;
+                }
+            }
+            comboBoxCount = 0;
+
+            Prescription p = new Prescription();
+            idlbl.Text = p.GetNextPrescriptionId();
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            List<PrescriptionDTO> prescriptions = new List<PrescriptionDTO>();
+
+            PrescriptionDTO pres = new PrescriptionDTO
+            {
+                PrescriptionID = idlbl.Text,
+                ValidUntil = Convert.ToInt32(presInputValid.Text),
+                MedicineName = comboBox2.Text,
+                Dosage = presInputDosage.Text,
+                Frequency = Convert.ToInt32(presInputFreq.Text),
+                Duration = Convert.ToInt32(presInputDuration.Text),
+                Instructions = presInputInstruction.Text
+            };
+
+            prescriptions.Add(pres);
+            ExportToWord(prescriptions, "Prescription", cbDoctorPres.Text);
         }
     }
 }
