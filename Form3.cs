@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Reflection;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Claims;
@@ -12,7 +14,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Reflection;
 
 namespace MPHospitalRecordsSystem
 {
@@ -335,7 +336,7 @@ namespace MPHospitalRecordsSystem
                 //showFill2(false);
                 panel1.Visible = true;
 
-                panel1.Location = new Point(4, 112);
+                panel1.Location = new System.Drawing.Point(4, 112);
             }
             else {
                 panel1.Visible = false;
@@ -353,7 +354,7 @@ namespace MPHospitalRecordsSystem
                 //showFill(false);
                 //showFill2(false); 4, 112
                 panel5.Visible = true;
-                panel5.Location = new Point(4, 112);
+                panel5.Location = new System.Drawing.Point(4, 112);
             }
             else {
                 panel5.Visible = false;
@@ -391,7 +392,7 @@ namespace MPHospitalRecordsSystem
                 if (cbDoctors.Items.Count > 0)
                     cbDoctors.SelectedIndex = 0;
                 panel4.Visible = true;
-                panel4.Location = new Point(4, 112);
+                panel4.Location = new System.Drawing.Point(4, 112);
                 loadVisits();
                 getNextIdVisit();
             }
@@ -405,7 +406,7 @@ namespace MPHospitalRecordsSystem
             if (showSched)
             {
                 panel6.Visible = true;
-                panel6.Location = new Point(4, 112);
+                panel6.Location = new System.Drawing.Point(4, 112);
 
                 visit v = new visit();
                 List<doctorDTO> doctors = v.getAllDoctors();
@@ -430,7 +431,7 @@ namespace MPHospitalRecordsSystem
             if (showInventory)
             {
                 panel9.Visible = true;
-                panel9.Location = new Point(4, 112);
+                panel9.Location = new System.Drawing.Point(4, 112);
 
                 inventory i = new inventory();
                 loadInventory();
@@ -444,7 +445,7 @@ namespace MPHospitalRecordsSystem
             if (showAppointments)
             {
                 invenInput1.Visible = true;
-                invenInput1.Location = new Point(4, 112);
+                invenInput1.Location = new System.Drawing.Point(4, 112);
 
                 visit v = new visit();
                 List<patientDTO> patients = v.getAllPatient();
@@ -506,7 +507,7 @@ namespace MPHospitalRecordsSystem
             if(showroles)
             {
                 panel8.Visible = true;
-                panel8.Location = new Point(4, 112);             
+                panel8.Location = new System.Drawing.Point(4, 112);             
                 AccInfo a = new AccInfo();
                 dgvRoles.DataSource = a.Read_acc();
             }
@@ -733,7 +734,7 @@ namespace MPHospitalRecordsSystem
             {
                 panel4.Visible = false;
                 panel3.Visible = true;
-                panel3.Location = new Point(4, 112);
+                panel3.Location = new System.Drawing.Point(4, 112);
                 DataGridViewRow row = dgvVisits.SelectedRows[0];
                 string visitId = row.Cells["VisitId"].Value.ToString();
                 string patientId = row.Cells["PatientId"].Value.ToString();
@@ -971,8 +972,8 @@ namespace MPHospitalRecordsSystem
         {
             if (rbAppointment2.Checked)
             {
-                label33.Location = new Point(10, 72);
-                hideExCb.Location = new Point(7, 93);
+                label33.Location = new System.Drawing.Point(10, 72);
+                hideExCb.Location = new System.Drawing.Point(7, 93);
                 hideExCb.Visible = true;
 
                 //hideExLbl.Visible = true;
@@ -1390,16 +1391,23 @@ namespace MPHospitalRecordsSystem
         }
 
         private void button40_Click(object sender, EventArgs e)
-        {
+        { 
             String medicineName = invenInputMed.Text;
             String genericName = invenInputGen.Text;
             String dosageForm = invenCBDosage.Text;
             String stockQuantity = invenInputQTY.Text;
 
             inventory inv = new inventory();
-            if (!int.TryParse(stockQuantity, out int qty))
+            if (!int.TryParse(stockQuantity, out int qty) || medicineName.Any(Char.IsDigit) ||!genericName.Any())
             {
-                MessageBox.Show("Please enter a valid number for stock quantity.");
+                MessageBox.Show(
+                        " Please enter a valid number for stock quantity\n"
+
+                     + (medicineName.Any(Char.IsDigit) ? "- Enter in a valid medicine name\n" : " ")
+                     + (genericName.Any(Char.IsDigit) ? "- Enter in a valid medicine name\n" : " ")
+                     + (!genericName.Any(c => !char.IsLetterOrDigit(c)) ? "- generic names can't have special characters\n" : " ")
+                      +(!medicineName.Any(c => !char.IsLetterOrDigit(c)) ? "- medecine name can't have special characters \n" : " ")
+                    );
                 return;
             }
             inv.add_inventory(medicineName, genericName, dosageForm, qty);
@@ -1413,9 +1421,16 @@ namespace MPHospitalRecordsSystem
             String dosageForm = invenCBDosage.Text;
             String stockQuantity = invenInputQTY.Text;
             inventory inv = new inventory();
-            if (!int.TryParse(stockQuantity, out int qty))
+            if (!int.TryParse(stockQuantity, out int qty) || medicineName.Any(Char.IsDigit) || !genericName.Any())
             {
-                MessageBox.Show("Please enter a valid number for stock quantity.");
+                MessageBox.Show(
+                        " Please enter a valid number for stock quantity\n"
+
+                     + (medicineName.Any(Char.IsDigit) ? "- Enter in a valid medicine name\n" : " ")
+                     + (genericName.Any(Char.IsDigit) ? "- Enter in a valid medicine name\n" : " ")
+                     + (!genericName.Any(c => !char.IsLetterOrDigit(c)) ? "- generic names can't have special characters\n" : " ")
+                      + (!medicineName.Any(c => !char.IsLetterOrDigit(c)) ? "- medecine name can't have special characters \n" : " ")
+                    );
                 return;
             }
             inv.update_inventory(Convert.ToInt32(idlbl.Text), medicineName, genericName, dosageForm, qty);
