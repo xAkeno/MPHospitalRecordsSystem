@@ -195,6 +195,16 @@
             this.invenInputGen = new System.Windows.Forms.TextBox();
             this.invenInputMed = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cbDoctorPres = new System.Windows.Forms.ComboBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.presInputValid = new System.Windows.Forms.TextBox();
+            this.button41 = new System.Windows.Forms.Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.presInputInstruction = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.presInputQuantity = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.presInputDuration = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
@@ -202,16 +212,8 @@
             this.label41 = new System.Windows.Forms.Label();
             this.presInputDosage = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.presInputInstruction = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.presInputQuantity = new System.Windows.Forms.TextBox();
-            this.button41 = new System.Windows.Forms.Button();
-            this.label46 = new System.Windows.Forms.Label();
-            this.presInputValid = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.cbDoctorPres = new System.Windows.Forms.ComboBox();
-            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.cbPatientPres = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -2187,6 +2189,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.cbPatientPres);
+            this.panel7.Controls.Add(this.label48);
             this.panel7.Controls.Add(this.cbDoctorPres);
             this.panel7.Controls.Add(this.label47);
             this.panel7.Controls.Add(this.comboBox2);
@@ -2209,11 +2213,111 @@
             this.panel7.Size = new System.Drawing.Size(297, 583);
             this.panel7.TabIndex = 37;
             // 
+            // cbDoctorPres
+            // 
+            this.cbDoctorPres.FormattingEnabled = true;
+            this.cbDoctorPres.Location = new System.Drawing.Point(9, 498);
+            this.cbDoctorPres.Name = "cbDoctorPres";
+            this.cbDoctorPres.Size = new System.Drawing.Size(282, 21);
+            this.cbDoctorPres.TabIndex = 32;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(9, 476);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(60, 18);
+            this.label47.TabIndex = 31;
+            this.label47.Text = "Doctor";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(9, 36);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(282, 21);
+            this.comboBox2.TabIndex = 30;
+            this.comboBox2.Visible = false;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(11, 429);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(83, 18);
+            this.label46.TabIndex = 29;
+            this.label46.Text = "Valid Until";
+            // 
+            // presInputValid
+            // 
+            this.presInputValid.Location = new System.Drawing.Point(8, 449);
+            this.presInputValid.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputValid.Multiline = true;
+            this.presInputValid.Name = "presInputValid";
+            this.presInputValid.Size = new System.Drawing.Size(285, 28);
+            this.presInputValid.TabIndex = 28;
+            // 
+            // button41
+            // 
+            this.button41.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button41.BackgroundImage")));
+            this.button41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button41.Location = new System.Drawing.Point(258, 6);
+            this.button41.Margin = new System.Windows.Forms.Padding(2);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(33, 28);
+            this.button41.TabIndex = 27;
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(12, 381);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(96, 18);
+            this.label44.TabIndex = 14;
+            this.label44.Text = "Instructions";
+            // 
+            // presInputInstruction
+            // 
+            this.presInputInstruction.Location = new System.Drawing.Point(9, 401);
+            this.presInputInstruction.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputInstruction.Multiline = true;
+            this.presInputInstruction.Name = "presInputInstruction";
+            this.presInputInstruction.Size = new System.Drawing.Size(285, 28);
+            this.presInputInstruction.TabIndex = 13;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(12, 335);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(70, 18);
+            this.label45.TabIndex = 12;
+            this.label45.Text = "Quantity";
+            // 
+            // presInputQuantity
+            // 
+            this.presInputQuantity.Location = new System.Drawing.Point(9, 355);
+            this.presInputQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.presInputQuantity.Multiline = true;
+            this.presInputQuantity.Name = "presInputQuantity";
+            this.presInputQuantity.Size = new System.Drawing.Size(285, 28);
+            this.presInputQuantity.TabIndex = 11;
+            // 
             // label43
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(11, 313);
+            this.label43.Location = new System.Drawing.Point(11, 290);
             this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(72, 18);
@@ -2222,7 +2326,7 @@
             // 
             // presInputDuration
             // 
-            this.presInputDuration.Location = new System.Drawing.Point(8, 333);
+            this.presInputDuration.Location = new System.Drawing.Point(8, 310);
             this.presInputDuration.Margin = new System.Windows.Forms.Padding(2);
             this.presInputDuration.Multiline = true;
             this.presInputDuration.Name = "presInputDuration";
@@ -2233,7 +2337,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(11, 255);
+            this.label42.Location = new System.Drawing.Point(11, 244);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(86, 18);
@@ -2242,7 +2346,7 @@
             // 
             // presInputFreq
             // 
-            this.presInputFreq.Location = new System.Drawing.Point(8, 275);
+            this.presInputFreq.Location = new System.Drawing.Point(8, 264);
             this.presInputFreq.Margin = new System.Windows.Forms.Padding(2);
             this.presInputFreq.Multiline = true;
             this.presInputFreq.Name = "presInputFreq";
@@ -2280,111 +2384,31 @@
             this.label40.TabIndex = 3;
             this.label40.Text = "Medicine";
             // 
-            // label44
+            // label48
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(12, 421);
-            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(96, 18);
-            this.label44.TabIndex = 14;
-            this.label44.Text = "Instructions";
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(11, 519);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(69, 18);
+            this.label48.TabIndex = 33;
+            this.label48.Text = "Patients";
             // 
-            // presInputInstruction
+            // cbPatientPres
             // 
-            this.presInputInstruction.Location = new System.Drawing.Point(9, 441);
-            this.presInputInstruction.Margin = new System.Windows.Forms.Padding(2);
-            this.presInputInstruction.Multiline = true;
-            this.presInputInstruction.Name = "presInputInstruction";
-            this.presInputInstruction.Size = new System.Drawing.Size(285, 28);
-            this.presInputInstruction.TabIndex = 13;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(12, 363);
-            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(70, 18);
-            this.label45.TabIndex = 12;
-            this.label45.Text = "Quantity";
-            // 
-            // presInputQuantity
-            // 
-            this.presInputQuantity.Location = new System.Drawing.Point(9, 383);
-            this.presInputQuantity.Margin = new System.Windows.Forms.Padding(2);
-            this.presInputQuantity.Multiline = true;
-            this.presInputQuantity.Name = "presInputQuantity";
-            this.presInputQuantity.Size = new System.Drawing.Size(285, 28);
-            this.presInputQuantity.TabIndex = 11;
-            // 
-            // button41
-            // 
-            this.button41.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button41.BackgroundImage")));
-            this.button41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button41.Location = new System.Drawing.Point(258, 6);
-            this.button41.Margin = new System.Windows.Forms.Padding(2);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(33, 28);
-            this.button41.TabIndex = 27;
-            this.button41.UseVisualStyleBackColor = true;
-            this.button41.Click += new System.EventHandler(this.button41_Click);
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(11, 479);
-            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(83, 18);
-            this.label46.TabIndex = 29;
-            this.label46.Text = "Valid Until";
-            // 
-            // presInputValid
-            // 
-            this.presInputValid.Location = new System.Drawing.Point(8, 499);
-            this.presInputValid.Margin = new System.Windows.Forms.Padding(2);
-            this.presInputValid.Multiline = true;
-            this.presInputValid.Name = "presInputValid";
-            this.presInputValid.Size = new System.Drawing.Size(285, 28);
-            this.presInputValid.TabIndex = 28;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(9, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(282, 21);
-            this.comboBox2.TabIndex = 30;
-            // 
-            // cbDoctorPres
-            // 
-            this.cbDoctorPres.FormattingEnabled = true;
-            this.cbDoctorPres.Location = new System.Drawing.Point(9, 548);
-            this.cbDoctorPres.Name = "cbDoctorPres";
-            this.cbDoctorPres.Size = new System.Drawing.Size(282, 21);
-            this.cbDoctorPres.TabIndex = 32;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(9, 526);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(60, 18);
-            this.label47.TabIndex = 31;
-            this.label47.Text = "Doctor";
+            this.cbPatientPres.FormattingEnabled = true;
+            this.cbPatientPres.Location = new System.Drawing.Point(8, 540);
+            this.cbPatientPres.Name = "cbPatientPres";
+            this.cbPatientPres.Size = new System.Drawing.Size(283, 21);
+            this.cbPatientPres.TabIndex = 34;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1316, 695);
+            this.ClientSize = new System.Drawing.Size(1696, 695);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
@@ -2638,5 +2662,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox cbDoctorPres;
         private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.ComboBox cbPatientPres;
+        private System.Windows.Forms.Label label48;
     }
 }

@@ -180,77 +180,119 @@ namespace MPHospitalRecordsSystem
             }
         }
 
-        public static void ExportToWord<T>(List<T> data, string title = "Exported Data", string doctorName = "Dr. John Doe")
+        public static void ExportToWord(
+    List<PrescriptionDTO> medicines,       // list of prescriptions
+    string hospitalName,                  // hospital/title
+    string doctorName,                    // doctor name
+    string patientName)                   // patient name
         {
-            if (data == null || data.Count == 0)
+            if (string.IsNullOrWhiteSpace(patientName))
             {
-                MessageBox.Show($"No {title.ToLower()} found to export.");
+                MessageBox.Show("Patient name is required.");
                 return;
             }
 
+            Word.Application wordApp = null;
+            Word.Document doc = null;
+
             try
             {
-                // Create Word application
-                Word.Application wordApp = new Word.Application();
-                Word.Document doc = wordApp.Documents.Add();
-
-                // Add title
-                Word.Paragraph titleParagraph = doc.Content.Paragraphs.Add();
-                titleParagraph.Range.Text = title;
-                titleParagraph.Range.Font.Bold = 1;
-                titleParagraph.Range.Font.Size = 18;
-                titleParagraph.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                titleParagraph.Range.InsertParagraphAfter();
-
-                // Add space
-                Word.Paragraph space = doc.Content.Paragraphs.Add();
-                space.Range.Text = "\n";
-
-                // Create table
-                PropertyInfo[] props = typeof(T).GetProperties();
-                int rowCount = data.Count + 1;
-                int colCount = props.Length;
-
-                Word.Table table = doc.Tables.Add(doc.Bookmarks.get_Item("\\endofdoc").Range, rowCount, colCount);
-                table.Borders.Enable = 1;
-
-                // Header row
-                for (int i = 0; i < colCount; i++)
+                // Fetch patient info from DB
+                patient p = new patient();
+                List<patientDTO> patientData = p.search_patient(patientName);
+                if (patientData.Count == 0)
                 {
-                    table.Cell(1, i + 1).Range.Text = props[i].Name;
-                    table.Cell(1, i + 1).Range.Bold = 1;
-                    table.Cell(1, i + 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
+                    MessageBox.Show("Patient not found.");
+                    return;
                 }
 
-                // Data rows
-                for (int r = 0; r < data.Count; r++)
+                // Mimic original DataRow access
+                var row = patientData[0];
+                string name = row.Name;
+                string contact = row.ContactNumber;
+                DateTime dobDate = row.DateOfBirth;
+
+                // Accurate age calculation
+                int age = DateTime.Now.Year - dobDate.Year;
+                if (DateTime.Now.DayOfYear < dobDate.DayOfYear)
+                    age--;
+
+                // Create Word app
+                wordApp = new Word.Application();
+                doc = wordApp.Documents.Add();
+
+                // --- Hospital Name ---
+                Word.Paragraph hospitalPara = doc.Content.Paragraphs.Add();
+                hospitalPara.Range.Text = hospitalName;
+                hospitalPara.Range.Font.Bold = 1;
+                hospitalPara.Range.Font.Size = 18;
+                hospitalPara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                hospitalPara.Range.InsertParagraphAfter();
+
+                // --- Patient Info (straight format) ---
+                Word.Paragraph patientPara = doc.Content.Paragraphs.Add();
+                patientPara.Range.Text =
+                    $"Name: {name}  " +
+                    $"Contact: {contact}    " +
+                    $"Age: {age}    " +
+                    $"Date: {DateTime.Now:yyyy-MM-dd}";
+                patientPara.Range.Font.Size = 12;
+                patientPara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                patientPara.Range.InsertParagraphAfter();
+
+                // Add a small space
+                doc.Content.Paragraphs.Add().Range.Text = "\n";
+
+                // --- Prescription Items ---
+                Word.Paragraph medPara = doc.Content.Paragraphs.Add();
+                medPara.Range.Text = "Rx\n"; // standard prescription symbol
+                medPara.Range.Font.Size = 14;
+                medPara.Range.Font.Bold = 1;
+
+                foreach (var med in medicines)
                 {
-                    for (int c = 0; c < colCount; c++)
-                    {
-                        object value = props[c].GetValue(data[r]);
-                        table.Cell(r + 2, c + 1).Range.Text = value?.ToString() ?? "";
-                    }
+                    Word.Paragraph pItem = doc.Content.Paragraphs.Add();
+                    pItem.Range.Text =
+                        $"Medicine: {med.MedicineName}\n" +
+                        $"Dosage: {med.Dosage}\n" +
+                        $"Quantity: {med.Quantity}\n" +
+                        $"Frequency: {med.Frequency} times/day\n" +
+                        $"Duration: {med.Duration} days\n" +
+                        $"Valid Until: {DateTime.Now.AddDays(med.ValidUntil):yyyy-MM-dd}\n" +
+                        $"Instructions: {med.Instructions}";
+                    pItem.Range.Font.Size = 12;
+                    pItem.Range.Font.Bold = 0;
+                    pItem.Range.InsertParagraphAfter();
                 }
 
-                // Add space before signature
-                Word.Paragraph sigSpace = doc.Content.Paragraphs.Add();
-                sigSpace.Range.Text = "\n\n\n";
+                // Add some space before signature
+                doc.Content.Paragraphs.Add().Range.Text = "\n\n";
 
-                // Add doctor signature line on the right
-                Word.Paragraph signature = doc.Content.Paragraphs.Add();
-                signature.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
-                signature.Range.Text = "___________________________\n" + doctorName + "\nSignature";
+                // --- Doctor Signature ---
+                Word.Paragraph sigPara = doc.Content.Paragraphs.Add();
+                sigPara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                sigPara.Range.Text = $"___________________________\n{doctorName}\nPhysician's Sig.";
+                sigPara.Range.InsertParagraphAfter();
 
                 // Show Word
                 wordApp.Visible = true;
-
-                MessageBox.Show($"{title} export completed. Word opened.");
+                MessageBox.Show("Prescription exported successfully.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Export failed: " + ex.Message);
+                MessageBox.Show("Error exporting prescription: " + ex.Message);
+            }
+            finally
+            {
+                // Optional cleanup
+                // if (doc != null) doc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+                // if (wordApp != null) wordApp.Quit();
             }
         }
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -525,12 +567,20 @@ namespace MPHospitalRecordsSystem
                 panel7.Visible = true;
                 panel7.Location = new Point(4, 112);
                 doctor d = new doctor();
+                patient p = new patient();
                 List<doctorDTO> doctors = d.read_doctors();
+                List<patientDTO> patients = p.read_patient();
                 foreach (doctorDTO doc in doctors)
                 {
                     //string display = string.Format("{0,-30} | {1}", "Name: " + doc.DoctorName, "Specialty: " + doc.Specialty);
                     cbDoctorPres.Items.Add(doc.DoctorName);
                 }
+                foreach (patientDTO doc in patients)
+                {
+                    //string display = string.Format("{0,-30} | {1}", "Name: " + doc.Name, "ID: " + doc.PatientId);
+                    cbPatientPres.Items.Add(doc.Name);
+                }
+
                 loadPrescription();
             }
             else
@@ -1602,7 +1652,17 @@ namespace MPHospitalRecordsSystem
 
         private void button32_Click(object sender, EventArgs e)
         {
+            string search = textBox22.Text;
 
+            Prescription p = new Prescription();
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                loadPrescription();
+            }
+            else
+            {
+                dgvPrescription.DataSource = p.SearchPrescriptions(search);
+            }
         }
         private int comboBoxCount = 0; 
         private int comboBoxSpacing = 30;
@@ -1673,6 +1733,7 @@ namespace MPHospitalRecordsSystem
             {
                 if (ctrl is ComboBox combo && combo.SelectedItem != null)
                 {
+
                     medicines.Add(new PrescriptionDTO
                     {
                         MedicineName = combo.SelectedItem.ToString(),
@@ -1681,6 +1742,8 @@ namespace MPHospitalRecordsSystem
                         Duration = Convert.ToInt32(presInputDuration.Text), 
                         Quantity = Convert.ToInt32(presInputFreq.Text) * Convert.ToInt32(presInputDuration.Text), 
                         Instructions = presInputInstruction.Text, 
+                        patient = cbPatientPres.Text,
+                        doctor = cbDoctorPres.Text,
                         ValidUntil = Convert.ToInt32(presInputValid.Text)   
                     });
                 }
@@ -1727,6 +1790,8 @@ namespace MPHospitalRecordsSystem
                 string duration = row.Cells["Duration"].Value.ToString();
                 string quantity = row.Cells["Quantity"].Value.ToString();
                 string instruction = row.Cells["Instructions"].Value.ToString();
+                string doctor = row.Cells["doctor"].Value.ToString();
+                string patient = row.Cells["patient"].Value.ToString();
 
                 foreach (Control ctrl in panel7.Controls)
                 {
@@ -1739,7 +1804,15 @@ namespace MPHospitalRecordsSystem
 
                 comboBox2.Items.Clear();
 
-                inventory inv = new inventory();
+                if (comboBox2.Visible == false)
+                {
+                    comboBox2.Visible = true;
+                }
+                else { 
+                    comboBox2.Visible = false;
+                }
+
+                    inventory inv = new inventory();
                 inv.read_inventory().ForEach(item =>
                 {
                     comboBox2.Items.Add(item.MedicineName);
@@ -1753,6 +1826,8 @@ namespace MPHospitalRecordsSystem
                 presInputInstruction.Text = instruction;
                 presInputQuantity.Text = quantity;
                 presInputValid.Text = valid;
+                cbDoctorPres.Text = doctor;
+                cbPatientPres.Text = patient;
                 idlbl.Text = id;
             }
         }
@@ -1809,6 +1884,7 @@ namespace MPHospitalRecordsSystem
             presInputQuantity.Text = "";
             presInputValid.Text = "";
             comboBox2.SelectedIndex = -1;
+            comboBox2.Visible = false;
 
             foreach (Control ctrl in panel7.Controls)
             {
@@ -1825,21 +1901,33 @@ namespace MPHospitalRecordsSystem
 
         private void button29_Click(object sender, EventArgs e)
         {
-            List<PrescriptionDTO> prescriptions = new List<PrescriptionDTO>();
-
-            PrescriptionDTO pres = new PrescriptionDTO
+            try
             {
-                PrescriptionID = idlbl.Text,
-                ValidUntil = Convert.ToInt32(presInputValid.Text),
-                MedicineName = comboBox2.Text,
-                Dosage = presInputDosage.Text,
-                Frequency = Convert.ToInt32(presInputFreq.Text),
-                Duration = Convert.ToInt32(presInputDuration.Text),
-                Instructions = presInputInstruction.Text
-            };
+                List<PrescriptionDTO> prescriptions = new List<PrescriptionDTO>();
 
-            prescriptions.Add(pres);
-            ExportToWord(prescriptions, "Prescription", cbDoctorPres.Text);
+                PrescriptionDTO pres = new PrescriptionDTO
+                {
+                    PrescriptionID = idlbl.Text,
+                    ValidUntil = Convert.ToInt32(presInputValid.Text),
+                    MedicineName = comboBox2.Text,
+                    Dosage = presInputDosage.Text,
+                    Frequency = Convert.ToInt32(presInputFreq.Text),
+                    Duration = Convert.ToInt32(presInputDuration.Text),
+                    Instructions = presInputInstruction.Text
+                };
+
+                if (pres != null) {
+                    prescriptions.Add(pres);
+                    ExportToWord(prescriptions, "Prescription", cbDoctorPres.Text, cbPatientPres.Text);
+                }
+                else
+                {
+                    MessageBox.Show("No prescription data to export.");
+                }
+            }
+            catch (Exception ee) {
+                Console.WriteLine(ee);
+            }
         }
     }
 }

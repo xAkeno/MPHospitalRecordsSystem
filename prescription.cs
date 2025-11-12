@@ -48,6 +48,7 @@ namespace MPHospitalRecordsSystem
             }
         }
 
+
         // Add prescription with multiple medicines
         public void AddPrescription(int validUntil, List<PrescriptionDTO> medicines)
         {
@@ -77,8 +78,8 @@ namespace MPHospitalRecordsSystem
 
                         // Insert into prescription_medicine table
                         string sqlMedicine = @"INSERT INTO prescription_medicine 
-                                               (PrescriptionID,InventoryID, Dosage, Frequency, Duration, Quantity, Instructions)
-                                               VALUES (@PrescriptionID, @InventoryID, @Dosage, @Frequency, @Duration, @Quantity, @Instructions)";
+                                               (PrescriptionID,InventoryID, Dosage, Frequency, Duration, Quantity, Instructions, doctor_id, patient_id)
+                                               VALUES (@PrescriptionID, @InventoryID, @Dosage, @Frequency, @Duration, @Quantity, @Instructions, @doctor_id, @patient_id)";
                         foreach (var med in medicines)
                         {
 
@@ -100,6 +101,12 @@ namespace MPHospitalRecordsSystem
                                 }
                             }
 
+                            patient p = new patient();
+                            doctor d = new doctor();
+
+                            int patientId = p.findByName(med.patient);
+                            int doctorId = d.findByName(med.doctor);
+
                             using (MySqlCommand cmd = new MySqlCommand(sqlMedicine, c, transaction))
                             {
                                 cmd.Parameters.AddWithValue("@PrescriptionID", prescriptionId);
@@ -109,6 +116,8 @@ namespace MPHospitalRecordsSystem
                                 cmd.Parameters.AddWithValue("@Duration", med.Duration);
                                 cmd.Parameters.AddWithValue("@Quantity", med.Quantity);
                                 cmd.Parameters.AddWithValue("@Instructions", med.Instructions);
+                                cmd.Parameters.AddWithValue("@patient_id", patientId);
+                                cmd.Parameters.AddWithValue("@doctor_id", doctorId);
                                 cmd.ExecuteNonQuery();
                             }
                         }
@@ -135,6 +144,8 @@ namespace MPHospitalRecordsSystem
                                 pm.Duration, 
                                 pm.Quantity, 
                                 pm.Instructions, 
+                                pm.patient_id,
+                                pm.doctor_id,
                                 i.MedicineName
                             FROM prescription p
                             JOIN prescription_medicine pm ON p.PrescriptionID = pm.PrescriptionID
@@ -155,6 +166,8 @@ namespace MPHospitalRecordsSystem
                         {
                             while (reader.Read())
                             {
+                                patient p = new patient().findNameById(reader.GetInt32("doctor_id"));
+                                doctorDTO d = new doctor().findNameById(reader.GetInt32("patient_id"));
                                 list.Add(new PrescriptionDTO
                                 {
                                     PrescriptionID = reader.GetString("PrescriptionID"),
@@ -165,8 +178,11 @@ namespace MPHospitalRecordsSystem
                                     Frequency = reader.GetInt32("Frequency"),
                                     Duration = reader.GetInt32("Duration"),
                                     Quantity = reader.GetInt32("Quantity"),
-                                    Instructions = reader.GetString("Instructions")
+                                    Instructions = reader.GetString("Instructions"),
+                                    patient = p != null ? p.name : "Unknown",     // safe null check
+                                    doctor = d != null ? d.DoctorName : "Unknown", // safe null check
                                 });
+
                             }
                         }
                     }
@@ -206,6 +222,75 @@ namespace MPHospitalRecordsSystem
                 MessageBox.Show("Error deleting prescription: " + ex.Message);
             }
         }
+        public List<PrescriptionDTO> SearchPrescriptions(string search)
+        {
+            string sql = @"SELECT 
+                        p.PrescriptionID, 
+                        p.ValidUntil, 
+                        pm.InventoryID AS MedicineID, 
+                        pm.Dosage, 
+                        pm.Frequency, 
+                        pm.Duration, 
+                        pm.Quantity, 
+                        pm.Instructions, 
+                        pm.patient_id,
+                        pm.doctor_id,
+                        i.MedicineName,
+                        pat.Name AS PatientName,
+                        doc.Name AS Name
+                    FROM prescription p
+                    JOIN prescription_medicine pm ON p.PrescriptionID = pm.PrescriptionID
+                    JOIN inventory i ON pm.InventoryID = i.id
+                    LEFT JOIN patients pat ON pm.patient_id = pat.patient_id
+                    LEFT JOIN doctors doc ON pm.doctor_id = doc.doctor_id
+                    WHERE p.PrescriptionID LIKE @search
+                       OR i.MedicineName LIKE @search
+                       OR pat.Name LIKE @search
+                       OR doc.Name LIKE @search
+                    ORDER BY p.PrescriptionID DESC;";
+
+            List<PrescriptionDTO> list = new List<PrescriptionDTO>();
+
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    c.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(sql, c))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                list.Add(new PrescriptionDTO
+                                {
+                                    PrescriptionID = reader.GetString("PrescriptionID"),
+                                    ValidUntil = reader.GetInt32("ValidUntil"),
+                                    MedicineID = reader.GetInt32("MedicineID"),
+                                    MedicineName = reader.GetString("MedicineName"),
+                                    Dosage = reader.GetString("Dosage"),
+                                    Frequency = reader.GetInt32("Frequency"),
+                                    Duration = reader.GetInt32("Duration"),
+                                    Quantity = reader.GetInt32("Quantity"),
+                                    Instructions = reader.GetString("Instructions"),
+                                    patient = reader["PatientName"] != DBNull.Value ? reader.GetString("Name") : "Unknown",
+                                    doctor = reader["Name"] != DBNull.Value ? reader.GetString("Name") : "Unknown"
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching prescriptions: " + ex.Message);
+            }
+
+            return list;
+        }
+
         public void UpdatePrescription(string prescriptionId, List<PrescriptionDTO> medicines)
         {
             if (medicines == null || medicines.Count == 0)
@@ -322,6 +407,8 @@ namespace MPHospitalRecordsSystem
         public int Frequency { get; set; }
         public int Duration { get; set; }
         public int Quantity { get; set; }
+        public String patient { get; set; }
+        public String doctor { get; set; }
         public string Instructions { get; set; }
     }
 }

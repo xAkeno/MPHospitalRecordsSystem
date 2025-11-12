@@ -123,6 +123,62 @@ namespace MPHospitalRecordsSystem
             }
             return null;
         }
+        public patient findNameById(int id)
+        {
+            String sqlFindById = "SELECT * FROM patients WHERE patient_id = @patient_id";
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlFindById, c))
+                    {
+                        cmd.Parameters.AddWithValue("@patient_id", id);
+                        c.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                patient p = new patient();
+                                p.name = reader.GetString("Name");
+                                return p;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to find patient: " + ex.Message);
+            }
+            return null;
+        }
+        public int findByName(String name)
+        {
+            String sqlFindByName = "SELECT * FROM patients WHERE Name = @Name";
+            try
+            {
+                using (MySqlConnection c = con.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sqlFindByName, c))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        c.Open();
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return reader.GetInt32("patient_id");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to find patient: " + ex.Message);
+            }
+            return 0;
+        }
         public List<patientDTO> search_patient(String search)
         {
             String sqlSearchPatient = "SELECT * FROM patients WHERE Name LIKE @search OR patient_id LIKE @search";

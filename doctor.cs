@@ -85,6 +85,47 @@ namespace MPHospitalRecordsSystem
                 }
             }
         }
+        public doctorDTO findNameById(int id)
+        {
+            String sqlGetById = "SELECT * FROM doctors WHERE doctor_id=@doctor_id";
+            using (MySqlConnection c = con.GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sqlGetById, c))
+                {
+                    cmd.Parameters.AddWithValue("@doctor_id", id);
+                    c.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return new doctorDTO
+                        {
+                            DoctorId = reader.GetInt32("doctor_id"),
+                            DoctorName = reader.GetString("Name"),
+                            Specialty = reader.GetString("Specialty")
+                        };
+                    }
+                }
+            }
+            return null; // Return null if not found
+        }
+        public int findByName(String name)
+        {
+            String sqlFindByName = "SELECT doctor_id FROM doctors WHERE Name=@Name";
+            using (MySqlConnection c = con.GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sqlFindByName, c))
+                {
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    c.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+            }
+            return -1; // Return -1 if not found
+        }
         public bool check_if_info_is_already_registred(int id, String name)
         {
             String sqlCheck = "SELECT * FROM doctors WHERE doctor_id=@id OR Name=@Name";
