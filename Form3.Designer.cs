@@ -195,6 +195,8 @@
             this.invenInputGen = new System.Windows.Forms.TextBox();
             this.invenInputMed = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cbPatientPres = new System.Windows.Forms.ComboBox();
+            this.label48 = new System.Windows.Forms.Label();
             this.cbDoctorPres = new System.Windows.Forms.ComboBox();
             this.label47 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -212,8 +214,6 @@
             this.label41 = new System.Windows.Forms.Label();
             this.presInputDosage = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.cbPatientPres = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
@@ -318,7 +318,7 @@
             this.btnUnselectRoles.Name = "btnUnselectRoles";
             this.btnUnselectRoles.Size = new System.Drawing.Size(92, 28);
             this.btnUnselectRoles.TabIndex = 9;
-            this.btnUnselectRoles.Text = "Unselect";
+            this.btnUnselectRoles.Text = " ";
             this.btnUnselectRoles.UseVisualStyleBackColor = true;
             this.btnUnselectRoles.Click += new System.EventHandler(this.btnUnselectRoles_Click);
             // 
@@ -2213,6 +2213,25 @@
             this.panel7.Size = new System.Drawing.Size(297, 583);
             this.panel7.TabIndex = 37;
             // 
+            // cbPatientPres
+            // 
+            this.cbPatientPres.FormattingEnabled = true;
+            this.cbPatientPres.Location = new System.Drawing.Point(8, 540);
+            this.cbPatientPres.Name = "cbPatientPres";
+            this.cbPatientPres.Size = new System.Drawing.Size(283, 21);
+            this.cbPatientPres.TabIndex = 34;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(11, 519);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(69, 18);
+            this.label48.TabIndex = 33;
+            this.label48.Text = "Patients";
+            // 
             // cbDoctorPres
             // 
             this.cbDoctorPres.FormattingEnabled = true;
@@ -2384,31 +2403,12 @@
             this.label40.TabIndex = 3;
             this.label40.Text = "Medicine";
             // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(11, 519);
-            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(69, 18);
-            this.label48.TabIndex = 33;
-            this.label48.Text = "Patients";
-            // 
-            // cbPatientPres
-            // 
-            this.cbPatientPres.FormattingEnabled = true;
-            this.cbPatientPres.Location = new System.Drawing.Point(8, 540);
-            this.cbPatientPres.Name = "cbPatientPres";
-            this.cbPatientPres.Size = new System.Drawing.Size(283, 21);
-            this.cbPatientPres.TabIndex = 34;
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1696, 695);
+            this.ClientSize = new System.Drawing.Size(1312, 695);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
